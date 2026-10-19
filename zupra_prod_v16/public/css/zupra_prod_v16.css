@@ -1,0 +1,39 @@
+/* Keep the Desk rail and workspace untouched; colour only the expanded sidebar panel. */
+.body-sidebar {
+	background: #0b1f3a;
+	--ink-gray-4: #fff;
+	--ink-gray-5: #fff;
+	--ink-gray-6: #fff;
+	--ink-gray-7: #fff;
+	--ink-gray-8: #fff;
+	--ink-gray-9: #fff;
+}
+
+/* Match every sidebar row to the 40px module-header size and width. */
+.body-sidebar .body-sidebar-top,
+.body-sidebar .standard-items-band {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.body-sidebar .standard-sidebar-item .item-anchor {
+	height: 40px;
+}
+
+/* The selected white row still needs dark text. */
+.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
+	color: #0b1f3a;
+}
+
+/* The Desk page header uses the same navy surface as the sidebar. */
+.page-head {
+	background: #0b1f3a;
+	border-bottom-color: #0b1f3a;
+}
+
+/* Keep the current page title and overflow-menu icon readable on navy. */
+.page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
+.page-head .menu-more-button {
+	color: #fff;
+	--icon-stroke: #fff;
+}
