@@ -277,3 +277,9 @@ before_request = ["zupra_prod_v16.branding.redirect_desk_root"]
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# Ask Zupra chatbot
+_az = globals().get("app_include_js", [])
+if isinstance(_az, str):
+    _az = [_az]
+app_include_js = list(_az) + ["/assets/zupra_prod_v16/js/ask_zupra.js"]
