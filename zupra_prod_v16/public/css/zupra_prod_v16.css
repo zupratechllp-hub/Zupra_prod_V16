@@ -1,3 +1,18 @@
+.splash img{content:url(/assets/zupra_prod_v16/images/logo.png)!important}
+.dock .header-logo{background-image:url(/assets/zupra_prod_v16/images/logo.png)!important;background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important}.dock .header-logo>*{opacity:0!important}
+/*
+ * Branding is served from this app's public assets, so it is available on every
+ * site where the app is installed. These selectors cover the Desk navbar and
+ * the login/website templates without storing a logo URL in Site Config or the
+ * database.
+ */
+.app-logo,
+.navbar-brand .app-logo,
+.navbar-home .app-logo {
+	content: url("/assets/zupra_prod_v16/images/logo.png") !important;
+	object-fit: contain;
+}
+
 /* Keep the Desk rail and workspace untouched; colour only the expanded sidebar panel. */
 .body-sidebar {
 	background: #0b1f3a;

@@ -34,11 +34,12 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css"
-# app_include_js = "/assets/zupra_prod_v16/js/zupra_prod_v16.js"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261021.3"
+app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261021.3"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css"
+web_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261021.3"
+update_website_context = ["zupra_prod_v16.branding.update_website_context"]
 # web_include_js = "/assets/zupra_prod_v16/js/zupra_prod_v16.js"
 
 # include custom scss in every website theme (without file extension ".scss")
