@@ -72,7 +72,7 @@ update_website_context = ["zupra_prod_v16.branding.update_website_context"]
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "desk/setup/home"
 
 # website user home page (by Role)
 # role_home_page = {
