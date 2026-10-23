@@ -72,7 +72,7 @@ update_website_context = ["zupra_prod_v16.branding.update_website_context"]
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "desk/setup/home"
 
 # website user home page (by Role)
 # role_home_page = {
@@ -226,7 +226,7 @@ update_website_context = ["zupra_prod_v16.branding.update_website_context"]
 
 # Request Events
 # ----------------
-# before_request = ["zupra_prod_v16.utils.before_request"]
+before_request = ["zupra_prod_v16.branding.redirect_desk_root"]
 # after_request = ["zupra_prod_v16.utils.after_request"]
 
 # Job Events
