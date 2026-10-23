@@ -1,0 +1,19 @@
+{
+ "app": "zupra_prod_v16",
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 1,
+   "hidden": 0,
+   "icon": "building-2",
+   "link_to": "Organisation structure",
+   "link_type": "Workspace",
+   "title": "Organisation structure"
+  }
+ ],
+ "mount_on": "erpnext",
+ "name": "zupra_prod_v16",
+ "standard": 1,
+ "user": ""
+}

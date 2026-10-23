@@ -1,0 +1,10 @@
+{
+ "app": "zupra_prod_v16",
+ "doctype": "Sidebar",
+ "header_icon": "building-2",
+ "items": [],
+ "module": "Zupra Prod V16",
+ "name": "Zupra Prod V16",
+ "standard": 1,
+ "title": "Zupra Prod V16"
+}

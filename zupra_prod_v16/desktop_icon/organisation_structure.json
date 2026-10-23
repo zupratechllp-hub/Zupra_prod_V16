@@ -1,0 +1,17 @@
+{
+ "app": "zupra_prod_v16",
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "building-2",
+ "icon_type": "Link",
+ "idx": 30,
+ "label": "Organisation structure",
+ "link_to": "Organisation structure",
+ "link_type": "Workspace Sidebar",
+ "logo_url": "",
+ "name": "Organisation structure",
+ "parent_icon": "",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

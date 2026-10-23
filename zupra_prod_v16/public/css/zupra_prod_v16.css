@@ -40,6 +40,77 @@
 	color: #0b1f3a;
 }
 
+/* Make the selected Organisation structure workspace easy to spot in the module sidebar. */
+.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
+	background: #2563eb;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	--icon-stroke: #fff;
+}
+
+/* Give the Create links a clear card treatment and larger, easier-to-scan labels. */
+[data-page-route="Workspaces"] .links-widget-box {
+	padding: 16px 18px;
+	border: 1px solid #c7d8f5;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 2px 8px rgb(15 39 71 / 10%);
+}
+
+[data-page-route="Workspaces"] .links-widget-box .widget-head .widget-title {
+	color: #123c78;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item {
+	display: flex;
+	align-items: center;
+	padding-block: 9px;
+	border-radius: 6px;
+	color: #17365f;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item::before {
+	content: "";
+	width: 22px;
+	height: 22px;
+	flex: 0 0 22px;
+	margin-right: 12px;
+	background-color: #2563eb;
+	mask: center / contain no-repeat;
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item[title="Client"]::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item[title="Company code"]::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18M5 21V7l8-4v18M19 21V11l-6-4'/%3E%3Cpath d='M9 9v.01M9 12v.01M9 15v.01M9 18v.01'/%3E%3C/svg%3E");
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item[title="Chart account"]::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M18 17V9M13 17V5M8 17v-3'/%3E%3C/svg%3E");
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item[title="Plant"]::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 20V8l6 4V8l6 4V4h6v16z'/%3E%3Cpath d='M18 8h.01M18 12h.01M10 20v-4h4v4'/%3E%3C/svg%3E");
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item[title="Storage location"]::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E");
+}
+
+[data-page-route="Workspaces"] .links-widget-box .link-item:hover,
+[data-page-route="Workspaces"] .links-widget-box .link-item:focus-visible {
+	background: #eaf2ff;
+	color: #124fb5;
+	text-decoration: none;
+}
+
 /* The Desk page header uses the same navy surface as the sidebar. */
 .page-head {
 	background: #0b1f3a;
