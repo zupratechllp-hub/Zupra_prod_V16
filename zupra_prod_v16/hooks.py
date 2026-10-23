@@ -226,7 +226,7 @@ home_page = "desk/setup/home"
 
 # Request Events
 # ----------------
-# before_request = ["zupra_prod_v16.utils.before_request"]
+before_request = ["zupra_prod_v16.branding.redirect_desk_root"]
 # after_request = ["zupra_prod_v16.utils.after_request"]
 
 # Job Events
