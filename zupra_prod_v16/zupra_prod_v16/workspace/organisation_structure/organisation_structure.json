@@ -1,0 +1,40 @@
+{
+ "app": "zupra_prod_v16",
+ "charts": [],
+ "content": "[{\"id\": \"org-structure-onboarding\", \"type\": \"onboarding\", \"data\": {\"onboarding_name\": \"Organization Onboarding\", \"col\": 12}}, {\"id\": \"org-structure-create-card\", \"type\": \"card\", \"data\": {\"card_name\": \"Create\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "building-2",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Organisation structure",
+ "links": [
+  {"hidden": 0, "label": "Create", "link_count": 5, "onboard": 0, "type": "Card Break"},
+  {"hidden": 0, "is_query_report": 0, "label": "Client", "link_to": "Customer", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Company code", "link_to": "Company", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Chart account", "link_to": "Account", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Plant", "link_to": "Plant Floor", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Storage location", "link_to": "Warehouse", "link_type": "DocType", "onboard": 0, "type": "Link"}
+ ],
+ "module": "Zupra Prod V16",
+ "name": "Organisation structure",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 30.0,
+ "shortcuts": [],
+ "sidebar_items": [
+  {"child": 0, "collapsible": 1, "default_workspace": 0, "icon": "users", "indent": 0, "keep_closed": 0, "label": "Client", "link_to": "Customer", "link_type": "DocType", "open_in_new_tab": 0, "show_arrow": 0, "type": "Link"},
+  {"child": 0, "collapsible": 1, "default_workspace": 0, "icon": "building-2", "indent": 0, "keep_closed": 0, "label": "Company code", "link_to": "Company", "link_type": "DocType", "open_in_new_tab": 0, "show_arrow": 0, "type": "Link"},
+  {"child": 0, "collapsible": 1, "default_workspace": 0, "icon": "chart-no-axes-column-increasing", "indent": 0, "keep_closed": 0, "label": "Chart account", "link_to": "Account", "link_type": "DocType", "open_in_new_tab": 0, "show_arrow": 0, "type": "Link"},
+  {"child": 0, "collapsible": 1, "default_workspace": 0, "icon": "factory", "indent": 0, "keep_closed": 0, "label": "Plant", "link_to": "Plant Floor", "link_type": "DocType", "open_in_new_tab": 0, "show_arrow": 0, "type": "Link"},
+  {"child": 0, "collapsible": 1, "default_workspace": 0, "icon": "map-pin", "indent": 0, "keep_closed": 0, "label": "Storage location", "link_to": "Warehouse", "link_type": "DocType", "open_in_new_tab": 0, "show_arrow": 0, "type": "Link"}
+ ],
+ "standard": 1,
+ "title": "Organisation structure",
+ "type": "Workspace"
+}
