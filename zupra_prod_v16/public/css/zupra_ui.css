@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --zu-blue: #1a6fd4;
+  --zu-blue-dark: #0b3d7a;
+  --zu-blue-soft: #dbeafe;
+  --zu-blue-border: #9ec5f4;
+  --zu-bg: #f6f9fd;
+  --zu-line: #e3e9f2;
+  --zu-text: #0f172a;
+  --zu-muted: #64748b;
+}
+
+/* Font + page background */
+html, body, input, button, select, textarea, .desk-container { font-family: 'Manrope', sans-serif !important; }
+body, .desk-container, .main-section, .layout-main, .page-container { background: var(--zu-bg) !important; }
+
+/* Top bar */
+.page-head, header.navbar, .navbar {
+  background: #fff !important;
+  border-bottom: 1px solid var(--zu-line) !important;
+  box-shadow: none !important;
+}
+.page-head .page-title, .page-head .title-text, .page-head h3 {
+  color: var(--zu-text) !important;
+  font-weight: 700 !important;
+}
+
+/* Sidebar */
+.body-sidebar-container, .body-sidebar, .sidebar-header, .sidebar-items, .body-sidebar-bottom {
+  background: #fff !important;
+}
+.body-sidebar-container { border-right: 1px solid var(--zu-line) !important; }
+.body-sidebar .sidebar-item-label, .body-sidebar .item-anchor, .sidebar-header * {
+  color: var(--zu-text) !important;
+}
+.sidebar-header { font-weight: 800 !important; font-size: 18px !important; }
+.body-sidebar svg { stroke: var(--zu-muted) !important; }
+.sidebar-item-container .item-anchor, .sidebar-item-container .standard-sidebar-item {
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+.sidebar-item-container:hover > .item-anchor { background: #eef4fc !important; }
+.sidebar-item-container.active-sidebar > .item-anchor,
+.sidebar-item-container .active-sidebar {
+  background: var(--zu-blue-soft) !important;
+  box-shadow: inset 3px 0 0 var(--zu-blue) !important;
+}
+.sidebar-item-container.active-sidebar .sidebar-item-label,
+.sidebar-item-container.active-sidebar svg {
+  color: var(--zu-blue-dark) !important;
+  stroke: var(--zu-blue-dark) !important;
+  font-weight: 700 !important;
+}
+
+/* Cards */
+.widget, .number-card, .onboarding-widget-box, .frappe-card {
+  background: #fff !important;
+  border: 1px solid var(--zu-line) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+.widget .widget-title, .number-card .widget-title { color: var(--zu-muted) !important; font-weight: 500 !important; }
+.number-card .number { color: var(--zu-text) !important; font-weight: 800 !important; }
+
+/* Primary buttons: light blue like "New" / "Open chart" */
+.btn-primary {
+  background: var(--zu-blue-soft) !important;
+  color: var(--zu-blue-dark) !important;
+  border: 1px solid var(--zu-blue-border) !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+}
+
+/* Top-right tools (added by zupra_ui.js) */
+#zu-tools { position: fixed; top: 2px; right: 116px; display: flex; align-items: center; gap: 12px; z-index: 1031; }
+#zu-tools .zu-search {
+  width: 340px; height: 42px; display: flex; align-items: center; gap: 10px; padding: 0 14px;
+  background: var(--zu-bg); border: 1px solid var(--zu-line); border-radius: 12px;
+  color: var(--zu-muted); font-size: 14px; cursor: pointer;
+}
+#zu-tools .zu-search kbd {
+  margin-left: auto; font-size: 11px; background: #eaf0f8; color: var(--zu-muted);
+  border: none; border-radius: 6px; padding: 2px 8px; box-shadow: none;
+}
+#zu-tools .zu-bell { width: 40px; height: 40px; background: transparent; border: none; cursor: pointer; color: var(--zu-muted); }
+#zu-tools .zu-new {
+  height: 42px; padding: 0 18px; border-radius: 10px; cursor: pointer;
+  background: var(--zu-blue-soft); border: 1px solid var(--zu-blue-border);
+  color: var(--zu-blue-dark); font-weight: 700; font-size: 14px;
+}
+#zu-new-menu {
+  position: fixed; top: 52px; right: 150px; min-width: 210px; padding: 6px; display: none; z-index: 1060;
+  background: #fff; border: 1px solid var(--zu-line); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12);
+}
+#zu-new-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--zu-text); }
+#zu-new-menu div:hover { background: var(--zu-blue-soft); }

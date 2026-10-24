@@ -5,7 +5,7 @@ const HKEY = () => "ask_zupra_history:" + (frappe.session.user || "guest");
 const css = `
 #ask-zupra-btn { background:#12306b; color:#fff; border:1px solid #3d5a99; border-radius:8px;
 height:42px; padding:0 24px; font-weight:600; font-size:14px; margin-left:20px; vertical-align:middle; cursor:pointer; }
-#ask-zupra-btn.floating { position:fixed; top:12px; left:460px; margin-left:0; z-index:1030; }
+#ask-zupra-btn.floating { position:fixed; top:2px; left:380px; margin-left:0; z-index:1030; }
 #ask-zupra-panel { position:fixed; top:70px; left:380px; right:200px; height:560px; z-index:1050;
 background:#fff; border:1px solid #d1d5db; border-radius:12px; display:none;
 flex-direction:column; box-shadow:0 10px 30px rgba(0,0,0,.25); color:#111; }
@@ -165,7 +165,7 @@ document.getElementById("az-input").focus();
 };
 }
 
-const target = document.querySelector(".page-head .page-title, .page-head .title-area");
+const target = null;
 if (target) {
 if (btn.parentElement !== target) {
 btn.classList.remove("floating");

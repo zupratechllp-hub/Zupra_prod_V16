@@ -1,0 +1,46 @@
+/* ---- Sidebar title ---- */
+
+/* ---- Section labels (OVERVIEW / TRANSACTIONS / REPORTS) ---- */
+.zu-section-label {
+  padding: 18px 16px 6px; font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: #64748b;
+}
+
+
+/* ---- Breadcrumb + big page title (injected by zupra_ui2.js) ---- */
+body.zu-has-head .page-head .title-text { display: none !important; }
+#zu-pagehead { max-width: 1080px; margin: 0 auto; padding: 22px 0 10px; }
+#zu-pagehead .zu-crumb { font-size: 15px; font-weight: 500; color: #64748b; margin-bottom: 4px; }
+#zu-pagehead .zu-big { font-size: 36px; font-weight: 800; line-height: 1.15; color: #0f172a; letter-spacing: -0.5px; }
+
+/* ---- User avatar moved to top right as an outlined circle icon ---- */
+.zu-user-moved {
+  position: fixed !important; top: 9px !important; right: 60px !important;
+  width: 42px !important; height: 42px !important; margin: 0 !important; padding: 0 !important;
+  border: 2px solid #475569 !important; border-radius: 50% !important;
+  background: transparent !important; z-index: 1032 !important; cursor: pointer;
+}
+.zu-user-moved * { visibility: hidden !important; }
+.zu-user-moved::after {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 22px; height: 22px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 4-6 8-6s8 2 8 6'/></svg>") center/contain no-repeat;
+}
+
+#ask-zupra-btn { white-space: nowrap; }
+
+/* ---- Top-bar tools only on workspace (Home) pages ---- */
+#zu-tools { display: none !important; }
+body.zu-on-ws #zu-tools { display: flex !important; }
+body.zu-on-ws .zu-hide { display: none !important; }
+#ask-zupra-btn { white-space: nowrap; }
+
+/* ---- Active rail icon: light-blue square, blue border, blue icon ---- */
+.zu-rail-active {
+  background: #dbeafe !important;
+  border: 2px solid #9ec5f4 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+.zu-rail-active svg, .zu-rail-active img {
+  filter: invert(34%) sepia(96%) saturate(1500%) hue-rotate(200deg) brightness(92%) contrast(92%);
+}
