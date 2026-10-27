@@ -34,12 +34,12 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261021.3"
-app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261021.3"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261027.7"
+app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261027.7"
 
 # include js, css files in header of web template
 web_include_css = [
-	"/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261021.3",
+	"/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261027.7",
 	"/assets/zupra_prod_v16/css/zupra_login.css?v=20261022.4",
 ]
 web_include_js = "/assets/zupra_prod_v16/js/zupra_login.js?v=20261022.2"
