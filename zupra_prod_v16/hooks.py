@@ -305,3 +305,18 @@ _zj2 = globals().get("app_include_js", [])
 if isinstance(_zj2, str):
     _zj2 = [_zj2]
 app_include_js = list(_zj2) + ["/assets/zupra_prod_v16/js/zupra_ui2.js"]
+
+# Zupra UI restyle - Round 3
+_zc3 = globals().get("app_include_css", [])
+if isinstance(_zc3, str):
+    _zc3 = [_zc3]
+app_include_css = list(_zc3) + ["/assets/zupra_prod_v16/css/zupra_ui3.css?v=4"]
+
+_zj3 = globals().get("app_include_js", [])
+if isinstance(_zj3, str):
+    _zj3 = [_zj3]
+app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=3"]
+
+# Zupra UI restyle - Round 4
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=4"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=3"]
