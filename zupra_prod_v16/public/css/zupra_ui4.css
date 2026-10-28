@@ -18,3 +18,20 @@ body:not(.zu-on-ws) .page-head { padding-right: 64px !important; }
 body.zu-on-ws .zu-dots { position: fixed !important; top: 9px !important; right: 62px !important;
   width: 38px !important; height: 38px !important; margin: 0 !important; padding: 0 !important;
   display: flex !important; align-items: center; justify-content: center; z-index: 3000; }
+
+/* Round 5: Ask Zupra far right, search on the left */
+#ask-zupra-btn { position: fixed !important; top: 2px !important; right: 14px !important;
+  left: auto !important; bottom: auto !important; width: 132px !important; height: 42px !important;
+  margin: 0 !important; z-index: 3000 !important; white-space: nowrap; }
+#zu-tools .zu-search { left: 340px !important; transform: none !important; width: 360px !important; }
+#zu-user { top: 4px !important; right: 158px !important; }
+#zu-user-menu { top: 50px !important; right: 158px !important; }
+body.zu-on-ws .zu-dots { top: 4px !important; right: 204px !important; }
+#zu-tools { right: 258px !important; }
+#zu-new-menu { right: 292px !important; }
+body:not(.zu-on-ws) .page-head { padding-right: 214px !important; }
+
+/* Round 6: Ask Zupra before the user circle, circle at the far end */
+#zu-user { top: 4px !important; right: 14px !important; }
+#zu-user-menu { top: 50px !important; right: 14px !important; }
+#ask-zupra-btn { right: 62px !important; }
