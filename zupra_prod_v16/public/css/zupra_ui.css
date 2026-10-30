@@ -13,10 +13,16 @@
 
 /* Font + page background */
 html, body, input, button, select, textarea, .desk-container { font-family: 'Manrope', sans-serif !important; }
-body, .desk-container, .main-section, .layout-main, .page-container { background: var(--zu-bg) !important; }
+:root:not([data-theme="dark"]) body,
+:root:not([data-theme="dark"]) .desk-container,
+:root:not([data-theme="dark"]) .main-section,
+:root:not([data-theme="dark"]) .layout-main,
+:root:not([data-theme="dark"]) .page-container { background: var(--zu-bg) !important; }
 
 /* Top bar */
-.page-head, header.navbar, .navbar {
+:root:not([data-theme="dark"]) .page-head,
+:root:not([data-theme="dark"]) header.navbar,
+:root:not([data-theme="dark"]) .navbar {
   background: #fff !important;
   border-bottom: 1px solid var(--zu-line) !important;
   box-shadow: none !important;
@@ -27,35 +33,44 @@ body, .desk-container, .main-section, .layout-main, .page-container { background
 }
 
 /* Sidebar */
-.body-sidebar-container, .body-sidebar, .sidebar-header, .sidebar-items, .body-sidebar-bottom {
+:root:not([data-theme="dark"]) .body-sidebar-container,
+:root:not([data-theme="dark"]) .body-sidebar,
+:root:not([data-theme="dark"]) .sidebar-header,
+:root:not([data-theme="dark"]) .sidebar-items,
+:root:not([data-theme="dark"]) .body-sidebar-bottom {
   background: #fff !important;
 }
-.body-sidebar-container { border-right: 1px solid var(--zu-line) !important; }
-.body-sidebar .sidebar-item-label, .body-sidebar .item-anchor, .sidebar-header * {
+:root:not([data-theme="dark"]) .body-sidebar-container { border-right: 1px solid var(--zu-line) !important; }
+:root:not([data-theme="dark"]) .body-sidebar .sidebar-item-label,
+:root:not([data-theme="dark"]) .body-sidebar .item-anchor,
+:root:not([data-theme="dark"]) .sidebar-header * {
   color: var(--zu-text) !important;
 }
 .sidebar-header { font-weight: 800 !important; font-size: 18px !important; }
-.body-sidebar svg { stroke: var(--zu-muted) !important; }
+:root:not([data-theme="dark"]) .body-sidebar svg { stroke: var(--zu-muted) !important; }
 .sidebar-item-container .item-anchor, .sidebar-item-container .standard-sidebar-item {
   border-radius: 10px !important;
   font-size: 15px !important;
   font-weight: 500 !important;
 }
-.sidebar-item-container:hover > .item-anchor { background: #eef4fc !important; }
-.sidebar-item-container.active-sidebar > .item-anchor,
-.sidebar-item-container .active-sidebar {
+:root:not([data-theme="dark"]) .sidebar-item-container:hover > .item-anchor { background: #eef4fc !important; }
+:root:not([data-theme="dark"]) .sidebar-item-container.active-sidebar > .item-anchor,
+:root:not([data-theme="dark"]) .sidebar-item-container .active-sidebar {
   background: var(--zu-blue-soft) !important;
   box-shadow: inset 3px 0 0 var(--zu-blue) !important;
 }
-.sidebar-item-container.active-sidebar .sidebar-item-label,
-.sidebar-item-container.active-sidebar svg {
+:root:not([data-theme="dark"]) .sidebar-item-container.active-sidebar .sidebar-item-label,
+:root:not([data-theme="dark"]) .sidebar-item-container.active-sidebar svg {
   color: var(--zu-blue-dark) !important;
   stroke: var(--zu-blue-dark) !important;
   font-weight: 700 !important;
 }
 
 /* Cards */
-.widget, .number-card, .onboarding-widget-box, .frappe-card {
+:root:not([data-theme="dark"]) .widget,
+:root:not([data-theme="dark"]) .number-card,
+:root:not([data-theme="dark"]) .onboarding-widget-box,
+:root:not([data-theme="dark"]) .frappe-card {
   background: #fff !important;
   border: 1px solid var(--zu-line) !important;
   border-radius: 16px !important;
@@ -65,7 +80,7 @@ body, .desk-container, .main-section, .layout-main, .page-container { background
 .number-card .number { color: var(--zu-text) !important; font-weight: 800 !important; }
 
 /* Primary buttons: light blue like "New" / "Open chart" */
-.btn-primary {
+:root:not([data-theme="dark"]) .btn-primary {
   background: var(--zu-blue-soft) !important;
   color: var(--zu-blue-dark) !important;
   border: 1px solid var(--zu-blue-border) !important;
@@ -95,4 +110,4 @@ body, .desk-container, .main-section, .layout-main, .page-container { background
   background: #fff; border: 1px solid var(--zu-line); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12);
 }
 #zu-new-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--zu-text); }
-#zu-new-menu div:hover { background: var(--zu-blue-soft); }
+:root:not([data-theme="dark"]) #zu-new-menu div:hover { background: var(--zu-blue-soft); }

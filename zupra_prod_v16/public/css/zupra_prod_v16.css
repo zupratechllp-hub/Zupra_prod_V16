@@ -13,8 +13,9 @@
 	object-fit: contain;
 }
 
-/* Keep the Desk rail and workspace untouched; colour only the expanded sidebar panel. */
-.body-sidebar {
+/* Keep the Desk rail and workspace untouched; colour only the expanded sidebar panel.
+   Scoped to light mode so dark mode can use its own token layer. */
+:root:not([data-theme="dark"]) .body-sidebar {
 	background: #0b1f3a;
 	--ink-gray-4: #fff;
 	--ink-gray-5: #fff;
@@ -27,21 +28,20 @@
 /* Match every sidebar row to the 40px module-header size and width. */
 .body-sidebar .body-sidebar-top,
 .body-sidebar .standard-items-band {
-	padding-left: 4px;
-	padding-right: 4px;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .body-sidebar .standard-sidebar-item .item-anchor {
 	height: 40px;
 }
 
-/* The selected white row still needs dark text. */
-.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
+/* The selected row — scoped to light mode so dark mode keeps its own theme. */
+:root:not([data-theme="dark"]) .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
 	color: #0b1f3a;
 }
 
-/* Make the selected Organisation structure workspace easy to spot in the module sidebar. */
-.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
+:root:not([data-theme="dark"]) .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
 	background: #2563eb;
 	color: #fff;
 	font-size: 16px;
@@ -111,15 +111,15 @@
 	text-decoration: none;
 }
 
-/* The Desk page header uses the same navy surface as the sidebar. */
-.page-head {
+/* The Desk page header uses the same navy surface as the sidebar (light mode only). */
+:root:not([data-theme="dark"]) .page-head {
 	background: #0b1f3a;
 	border-bottom-color: #0b1f3a;
 }
 
-/* Keep the current page title and overflow-menu icon readable on navy. */
-.page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
-.page-head .menu-more-button {
+/* Keep the current page title and overflow-menu icon readable on navy (light mode). */
+:root:not([data-theme="dark"]) .page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
+:root:not([data-theme="dark"]) .page-head .menu-more-button {
 	color: #fff;
 	--icon-stroke: #fff;
 }

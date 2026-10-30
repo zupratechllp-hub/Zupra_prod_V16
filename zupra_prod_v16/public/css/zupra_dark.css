@@ -1,0 +1,345 @@
+/*
+ * Zupra Dark Theme — Desk overrides.
+ *
+ * These rules fire only when Frappe's ThemeSwitcher has set data-theme="dark"
+ * on <html>. They undo every hardcoded light colour the zupra_ui*.css files
+ * inject so the native Frappe dark-mode token layer can show through, then
+ * add Zupra's own dark palette (drawn from the login-page dark style).
+ *
+ * Reference palette (login page dark):
+ *   base bg        #0b1422
+ *   card / panel   #111d2e
+ *   elevated panel #162234
+ *   border         #253954  /  #344963
+ *   text primary   #f0f5ff
+ *   text secondary #a7b8cf
+ *   accent blue    #2879dc  /  #79b4ff
+ */
+
+/* ─── CSS custom-property overrides ─────────────────────────────────────── */
+[data-theme="dark"] {
+  --zu-bg:           #0b1422;
+  --zu-blue:         #2879dc;
+  --zu-blue-dark:    #79b4ff;
+  --zu-blue-soft:    #0d1f3a;
+  --zu-blue-border:  #344963;
+  --zu-line:         #253954;
+  --zu-text:         #f0f5ff;
+  --zu-muted:        #a7b8cf;
+}
+
+/* ─── Page / body background ─────────────────────────────────────────────── */
+[data-theme="dark"] body,
+[data-theme="dark"] .desk-container,
+[data-theme="dark"] .main-section,
+[data-theme="dark"] .layout-main,
+[data-theme="dark"] .page-container {
+  background: #0b1422 !important;
+}
+
+/* ─── Top navigation bar ─────────────────────────────────────────────────── */
+[data-theme="dark"] .page-head,
+[data-theme="dark"] header.navbar,
+[data-theme="dark"] .navbar {
+  background: #111d2e !important;
+  border-bottom-color: #253954 !important;
+}
+
+[data-theme="dark"] .page-head .page-title,
+[data-theme="dark"] .page-head .title-text,
+[data-theme="dark"] .page-head h3 {
+  color: #f0f5ff !important;
+}
+
+/* Breadcrumbs */
+[data-theme="dark"] .page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
+[data-theme="dark"] .page-head .menu-more-button {
+  color: #d2deee !important;
+  --icon-stroke: #d2deee !important;
+}
+
+/* ─── Body sidebar ───────────────────────────────────────────────────────── */
+[data-theme="dark"] .body-sidebar-container,
+[data-theme="dark"] .body-sidebar,
+[data-theme="dark"] .sidebar-header,
+[data-theme="dark"] .sidebar-items,
+[data-theme="dark"] .body-sidebar-bottom {
+  background: #111d2e !important;
+}
+
+[data-theme="dark"] .body-sidebar-container {
+  border-right-color: #253954 !important;
+}
+
+[data-theme="dark"] .body-sidebar .sidebar-item-label,
+[data-theme="dark"] .body-sidebar .item-anchor,
+[data-theme="dark"] .sidebar-header * {
+  color: #d2deee !important;
+}
+
+[data-theme="dark"] .body-sidebar svg {
+  stroke: #a7b8cf !important;
+}
+
+/* Sidebar hover */
+[data-theme="dark"] .sidebar-item-container .item-anchor,
+[data-theme="dark"] .sidebar-item-container .standard-sidebar-item {
+  border-radius: 10px !important;
+}
+
+[data-theme="dark"] .sidebar-item-container:hover > .item-anchor,
+[data-theme="dark"] .body-sidebar .sidebar-item-container:hover > .item-anchor,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor:hover,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item:hover {
+  background: #1a2d45 !important;
+  color: #79b4ff !important;
+}
+
+[data-theme="dark"] .body-sidebar .sidebar-item-container:hover .sidebar-item-label {
+  color: #79b4ff !important;
+}
+
+/* Sidebar active / selected item — covers every Frappe v16 selector pattern */
+[data-theme="dark"] .body-sidebar .active-sidebar,
+[data-theme="dark"] .body-sidebar .active-sidebar .item-anchor,
+[data-theme="dark"] .body-sidebar .active-sidebar.item-anchor,
+[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar,
+[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
+[data-theme="dark"] .sidebar-item-container.active-sidebar > .item-anchor,
+[data-theme="dark"] .sidebar-item-container.active-sidebar > .standard-sidebar-item,
+[data-theme="dark"] .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor,
+[data-theme="dark"] .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor.selected,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor.active,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item.selected,
+[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item.active {
+  background: rgba(40, 121, 220, 0.18) !important;
+  color: #79b4ff !important;
+  box-shadow: inset 3px 0 0 #2879dc !important;
+  font-size: inherit !important;
+}
+
+/* Nuclear fallback: catch any element with active-sidebar class inside the sidebar */
+[data-theme="dark"] .body-sidebar [class*="active-sidebar"],
+[data-theme="dark"] .body-sidebar [class*="active-sidebar"] > .item-anchor,
+[data-theme="dark"] .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
+  background: rgba(40, 121, 220, 0.18) !important;
+  color: #79b4ff !important;
+  box-shadow: inset 3px 0 0 #2879dc !important;
+}
+
+/* Maximum-specificity: html + body prefix beats any competing single-class rule */
+html[data-theme="dark"] body .body-sidebar .active-sidebar,
+html[data-theme="dark"] body .body-sidebar .active-sidebar .item-anchor,
+html[data-theme="dark"] body .body-sidebar .standard-sidebar-item.active-sidebar,
+html[data-theme="dark"] body .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
+html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor,
+html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item,
+html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"],
+html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .item-anchor,
+html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
+  background: rgba(40, 121, 220, 0.18) !important;
+  color: #79b4ff !important;
+  box-shadow: inset 3px 0 0 #2879dc !important;
+  font-size: inherit !important;
+}
+
+[data-theme="dark"] .body-sidebar .active-sidebar *,
+[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar *,
+[data-theme="dark"] .sidebar-item-container.active-sidebar *,
+[data-theme="dark"] .body-sidebar .item-anchor.selected *,
+[data-theme="dark"] .body-sidebar .item-anchor.active *,
+[data-theme="dark"] .body-sidebar .standard-sidebar-item.selected *,
+[data-theme="dark"] .body-sidebar .standard-sidebar-item.active * {
+  color: #79b4ff !important;
+  stroke: #79b4ff !important;
+  --icon-stroke: #79b4ff !important;
+}
+
+/* zu-active-item (zupra_ui3) */
+[data-theme="dark"] .zu-active-item {
+  background: #0d2040 !important;
+}
+
+[data-theme="dark"] .zu-active-item,
+[data-theme="dark"] .zu-active-item * {
+  color: #79b4ff !important;
+  stroke: #79b4ff !important;
+}
+
+/* Section labels */
+[data-theme="dark"] .zu-section-label {
+  color: #a7b8cf !important;
+}
+
+/* ─── Rail (dock) active icon ────────────────────────────────────────────── */
+[data-theme="dark"] .zu-rail-active {
+  background: #0d2040 !important;
+  border-color: #344963 !important;
+}
+
+[data-theme="dark"] .zu-rail-active svg,
+[data-theme="dark"] .zu-rail-active img {
+  filter: invert(72%) sepia(50%) saturate(600%) hue-rotate(195deg) brightness(105%) contrast(100%);
+}
+
+/* ─── Cards / widgets / number-cards ────────────────────────────────────── */
+[data-theme="dark"] .widget,
+[data-theme="dark"] .number-card,
+[data-theme="dark"] .onboarding-widget-box,
+[data-theme="dark"] .frappe-card,
+[data-theme="dark"] .number-widget-box {
+  background: #111d2e !important;
+  border-color: #253954 !important;
+}
+
+[data-theme="dark"] .widget .widget-title,
+[data-theme="dark"] .number-card .widget-title {
+  color: #a7b8cf !important;
+}
+
+[data-theme="dark"] .number-card .number,
+[data-theme="dark"] .number-widget-box .number {
+  color: #f0f5ff !important;
+}
+
+/* ─── Workspace / links-widget-box ──────────────────────────────────────── */
+[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box {
+  background: #111d2e !important;
+  border-color: #253954 !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .widget-head .widget-title {
+  color: #a7b8cf !important;
+}
+
+[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item {
+  color: #d2deee !important;
+}
+
+[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item:hover,
+[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item:focus-visible {
+  background: #1a2d45 !important;
+  color: #79b4ff !important;
+}
+
+/* ─── Primary buttons ────────────────────────────────────────────────────── */
+[data-theme="dark"] .btn-primary {
+  background: #0d2040 !important;
+  color: #79b4ff !important;
+  border-color: #344963 !important;
+}
+
+/* ─── Injected tools (#zu-tools, search, new-menu) ──────────────────────── */
+[data-theme="dark"] #zu-tools .zu-search {
+  background: #111d2e;
+  border-color: #253954;
+  color: #a7b8cf;
+}
+
+[data-theme="dark"] #zu-tools .zu-search kbd {
+  background: #162234;
+  color: #a7b8cf;
+}
+
+[data-theme="dark"] #zu-tools .zu-bell {
+  color: #a7b8cf;
+}
+
+[data-theme="dark"] #zu-tools .zu-new {
+  background: #0d2040;
+  border-color: #344963;
+  color: #79b4ff;
+}
+
+[data-theme="dark"] #zu-new-menu {
+  background: #111d2e;
+  border-color: #253954;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] #zu-new-menu div {
+  color: #d2deee;
+}
+
+[data-theme="dark"] #zu-new-menu div:hover {
+  background: #1a2d45;
+  color: #79b4ff;
+}
+
+/* ─── User menu ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] #zu-user-menu {
+  background: #111d2e;
+  border-color: #253954;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] #zu-user-menu div {
+  color: #d2deee;
+}
+
+[data-theme="dark"] #zu-user-menu div:hover {
+  background: #1a2d45;
+  color: #79b4ff;
+}
+
+/* ─── Settings gear (#zu-settings) ──────────────────────────────────────── */
+[data-theme="dark"] #zu-settings {
+  color: #a7b8cf;
+  background: #111d2e;
+}
+
+[data-theme="dark"] #zu-settings:hover {
+  background: #1a2d45;
+  color: #79b4ff;
+}
+
+/* ─── Page-head breadcrumb / big title block (#zu-pagehead) ──────────────── */
+[data-theme="dark"] #zu-pagehead .zu-crumb {
+  color: #a7b8cf;
+}
+
+[data-theme="dark"] #zu-pagehead .zu-big {
+  color: #f0f5ff;
+}
+
+/* ─── Ask Zupra button ───────────────────────────────────────────────────── */
+[data-theme="dark"] #ask-zupra-btn {
+  background: #1c4ed8 !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  box-shadow: 0 2px 8px rgba(28, 78, 216, 0.5) !important;
+}
+
+[data-theme="dark"] #ask-zupra-btn:hover {
+  background: #1d40af !important;
+  box-shadow: 0 2px 12px rgba(28, 78, 216, 0.7) !important;
+}
+
+/* ─── The main layout-main / page content area ───────────────────────────── */
+[data-theme="dark"] .layout-main-section,
+[data-theme="dark"] .frappe-list,
+[data-theme="dark"] .page-body {
+  background: #0b1422 !important;
+}
+
+/* ─── Espresso body-sidebar background ───────────────────────────────────── */
+/* This rule overrides the hard-coded dark-navy that zupra_prod_v16.css puts
+   on .body-sidebar in both themes; in dark mode we keep a slightly lighter navy. */
+[data-theme="dark"] .body-sidebar {
+  background: #111d2e !important;
+  --ink-gray-4: #d2deee;
+  --ink-gray-5: #d2deee;
+  --ink-gray-6: #d2deee;
+  --ink-gray-7: #d2deee;
+  --ink-gray-8: #f0f5ff;
+  --ink-gray-9: #f0f5ff;
+}
+
+/* ─── Standard sidebar items band (search + notifications row) ──────────── */
+[data-theme="dark"] .body-sidebar .body-sidebar-top,
+[data-theme="dark"] .body-sidebar .standard-items-band {
+  background: #111d2e !important;
+}
+
