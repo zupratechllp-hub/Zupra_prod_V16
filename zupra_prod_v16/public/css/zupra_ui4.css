@@ -35,3 +35,103 @@ body:not(.zu-on-ws) .page-head { padding-right: 214px !important; }
 #zu-user { top: 4px !important; right: 14px !important; }
 #zu-user-menu { top: 50px !important; right: 14px !important; }
 #ask-zupra-btn { right: 62px !important; }
+
+/* Round 7: hide module name behind search, move search to the left */
+body.zu-on-ws .navbar-breadcrumbs { display: none !important; }
+#zu-tools .zu-search { left: 290px !important; }
+
+/* Round 8: bold sidebar module name, remove New button */
+.body-sidebar .sidebar-header,
+.body-sidebar .sidebar-header *,
+.sidebar-header .header-title,
+.sidebar-header .header-subtitle { font-weight: 700 !important; }
+#zu-tools .zu-new, #zu-new, #zu-new-btn, #zu-new-menu { display: none !important; }
+
+
+/* Round 9: move page title + breadcrumb to the left on all modules */
+body.zu-on-ws .container.page-body > div:has(.zu-big) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  padding-left: 20px !important;
+}
+
+/* Round 10: sidebar module title bigger (h2 size) and unclipped; hide onboarding video */
+.body-sidebar .sidebar-header,
+.body-sidebar .sidebar-header * {
+  font-size: 22px !important;
+  line-height: 1.4 !important;
+  overflow: visible !important;
+}
+.body-sidebar .sidebar-header { height: auto !important; min-height: 64px !important; }
+body.zu-on-ws .onboarding-step-media { display: none !important; }
+
+/* Round 11: workspace cards use the full content width */
+body.zu-on-ws .layout-main {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 42px !important;
+  padding-right: 20px !important;
+}
+
+/* Round 12: move page title block up a little */
+body.zu-on-ws .container.page-body > div:has(.zu-big) {
+  margin-top: -14px !important;
+}
+
+/* Round 14: chat icon in grey like the bell, no dark background, equal spacing */
+#ask-zupra-btn {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  overflow: visible !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 22px !important;
+  top: 4px !important;
+  right: 62px !important;
+}
+#ask-zupra-btn * { display: none !important; }
+#ask-zupra-btn:hover { background-color: #eef2f7 !important; border-radius: 8px !important; }
+#ask-zupra-btn:hover::after {
+  content: "Ask Zupra";
+  position: absolute; top: 46px; right: 0;
+  background: #0f172a; color: #fff; font-size: 12px;
+  padding: 4px 8px; border-radius: 6px; white-space: nowrap; z-index: 4000;
+}
+body.zu-on-ws .zu-dots { right: 114px !important; }
+#zu-bell { transform: translateX(95px) !important; }
+
+/* Round 16: selected sidebar item stays light blue (overrides the dark blue active rule) */
+.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor {
+  background: #dbeafe !important;
+  color: #0b3d7a !important;
+  --icon-stroke: #0b3d7a !important;
+}
+
+/* Round 18: search bar stretches to the end of its box */
+#zu-tools .zu-search {
+  box-sizing: border-box !important;
+  width: 616px !important;
+}
+
+/* Round 19: move the real three-dots menu out from under the avatar, evenly spaced */
+body.zu-on-ws .page-actions {
+  transform: translateX(-91px) !important;
+  position: relative;
+  z-index: 3500 !important;
+}
+
+/* Round 20: chat button and user avatar only on module home screens */
+body:not(.zu-on-ws) #ask-zupra-btn,
+body:not(.zu-on-ws) #zu-user,
+body:not(.zu-on-ws) #zu-user-menu { display: none !important; }
+
+/* Round 21: list/form toolbar goes to the right edge now that the chat icon and avatar are hidden there */
+body:not(.zu-on-ws) .page-head { padding-right: 20px !important; }

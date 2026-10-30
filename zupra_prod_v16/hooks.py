@@ -318,5 +318,5 @@ if isinstance(_zj3, str):
 app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=3"]
 
 # Zupra UI restyle - Round 4
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=6"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=23"]
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=3"]
