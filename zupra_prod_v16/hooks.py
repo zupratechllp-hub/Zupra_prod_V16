@@ -34,7 +34,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261027.7"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261030.2"
 app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261027.7"
 
 # include js, css files in header of web template
@@ -282,13 +282,13 @@ before_request = ["zupra_prod_v16.branding.redirect_desk_root"]
 _az = globals().get("app_include_js", [])
 if isinstance(_az, str):
     _az = [_az]
-app_include_js = list(_az) + ["/assets/zupra_prod_v16/js/ask_zupra.js"]
+app_include_js = list(_az) + ["/assets/zupra_prod_v16/js/ask_zupra.js?v=2"]
 
 # Zupra UI restyle
 _zc = globals().get("app_include_css", [])
 if isinstance(_zc, str):
     _zc = [_zc]
-app_include_css = list(_zc) + ["/assets/zupra_prod_v16/css/zupra_ui.css"]
+app_include_css = list(_zc) + ["/assets/zupra_prod_v16/css/zupra_ui.css?v=2"]
 
 _zj = globals().get("app_include_js", [])
 if isinstance(_zj, str):
@@ -299,7 +299,7 @@ app_include_js = list(_zj) + ["/assets/zupra_prod_v16/js/zupra_ui.js"]
 _zc2 = globals().get("app_include_css", [])
 if isinstance(_zc2, str):
     _zc2 = [_zc2]
-app_include_css = list(_zc2) + ["/assets/zupra_prod_v16/css/zupra_ui2.css"]
+app_include_css = list(_zc2) + ["/assets/zupra_prod_v16/css/zupra_ui2.css?v=2"]
 
 _zj2 = globals().get("app_include_js", [])
 if isinstance(_zj2, str):
@@ -310,13 +310,16 @@ app_include_js = list(_zj2) + ["/assets/zupra_prod_v16/js/zupra_ui2.js"]
 _zc3 = globals().get("app_include_css", [])
 if isinstance(_zc3, str):
     _zc3 = [_zc3]
-app_include_css = list(_zc3) + ["/assets/zupra_prod_v16/css/zupra_ui3.css?v=4"]
+app_include_css = list(_zc3) + ["/assets/zupra_prod_v16/css/zupra_ui3.css?v=6"]
 
 _zj3 = globals().get("app_include_js", [])
 if isinstance(_zj3, str):
     _zj3 = [_zj3]
-app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=3"]
+app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=4"]
 
 # Zupra UI restyle - Round 4
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=23"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=25"]
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=3"]
+
+# Zupra Dark Theme overrides (must come last so it wins specificity battles)
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=4"]

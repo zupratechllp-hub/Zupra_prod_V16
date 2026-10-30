@@ -34,13 +34,14 @@ body.zu-on-ws #zu-tools { display: flex !important; }
 body.zu-on-ws .zu-hide { display: none !important; }
 #ask-zupra-btn { white-space: nowrap; }
 
-/* ---- Active rail icon: light-blue square, blue border, blue icon ---- */
-.zu-rail-active {
+/* ---- Active rail icon: light-blue square, blue border, blue icon (light mode only) ---- */
+:root:not([data-theme="dark"]) .zu-rail-active {
   background: #dbeafe !important;
   border: 2px solid #9ec5f4 !important;
   border-radius: 12px !important;
   box-shadow: none !important;
 }
-.zu-rail-active svg, .zu-rail-active img {
+:root:not([data-theme="dark"]) .zu-rail-active svg,
+:root:not([data-theme="dark"]) .zu-rail-active img {
   filter: invert(34%) sepia(96%) saturate(1500%) hue-rotate(200deg) brightness(92%) contrast(92%);
 }
