@@ -1,0 +1,12 @@
+.desk-container .container, .page-container .container, .page-body .container,
+.layout-main-section-wrapper { max-width: 100% !important; }
+#zu-pagehead { max-width: none !important; margin: 0 !important; padding: 22px 28px 10px !important; }
+:root { --zu-chat: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/></svg>"); }
+#ask-zupra-btn { font-size: 0 !important; width: 40px !important; height: 40px !important; padding: 0 !important;
+  background: transparent !important; border: none !important; box-shadow: none !important;
+  display: flex !important; align-items: center; justify-content: center;
+  top: 4px !important; right: 66px !important; color: #475569 !important; }
+#ask-zupra-btn > * { display: none !important; }
+#ask-zupra-btn::before { content: ""; width: 22px; height: 22px; background: currentColor;
+  -webkit-mask: var(--zu-chat) center/contain no-repeat; mask: var(--zu-chat) center/contain no-repeat; }
+#ask-zupra-btn:hover { color: #1a6fd4 !important; background: #dbeafe !important; border-radius: 10px !important; }
