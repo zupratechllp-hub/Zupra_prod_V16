@@ -1,0 +1,22 @@
+.zu-link-icon { display: none !important; }
+.links-widget-box { border-radius: 16px !important; box-shadow: 0 4px 18px rgba(15,23,42,.05) !important; }
+.links-widget-box .widget-title { display: flex !important; align-items: center; gap: 12px; overflow: visible !important;
+  white-space: normal !important; font-size: 18px !important; font-weight: 700 !important;
+  color: var(--heading-color, #0f172a) !important; margin-bottom: 6px; }
+.zu-head-icon { display: inline-flex; flex: none; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 11px; background: #e8f1fd; color: #1a6fd4; }
+.zu-head-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9;
+  stroke-linecap: round; stroke-linejoin: round; }
+.links-widget-box .link-item.zu-row { display: flex !important; align-items: center; padding: 10px 6px !important;
+  border-bottom: 1px solid var(--border-color, #eef2f7); border-radius: 0; line-height: 1.3; }
+.links-widget-box .link-item.zu-row:last-child { border-bottom: none; }
+.links-widget-box .link-item.zu-row:hover { background: #f3f8ff; border-radius: 10px; }
+.links-widget-box .link-item.zu-row, .links-widget-box .link-item.zu-row * { font-size: 14px !important; font-weight: 600 !important; }
+.zu-tile { display: inline-flex; flex: none; align-items: center; justify-content: center;
+  width: 34px; height: 34px; margin-right: 14px; border-radius: 10px; color: #fff; }
+.zu-tile svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.zu-chev { display: inline-flex; margin-left: auto; padding-left: 10px; color: #94a3b8; }
+.zu-chev svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.links-widget-box .link-item.zu-row .zu-orig-icon { display: none !important; }
