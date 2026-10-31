@@ -1,0 +1,19 @@
+.links-widget-box .link-item::before,
+.links-widget-box .link-item::after,
+.links-widget-box .indicator-pill::before,
+.links-widget-box .indicator::before { display: none !important; content: none !important; }
+.links-widget-box .link-item.zu-has-icon { display: flex !important; align-items: center; }
+.zu-link-icon { display: inline-flex; flex: none; align-items: center; justify-content: center;
+  width: 22px; height: 22px; margin-right: 12px; color: #1a6fd4; }
+.zu-link-icon svg, #zu-settings svg { width: 22px; height: 22px; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.zu-orig-icon { display: none !important; }
+#zu-settings { color: #475569 !important; }
+#zu-settings:hover { color: #0b3d7a !important; background: #dbeafe !important; }
+#zu-user { background: transparent !important; border: none !important; box-shadow: none !important;
+  color: #0f172a !important; font-weight: 800 !important; font-size: 22px !important;
+  width: 36px !important; height: 36px !important; right: 22px !important; left: auto !important;
+  display: flex !important; align-items: center; justify-content: center; overflow: visible !important; }
+#zu-user:hover { color: #1a6fd4 !important; }
+#zu-user-menu { right: 22px !important; }
+#ask-zupra-btn { right: 66px !important; }

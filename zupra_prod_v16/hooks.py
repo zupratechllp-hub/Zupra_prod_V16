@@ -321,5 +321,17 @@ app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=4"]
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=25"]
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=3"]
 
+# Zupra UI restyle - Round 7
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui5.css?v=1"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui5.js?v=1"]
+
+# Zupra UI restyle - Round 8
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui6.css?v=1"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui6.js?v=1"]
+
+# Zupra UI restyle - Round 9
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7.css?v=1"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=1"]
+
 # Zupra Dark Theme overrides (must come last so it wins specificity battles)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=4"]
