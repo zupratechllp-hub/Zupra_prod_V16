@@ -34,7 +34,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261030.2"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261031.1"
 app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261027.7"
 
 # include js, css files in header of web template
@@ -334,4 +334,4 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=1"]
 
 # Zupra Dark Theme overrides (must come last so it wins specificity battles)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=4"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=14"]

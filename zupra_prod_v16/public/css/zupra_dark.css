@@ -115,7 +115,7 @@
 [data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item.active {
   background: rgba(40, 121, 220, 0.18) !important;
   color: #79b4ff !important;
-  box-shadow: inset 3px 0 0 #2879dc !important;
+  box-shadow: none !important;
   font-size: inherit !important;
 }
 
@@ -125,7 +125,7 @@
 [data-theme="dark"] .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
   background: rgba(40, 121, 220, 0.18) !important;
   color: #79b4ff !important;
-  box-shadow: inset 3px 0 0 #2879dc !important;
+  box-shadow: none !important;
 }
 
 /* Maximum-specificity: html + body prefix beats any competing single-class rule */
@@ -140,7 +140,7 @@ html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .item-anc
 html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
   background: rgba(40, 121, 220, 0.18) !important;
   color: #79b4ff !important;
-  box-shadow: inset 3px 0 0 #2879dc !important;
+  box-shadow: none !important;
   font-size: inherit !important;
 }
 
@@ -343,3 +343,97 @@ html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .standard
   background: #111d2e !important;
 }
 
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item { box-shadow: none !important; }
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .active-sidebar { box-shadow: none !important; }
+/* Only the active row owns the sidebar accent; nested links never draw one. */
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { box-shadow: inset 3px 0 0 #2879dc !important; }
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .active-sidebar { box-shadow: none !important; }
+/* Match the active row wrapper to its highlighted link surface. */
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { background: #214a7b !important; }
+/* Dark-mode selected sidebar item: one unified, light-mode-inspired pill. */
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { background: #245286 !important; border-radius: 20px !important; overflow: hidden; }
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item { background: transparent !important; border-radius: inherit !important; }
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar::before { width: 5px; background: #72b7ff; border-radius: 5px 0 0 5px; }
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .sidebar-item-label, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor { color: #eaf3ff !important; }
+
+/* ├── quotation form: blue-slate trial palette ─── */
+/* Kept route-scoped for review: no other DocType form is affected. */
+html[data-theme="dark"] [data-page-route*="quotation"] {
+  --surface-base: #050d1c;
+  --surface-elevation-1: #0a1326;
+  --surface-elevation-2: #0a1326;
+  --surface-elevation-3: #0a1326;
+  --surface-gray-1: #0a1326;
+  --surface-gray-2: #0a1326;
+  --surface-gray-3: #142c55;
+  --ink-base: #edf2f9;
+  --ink-gray-4: #939fb1;
+  --ink-gray-5: #939fb1;
+  --ink-gray-6: #939fb1;
+  --outline-gray-2: #1c293f;
+  --outline-gray-3: #1c293f;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .form-page,
+html[data-theme="dark"] [data-page-route*="quotation"] .form-layout,
+html[data-theme="dark"] [data-page-route*="quotation"] .form-section,
+html[data-theme="dark"] [data-page-route*="quotation"] .section-body {
+  background: #0a1326 !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .form-section,
+html[data-theme="dark"] [data-page-route*="quotation"] .section-head,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-heading-row,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-footer {
+  border-color: #1c293f !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .form-control,
+html[data-theme="dark"] [data-page-route*="quotation"] .input-with-feedback,
+html[data-theme="dark"] [data-page-route*="quotation"] .control-input,
+html[data-theme="dark"] [data-page-route*="quotation"] .like-disabled-input,
+html[data-theme="dark"] [data-page-route*="quotation"] .frappe-control input,
+html[data-theme="dark"] [data-page-route*="quotation"] .frappe-control select {
+  background: #121d30 !important;
+  border-color: #1c293f !important;
+  color: #edf2f9 !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .form-control:focus,
+html[data-theme="dark"] [data-page-route*="quotation"] .input-with-feedback:focus,
+html[data-theme="dark"] [data-page-route*="quotation"] .frappe-control input:focus,
+html[data-theme="dark"] [data-page-route*="quotation"] .frappe-control select:focus {
+  background: #142c55 !important;
+  border-color: #1c69e3 !important;
+  box-shadow: 0 0 0 2px rgba(75, 144, 217, 0.18) !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-heading-row,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-row .data-row,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-body .data-row {
+  background: #0a1326 !important;
+  color: #939fb1 !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-row .data-row,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-row .data-row > div {
+  border-color: #1c293f !important;
+}
+
+html[data-theme="dark"] [data-page-route*="quotation"] .control-label,
+html[data-theme="dark"] [data-page-route*="quotation"] .section-head,
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-heading-row {
+  color: #939fb1 !important;
+}
+
+/* Exact quotation palette - colours only, route-scoped for review. */
+html[data-theme="dark"] body:has([data-page-route*="quotation"]) .desk-sidebar, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .dock { background-color: #02060f !important; border-color: #1c293f !important; }
+html[data-theme="dark"] body:has([data-page-route*="quotation"]) .body-sidebar, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .body-sidebar-container, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .sidebar-header, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .sidebar-items, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .body-sidebar-bottom { background-color: #040915 !important; border-color: #1c293f !important; }
+html[data-theme="dark"] body:has([data-page-route*="quotation"]) .layout-main, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .layout-main-section, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .page-body, html[data-theme="dark"] body:has([data-page-route*="quotation"]) .page-head { background-color: #050d1c !important; border-color: #1c293f !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .grid-heading-row, html[data-theme="dark"] [data-page-route*="quotation"] .btn:not(.btn-primary), html[data-theme="dark"] [data-page-route*="quotation"] .btn-default { background-color: #131f35 !important; border-color: #1c293f !important; color: #edf2f9 !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .btn:not(.btn-primary):hover, html[data-theme="dark"] [data-page-route*="quotation"] .btn:not(.btn-primary):active { background-color: #142c55 !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .btn-primary { background-color: #1c69e3 !important; border-color: #1c69e3 !important; color: #ffffff !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .indicator-pill, html[data-theme="dark"] [data-page-route*="quotation"] .indicator-pill.orange { background-color: rgba(244, 164, 55, 0.15) !important; color: #f4a437 !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .form-tabs .nav-link.active { color: #edf2f9 !important; border-color: #1c69e3 !important; }
+html[data-theme="dark"] [data-page-route*="quotation"] .control-label, html[data-theme="dark"] [data-page-route*="quotation"] .grid-heading-row, html[data-theme="dark"] [data-page-route*="quotation"] .text-muted, html[data-theme="dark"] [data-page-route*="quotation"] svg { color: #939fb1 !important; stroke: #939fb1; }
+html[data-theme="dark"] [data-page-route*="quotation"] .reqd .control-label:after { color: #ef4444 !important; }
