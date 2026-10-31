@@ -123,3 +123,7 @@
 	color: #fff;
 	--icon-stroke: #fff;
 }
+/* Single active-sidebar indicator: Frappe may mark both the row and child link active. */
+.body-sidebar .sidebar-item-container.active-sidebar { position: relative; box-shadow: none !important; border-left: 0 !important; }
+.body-sidebar .sidebar-item-container.active-sidebar *, .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item { box-shadow: none !important; border-left: 0 !important; }
+.body-sidebar .sidebar-item-container.active-sidebar::before { content: attr(data-active); position: absolute; z-index: 1; inset-block: 0; inset-inline-start: 0; width: 3px; border-radius: 3px; background: #2879dc; pointer-events: none; }
