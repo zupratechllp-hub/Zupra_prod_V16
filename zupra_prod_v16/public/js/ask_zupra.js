@@ -27,7 +27,7 @@ border-bottom-left-radius:12px; display:flex; flex-direction:column; }
 #ask-zupra-panel .az-side-head { display:flex; justify-content:space-between; align-items:center;
 padding:12px 12px 8px; font-weight:600; font-size:13px; }
 [data-theme="dark"] #ask-zupra-panel .az-side-head { color:#d2deee !important; }
-#ask-zupra-panel .az-clear { font-size:11px; color:#2563eb; cursor:pointer; font-weight:500; }
+#ask-zupra-panel .az-clear { font-size:11px; color:#000; cursor:pointer; font-weight:500; }
 [data-theme="dark"] #ask-zupra-panel .az-clear { color:#79b4ff !important; }
 #az-hist { flex:1; overflow-y:auto; padding:0 8px 8px; }
 .az-hitem { padding:8px 10px; margin-bottom:6px; background:#fff; border:1px solid #e5e7eb;
@@ -42,7 +42,7 @@ overflow:hidden; text-overflow:ellipsis; }
 #ask-zupra-panel .az-body { flex:1; overflow-y:auto; padding:12px; background:#f9fafb; }
 [data-theme="dark"] #ask-zupra-panel .az-body { background:#0b1422 !important; }
 .az-msg { margin-bottom:10px; padding:8px 12px; border-radius:10px; max-width:75%; font-size:13px; word-wrap:break-word; }
-.az-msg.user { background:#2563eb; color:#fff; margin-left:auto; }
+.az-msg.user { background:#DBEAFE; color:#000; margin-left:auto; }
 .az-msg.bot { background:#fff; border:1px solid #e5e7eb; }
 [data-theme="dark"] .az-msg.bot { background:#111d2e !important; border-color:#253954 !important; color:#d2deee !important; }
 .az-msg.bot p { margin:0 0 6px; }
@@ -52,7 +52,7 @@ overflow:hidden; text-overflow:ellipsis; }
 [data-theme="dark"] #ask-zupra-panel input { background:#0d1827 !important; border-color:#344963 !important;
 color:#f0f5ff !important; }
 [data-theme="dark"] #ask-zupra-panel input::placeholder { color:#a7b8cf !important; }
-#ask-zupra-panel .az-send { background:#2563eb; color:#fff; border:none; border-radius:8px; padding:6px 14px; }
+#ask-zupra-panel .az-send { background:#DBEAFE; color:#000; border:none; border-radius:8px; padding:6px 14px; }
 [data-theme="dark"] #ask-zupra-panel .az-send { background:#1c4ed8 !important; }
 @media (max-width: 800px) { #ask-zupra-panel .az-side { display:none; } #ask-zupra-panel { left:10px; right:10px; } }`;
 
