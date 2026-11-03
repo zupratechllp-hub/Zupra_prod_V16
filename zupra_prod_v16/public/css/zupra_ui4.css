@@ -174,3 +174,71 @@ body:not(.zu-on-ws) .page-head { padding-right: 20px !important; }
 .body-sidebar .sidebar-header {
   padding-left: 10px !important;
 }
+
+/* Round 25: floating chat button (custom SVG) on every page, same look on hover, no old icon inside */
+#ask-zupra-btn,
+#ask-zupra-btn:hover,
+#ask-zupra-btn:focus,
+#ask-zupra-btn:active {
+  position: fixed !important;
+  top: auto !important; left: auto !important;
+  bottom: 116px !important; right: 58px !important;
+  width: 56px !important; height: 56px !important;
+  padding: 0 !important; border: none !important;
+  border-radius: 50% !important;
+  background: #0f2f6b url("/assets/zupra_prod_v16/images/chatbox.svg") center / 26px 26px no-repeat !important;
+  box-shadow: 0 6px 18px rgba(15, 47, 107, .35) !important;
+  outline: none !important;
+  z-index: 3000 !important;
+  font-size: 0 !important; color: transparent !important;
+  overflow: visible !important;
+}
+body:not(.zu-on-ws) #ask-zupra-btn { display: flex !important; }
+#ask-zupra-btn > *,
+#ask-zupra-btn svg,
+#ask-zupra-btn img,
+#ask-zupra-btn i,
+#ask-zupra-btn span { display: none !important; }
+#ask-zupra-btn::before { content: none !important; display: none !important; }
+#ask-zupra-btn:hover::after {
+  content: "Ask Zupra";
+  position: absolute; top: 50%; right: 66px; transform: translateY(-50%);
+  background: #0f172a; color: #fff; font-size: 12px;
+  padding: 4px 8px; border-radius: 6px; white-space: nowrap; z-index: 4000;
+}
+
+/* Round 26: remove the three-dots menu from module home pages */
+#page-Workspaces .page-head .page-icon-group { display: none !important; }
+
+/* Round 27: floating chat button - high-specificity so later UI files (ui5/ui6) cannot override it */
+html body button#ask-zupra-btn,
+html body button#ask-zupra-btn:hover,
+html body button#ask-zupra-btn:focus,
+html body button#ask-zupra-btn:active {
+  position: fixed !important;
+  top: auto !important; left: auto !important;
+  bottom: 90px !important; right: 58px !important;
+  width: 56px !important; height: 56px !important;
+  border-radius: 50% !important;
+  background: #0f2f6b url("/assets/zupra_prod_v16/images/chatbox.svg") center / 26px 26px no-repeat !important;
+  box-shadow: 0 6px 18px rgba(15, 47, 107, .35) !important;
+  transform: none !important; transition: none !important;
+  margin: 0 !important; padding: 0 !important; border: none !important;
+  outline: none !important;
+  z-index: 3000 !important;
+  font-size: 0 !important; color: transparent !important;
+  display: flex !important;
+}
+html body button#ask-zupra-btn > *,
+html body button#ask-zupra-btn::before { display: none !important; content: none !important; }
+
+/* Round 28: notification bell placed next to the avatar, on the same row */
+html body #zu-bell,
+html body button#zu-bell {
+  position: fixed !important;
+  top: 2px !important;
+  left: auto !important;
+  right: 59px !important;
+  transform: none !important;
+  margin: 0 !important;
+}
