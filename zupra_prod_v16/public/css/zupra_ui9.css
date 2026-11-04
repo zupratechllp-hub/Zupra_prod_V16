@@ -1,0 +1,57 @@
+body .body-sidebar .zu-no-icon,
+body .body-sidebar .sidebar-items .sidebar-item-icon { display: inline-flex !important; align-items: center;
+  justify-content: center; flex: none; }
+body .body-sidebar .sidebar-item-icon svg, body .body-sidebar svg.zu-no-icon { width: 20px; height: 20px; }
+body .body-sidebar .sidebar-item-container .item-anchor,
+body .body-sidebar .sidebar-item-container .standard-sidebar-item { display: flex !important; align-items: center;
+  gap: 12px; padding: 10px 14px !important; }
+body .body-sidebar .sidebar-item-container .sidebar-item-label { font-size: 15px !important; font-weight: 500 !important; }
+.zu-side-icon { display: inline-flex; flex: none; width: 20px; height: 20px; align-items: center;
+  justify-content: center; color: #64748b; }
+.zu-side-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round; }
+body .body-sidebar .zu-active-item svg, body .body-sidebar .active-sidebar svg { stroke: #1a6fd4 !important; }
+.zu-sec-div { margin-top: 14px; padding-top: 18px !important; border-top: 1px solid var(--border-color, #e8eef6); }
+body .body-sidebar { padding-left: 16px !important; padding-right: 16px !important; }
+body.zu-topnav .dock-item { position: relative; }
+body.zu-topnav .dock-item.active::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -12px;
+  height: 3px; border-radius: 3px 3px 0 0; background: #1a6fd4; }
+body.zu-topnav #zu-tools .zu-search { width: 460px !important; right: 184px !important; border-radius: 12px; }
+body.zu-topnav #zu-tools { right: 126px !important; }
+body.zu-topnav #ask-zupra-btn { right: 80px !important; }
+body.zu-topnav #zu-user { width: auto !important; min-width: 36px; padding: 0 6px !important; right: 16px !important; gap: 2px; }
+body.zu-topnav #zu-user-menu { right: 16px !important; }
+body .body-sidebar { padding-left: 8px !important; padding-right: 8px !important; }
+body .body-sidebar .sidebar-item-container .item-anchor,
+body .body-sidebar .sidebar-item-container .standard-sidebar-item { gap: 10px !important; padding: 10px 10px !important; }
+body .body-sidebar .sidebar-item-container .sidebar-item-label { font-size: 16px !important; font-weight: 600 !important;
+  color: #0f172a !important; flex: 1 1 auto !important; min-width: 0 !important; max-width: none !important; }
+body.zu-topnav #ask-zupra-btn { position: fixed !important; top: auto !important; left: auto !important;
+  right: 28px !important; bottom: 28px !important; width: 56px !important; height: 56px !important;
+  border-radius: 50% !important; background: #1a3a7a !important; color: #fff !important; border: 0 !important;
+  box-shadow: 0 6px 18px rgba(26,58,122,.35) !important; display: flex !important; align-items: center;
+  justify-content: center; z-index: 3500 !important; transform: none !important; margin: 0 !important; padding: 0 !important; }
+body.zu-topnav #ask-zupra-btn svg { width: 26px !important; height: 26px !important; stroke: #fff !important; color: #fff !important; }
+body.zu-topnav #zu-user { gap: 14px !important; }
+body.zu-topnav #ask-zupra-btn { background: #10306f !important; font-size: 0 !important;
+  box-shadow: 0 3px 10px rgba(16,48,111,.22) !important; }
+body.zu-topnav #ask-zupra-btn > * { display: none !important; }
+body.zu-topnav #ask-zupra-btn::after { content: ""; display: block; width: 26px; height: 26px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/></svg>") center/contain no-repeat; }
+html body.zu-topnav #ask-zupra-btn * { display: none !important; }
+html body.zu-topnav #ask-zupra-btn svg, html body.zu-topnav #ask-zupra-btn img { display: none !important; }
+html body.zu-topnav #ask-zupra-btn::before { content: none !important; display: none !important; }
+html body.zu-topnav #ask-zupra-btn { background-image: none !important; font-size: 0 !important; line-height: 0 !important; }
+body .body-sidebar .sidebar-item-container .sidebar-item-label { color: var(--text-color, #0f172a) !important; }
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .body-sidebar .sidebar-item-container .sidebar-item-label,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .body-sidebar .sidebar-item-container .sidebar-item-label * { color: #f1f5f9 !important; }
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .zu-side-icon { color: #94a3b8 !important; }
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .body-sidebar .zu-active-item svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .body-sidebar .active-sidebar svg { stroke: #60a5fa !important; }
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-user,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) #zu-user,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) #zu-user * { color: #f8fafc !important; }
+@keyframes zuReveal { to { opacity: 1; } }
+html body:not(.zu-topnav) .navbar,
+html body:not(.zu-topnav) .body-sidebar-container,
+html body:not(.zu-topnav) .main-section { opacity: 0; animation: zuReveal .15s ease 1.5s forwards; }
