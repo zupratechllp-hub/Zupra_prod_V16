@@ -1,374 +1,682 @@
 /*
- * Zupra Dark Theme — Desk overrides.
+ * Zupra Dark Theme — Desk overrides (unified navy palette).
  *
- * These rules fire only when Frappe's ThemeSwitcher has set data-theme="dark"
- * on <html>. They undo every hardcoded light colour the zupra_ui*.css files
- * inject so the native Frappe dark-mode token layer can show through, then
- * add Zupra's own dark palette (drawn from the login-page dark style).
- *
- * Reference palette (login page dark):
- *   base bg        #0b1422
- *   card / panel   #111d2e
- *   elevated panel #162234
- *   border         #253954  /  #344963
- *   text primary   #f0f5ff
- *   text secondary #a7b8cf
- *   accent blue    #2879dc  /  #79b4ff
+ * Palette (from Quick Reference):
+ *   #02060f  Icon Rail (deepest navy)
+ *   #040915  Sidebar Menu (mid-dark navy)
+ *   #050d1c  Main Canvas (deep navy background)
+ *   #0a1326  Cards & Panels
+ *   #121d30  Inputs & Fields
+ *   #131f35  Table Header / Sub-buttons (secondary surface)
+ *   #1c293f  Borders & Dividers (soft slate-navy)
+ *   #1c69e3  Primary Blue (Save button & active indicators)
+ *   #edf2f9  Headings & Main Text (off-white)
+ *   #939fb1  Labels & Icons (muted cool slate)
+ *   #f4a437  Not Saved Badge (amber)
  */
 
-/* ─── CSS custom-property overrides ─────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. CSS CUSTOM PROPERTY OVERRIDES — kills ALL Frappe grey-dark tokens
+   ═══════════════════════════════════════════════════════════════════════════ */
+html[data-theme=dark],
 [data-theme="dark"] {
-  --zu-bg:           #0b1422;
-  --zu-blue:         #2879dc;
-  --zu-blue-dark:    #79b4ff;
-  --zu-blue-soft:    #0d1f3a;
-  --zu-blue-border:  #344963;
-  --zu-line:         #253954;
-  --zu-text:         #f0f5ff;
-  --zu-muted:        #a7b8cf;
+  /* Zupra custom variables */
+  --zu-bg:               #050d1c;
+  --zu-blue:             #1c69e3;
+  --zu-blue-dark:        #79b4ff;
+  --zu-blue-soft:        #0d1f3a;
+  --zu-blue-border:      #1c293f;
+  --zu-line:             #1c293f;
+  --zu-text:             #edf2f9;
+  --zu-muted:            #939fb1;
+
+  /* Frappe surface tokens */
+  --surface-base:        #050d1c;
+  --surface-elevation-1: #0a1326;
+  --surface-elevation-2: #0a1326;
+  --surface-elevation-3: #121d30;
+  --surface-gray-1:      #0a1326;
+  --surface-gray-2:      #121d30;
+  --surface-gray-3:      #131f35;
+  --surface-gray-4:      #131f35;
+
+  /* Frappe background tokens */
+  --fg-color:            #0a1326;
+  --fg-hover-color:      #121d30;
+  --bg-color:            #050d1c;
+  --subtle-fg:           #0a1326;
+  --control-bg:          #121d30;
+  --control-bg-on-gray:  #121d30;
+  --disabled-control-bg: #0a1326;
+  --card-bg:             #0a1326;
+
+  /* Frappe ink / text tokens */
+  --ink-base:            #edf2f9;
+  --ink-gray-1:          #edf2f9;
+  --ink-gray-2:          #edf2f9;
+  --ink-gray-3:          #d0d9e6;
+  --ink-gray-4:          #939fb1;
+  --ink-gray-5:          #939fb1;
+  --ink-gray-6:          #939fb1;
+  --ink-gray-7:          #b0bccf;
+  --ink-gray-8:          #d0d9e6;
+  --ink-gray-9:          #edf2f9;
+  --text-color:          #edf2f9;
+  --text-muted:          #939fb1;
+  --heading-color:       #edf2f9;
+
+  /* Frappe border tokens */
+  --outline-gray-1:      #1c293f;
+  --outline-gray-2:      #1c293f;
+  --outline-gray-3:      #1c293f;
+  --border-color:        #1c293f;
+  --table-border-color:  #1c293f;
+  --card-border-color:   #1c293f;
+
+  /* Frappe button tokens */
+  --btn-default-bg:      #131f35;
+  --btn-default-hover-bg:#142c55;
 }
 
-/* ─── Page / body background ─────────────────────────────────────────────── */
-[data-theme="dark"] body,
-[data-theme="dark"] .desk-container,
-[data-theme="dark"] .main-section,
-[data-theme="dark"] .layout-main,
-[data-theme="dark"] .page-container {
-  background: #0b1422 !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. STRUCTURAL BACKGROUNDS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Page / body / desk */
+html[data-theme=dark] body,
+html[data-theme=dark] .desk-container,
+html[data-theme=dark] .main-section,
+html[data-theme=dark] .layout-main,
+html[data-theme=dark] .layout-main-section,
+html[data-theme=dark] .page-container,
+html[data-theme=dark] .page-body,
+html[data-theme=dark] .frappe-list {
+  background: #050d1c !important;
 }
 
-/* ─── Top navigation bar ─────────────────────────────────────────────────── */
-[data-theme="dark"] .page-head,
-[data-theme="dark"] header.navbar,
-[data-theme="dark"] .navbar {
-  background: #111d2e !important;
-  border-bottom-color: #253954 !important;
+/* Dock / rail */
+html[data-theme=dark] .dock,
+html[data-theme=dark] .desk-sidebar {
+  background: #02060f !important;
+  border-color: #1c293f !important;
 }
 
-[data-theme="dark"] .page-head .page-title,
-[data-theme="dark"] .page-head .title-text,
-[data-theme="dark"] .page-head h3 {
-  color: #f0f5ff !important;
+/* Sidebar panel */
+html[data-theme=dark] .body-sidebar,
+html[data-theme=dark] .body-sidebar-container,
+html[data-theme=dark] .sidebar-header,
+html[data-theme=dark] .sidebar-items,
+html[data-theme=dark] .body-sidebar-bottom,
+html[data-theme=dark] .body-sidebar .body-sidebar-top,
+html[data-theme=dark] .body-sidebar .standard-items-band {
+  background: #040915 !important;
+  border-color: #1c293f !important;
+}
+
+/* Top navigation bar */
+html[data-theme=dark] .page-head,
+html[data-theme=dark] header.navbar,
+html[data-theme=dark] .navbar {
+  background: #050d1c !important;
+  border-color: #1c293f !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. FORM / DOCTYPE PAGES (ALL doctypes — not scoped to quotation)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .form-page,
+html[data-theme=dark] .form-layout,
+html[data-theme=dark] .form-section,
+html[data-theme=dark] .section-body,
+html[data-theme=dark] .form-column,
+html[data-theme=dark] .frappe-card,
+html[data-theme=dark] .page-form {
+  background: #0a1326 !important;
+}
+
+html[data-theme=dark] .form-section,
+html[data-theme=dark] .section-head,
+html[data-theme=dark] .grid-footer,
+html[data-theme=dark] .grid-row,
+html[data-theme=dark] .grid-body {
+  border-color: #1c293f !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. INPUTS & FIELDS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .frappe-control .control-input,
+html[data-theme=dark] .frappe-control .like-disabled-input,
+html[data-theme=dark] .frappe-control input,
+html[data-theme=dark] .frappe-control select,
+html[data-theme=dark] .frappe-control textarea,
+html[data-theme=dark] .form-control,
+html[data-theme=dark] .input-with-feedback {
+  background: #121d30 !important;
+  border-color: #1c293f !important;
+  color: #edf2f9 !important;
+}
+
+html[data-theme=dark] .frappe-control .control-input:focus,
+html[data-theme=dark] .frappe-control input:focus,
+html[data-theme=dark] .frappe-control select:focus,
+html[data-theme=dark] .frappe-control textarea:focus,
+html[data-theme=dark] .form-control:focus,
+html[data-theme=dark] .input-with-feedback:focus {
+  background: #142c55 !important;
+  border-color: #1c69e3 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. TABLE / GRID ROWS & HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .grid-heading-row,
+html[data-theme=dark] .grid-row .data-row {
+  background: #131f35 !important;
+  border-color: #1c293f !important;
+  color: #edf2f9 !important;
+}
+
+html[data-theme=dark] .grid-row:hover .data-row,
+html[data-theme=dark] .grid-row.editable-row .data-row {
+  background: #142c55 !important;
+}
+
+html[data-theme=dark] .grid-heading-row .col {
+  color: #939fb1 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   6. LIST VIEW
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .list-row,
+html[data-theme=dark] .list-row-col,
+html[data-theme=dark] .frappe-list .list-row {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
+}
+
+html[data-theme=dark] .list-row:hover,
+html[data-theme=dark] .frappe-list .list-row:hover {
+  background: #121d30 !important;
+}
+
+html[data-theme=dark] .list-headers {
+  background: #131f35 !important;
+  border-color: #1c293f !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   7. BUTTONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .btn:not(.btn-primary),
+html[data-theme=dark] .btn-default {
+  background: #131f35 !important;
+  border-color: #1c293f !important;
+  color: #edf2f9 !important;
+}
+
+html[data-theme=dark] .btn:not(.btn-primary):hover,
+html[data-theme=dark] .btn:not(.btn-primary):active,
+html[data-theme=dark] .btn-default:hover {
+  background: #142c55 !important;
+}
+
+html[data-theme=dark] .btn-primary {
+  background: #1c69e3 !important;
+  border-color: #1c69e3 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme=dark] .btn-primary:hover {
+  background: #1558c0 !important;
+  border-color: #1558c0 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   8. TEXT, LABELS, HEADINGS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .page-head .page-title,
+html[data-theme=dark] .page-head .title-text,
+html[data-theme=dark] .page-head h3,
+html[data-theme=dark] h1, html[data-theme=dark] h2,
+html[data-theme=dark] h3, html[data-theme=dark] h4,
+html[data-theme=dark] .title-text,
+html[data-theme=dark] .page-title {
+  color: #edf2f9 !important;
+}
+
+html[data-theme=dark] .control-label,
+html[data-theme=dark] .section-head,
+html[data-theme=dark] .text-muted,
+html[data-theme=dark] .help-box,
+html[data-theme=dark] .small,
+html[data-theme=dark] label {
+  color: #939fb1 !important;
 }
 
 /* Breadcrumbs */
-[data-theme="dark"] .page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
-[data-theme="dark"] .page-head .menu-more-button {
-  color: #d2deee !important;
-  --icon-stroke: #d2deee !important;
+html[data-theme=dark] .page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
+html[data-theme=dark] .page-head .menu-more-button {
+  color: #d0d9e6 !important;
+  --icon-stroke: #d0d9e6 !important;
 }
 
-/* ─── Body sidebar ───────────────────────────────────────────────────────── */
-[data-theme="dark"] .body-sidebar-container,
-[data-theme="dark"] .body-sidebar,
-[data-theme="dark"] .sidebar-header,
-[data-theme="dark"] .sidebar-items,
-[data-theme="dark"] .body-sidebar-bottom {
-  background: #111d2e !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. FORM TABS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .form-tabs .nav-link {
+  color: #939fb1 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+html[data-theme=dark] .form-tabs .nav-link.active {
+  color: #edf2f9 !important;
+  border-color: #1c69e3 !important;
+}
+html[data-theme=dark] .form-tabs-list {
+  border-color: #1c293f !important;
 }
 
-[data-theme="dark"] .body-sidebar-container {
-  border-right-color: #253954 !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   10. STATUS PILLS / BADGES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .reqd .control-label:after {
+  color: #ef4444 !important;
 }
 
-[data-theme="dark"] .body-sidebar .sidebar-item-label,
-[data-theme="dark"] .body-sidebar .item-anchor,
-[data-theme="dark"] .sidebar-header * {
-  color: #d2deee !important;
+html[data-theme=dark] .indicator-pill,
+html[data-theme=dark] .indicator-pill.orange {
+  background: rgba(244, 164, 55, 0.15) !important;
+  color: #f4a437 !important;
+}
+html[data-theme=dark] .indicator-pill.green {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #4ade80 !important;
+}
+html[data-theme=dark] .indicator-pill.red {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+}
+html[data-theme=dark] .indicator-pill.blue {
+  background: rgba(28, 105, 227, 0.15) !important;
+  color: #60a5fa !important;
+}
+html[data-theme=dark] .indicator-pill.grey,
+html[data-theme=dark] .indicator-pill.gray {
+  background: rgba(147, 159, 177, 0.15) !important;
+  color: #939fb1 !important;
 }
 
-[data-theme="dark"] .body-sidebar svg {
-  stroke: #a7b8cf !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   11. CARDS / WIDGETS / DASHBOARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .widget,
+html[data-theme=dark] .number-card,
+html[data-theme=dark] .number-widget-box,
+html[data-theme=dark] .onboarding-widget-box {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
+}
+
+html[data-theme=dark] .widget .widget-title,
+html[data-theme=dark] .number-card .widget-title {
+  color: #939fb1 !important;
+}
+
+html[data-theme=dark] .number-card .number,
+html[data-theme=dark] .number-widget-box .number {
+  color: #edf2f9 !important;
+}
+
+/* Workspace / links-widget-box */
+html[data-theme=dark] [data-page-route="Workspaces"] .links-widget-box {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
+  box-shadow: none !important;
+}
+
+html[data-theme=dark] [data-page-route="Workspaces"] .links-widget-box .widget-head .widget-title {
+  color: #939fb1 !important;
+}
+
+html[data-theme=dark] [data-page-route="Workspaces"] .links-widget-box .link-item {
+  color: #d0d9e6 !important;
+}
+
+html[data-theme=dark] [data-page-route="Workspaces"] .links-widget-box .link-item:hover,
+html[data-theme=dark] [data-page-route="Workspaces"] .links-widget-box .link-item:focus-visible {
+  background: #131f35 !important;
+  color: #79b4ff !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   12. SIDEBAR STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .body-sidebar .sidebar-item-label,
+html[data-theme=dark] .body-sidebar .item-anchor,
+html[data-theme=dark] .sidebar-header * {
+  color: #d0d9e6 !important;
+}
+
+html[data-theme=dark] .body-sidebar svg {
+  stroke: #939fb1 !important;
 }
 
 /* Sidebar hover */
-[data-theme="dark"] .sidebar-item-container .item-anchor,
-[data-theme="dark"] .sidebar-item-container .standard-sidebar-item {
+html[data-theme=dark] .sidebar-item-container .item-anchor,
+html[data-theme=dark] .sidebar-item-container .standard-sidebar-item {
   border-radius: 10px !important;
 }
 
-[data-theme="dark"] .sidebar-item-container:hover > .item-anchor,
-[data-theme="dark"] .body-sidebar .sidebar-item-container:hover > .item-anchor,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor:hover,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item:hover {
-  background: #1a2d45 !important;
+html[data-theme=dark] .sidebar-item-container:hover > .item-anchor,
+html[data-theme=dark] .body-sidebar .sidebar-item-container:hover > .item-anchor,
+html[data-theme=dark] .body-sidebar .sidebar-item-container .item-anchor:hover,
+html[data-theme=dark] .body-sidebar .sidebar-item-container .standard-sidebar-item:hover {
+  background: #121d30 !important;
   color: #79b4ff !important;
 }
 
-[data-theme="dark"] .body-sidebar .sidebar-item-container:hover .sidebar-item-label {
+html[data-theme=dark] .body-sidebar .sidebar-item-container:hover .sidebar-item-label {
   color: #79b4ff !important;
 }
 
-/* Sidebar active / selected item — covers every Frappe v16 selector pattern */
-[data-theme="dark"] .body-sidebar .active-sidebar,
-[data-theme="dark"] .body-sidebar .active-sidebar .item-anchor,
-[data-theme="dark"] .body-sidebar .active-sidebar.item-anchor,
-[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar,
-[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
-[data-theme="dark"] .sidebar-item-container.active-sidebar > .item-anchor,
-[data-theme="dark"] .sidebar-item-container.active-sidebar > .standard-sidebar-item,
-[data-theme="dark"] .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor,
-[data-theme="dark"] .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor.selected,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .item-anchor.active,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item.selected,
-[data-theme="dark"] .body-sidebar .sidebar-item-container .standard-sidebar-item.active {
-  background: rgba(40, 121, 220, 0.18) !important;
-  color: #79b4ff !important;
-  box-shadow: none !important;
-  font-size: inherit !important;
-}
-
-/* Nuclear fallback: catch any element with active-sidebar class inside the sidebar */
-[data-theme="dark"] .body-sidebar [class*="active-sidebar"],
-[data-theme="dark"] .body-sidebar [class*="active-sidebar"] > .item-anchor,
-[data-theme="dark"] .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
-  background: rgba(40, 121, 220, 0.18) !important;
-  color: #79b4ff !important;
-  box-shadow: none !important;
-}
-
-/* Maximum-specificity: html + body prefix beats any competing single-class rule */
-html[data-theme="dark"] body .body-sidebar .active-sidebar,
-html[data-theme="dark"] body .body-sidebar .active-sidebar .item-anchor,
-html[data-theme="dark"] body .body-sidebar .standard-sidebar-item.active-sidebar,
-html[data-theme="dark"] body .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
-html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor,
-html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item,
-html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"],
-html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .item-anchor,
-html[data-theme="dark"] body .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
-  background: rgba(40, 121, 220, 0.18) !important;
+/* Sidebar active / selected item */
+html[data-theme=dark] body .body-sidebar .active-sidebar,
+html[data-theme=dark] body .body-sidebar .active-sidebar .item-anchor,
+html[data-theme=dark] body .body-sidebar .active-sidebar.item-anchor,
+html[data-theme=dark] body .body-sidebar .standard-sidebar-item.active-sidebar,
+html[data-theme=dark] body .body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container .item-anchor.selected,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container .item-anchor.active,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container .standard-sidebar-item.selected,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container .standard-sidebar-item.active,
+html[data-theme=dark] body .body-sidebar [class*="active-sidebar"],
+html[data-theme=dark] body .body-sidebar [class*="active-sidebar"] > .item-anchor,
+html[data-theme=dark] body .body-sidebar [class*="active-sidebar"] > .standard-sidebar-item {
+  background: rgba(28, 105, 227, 0.18) !important;
   color: #79b4ff !important;
   box-shadow: none !important;
   font-size: inherit !important;
 }
 
-[data-theme="dark"] .body-sidebar .active-sidebar *,
-[data-theme="dark"] .body-sidebar .standard-sidebar-item.active-sidebar *,
-[data-theme="dark"] .sidebar-item-container.active-sidebar *,
-[data-theme="dark"] .body-sidebar .item-anchor.selected *,
-[data-theme="dark"] .body-sidebar .item-anchor.active *,
-[data-theme="dark"] .body-sidebar .standard-sidebar-item.selected *,
-[data-theme="dark"] .body-sidebar .standard-sidebar-item.active * {
+html[data-theme=dark] body .body-sidebar .active-sidebar *,
+html[data-theme=dark] body .body-sidebar .standard-sidebar-item.active-sidebar *,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar *,
+html[data-theme=dark] body .body-sidebar .item-anchor.selected *,
+html[data-theme=dark] body .body-sidebar .item-anchor.active *,
+html[data-theme=dark] body .body-sidebar .standard-sidebar-item.selected *,
+html[data-theme=dark] body .body-sidebar .standard-sidebar-item.active * {
   color: #79b4ff !important;
   stroke: #79b4ff !important;
   --icon-stroke: #79b4ff !important;
 }
 
-/* zu-active-item (zupra_ui3) */
-[data-theme="dark"] .zu-active-item {
-  background: #0d2040 !important;
+/* Dark-mode selected sidebar item: unified pill style */
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar {
+  background: #245286 !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: none !important;
+}
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item {
+  background: transparent !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar::before {
+  width: 5px;
+  background: #72b7ff;
+  border-radius: 5px 0 0 5px;
+}
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .sidebar-item-label,
+html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor {
+  color: #eaf3ff !important;
 }
 
-[data-theme="dark"] .zu-active-item,
-[data-theme="dark"] .zu-active-item * {
+/* zu-active-item (zupra_ui3) */
+html[data-theme=dark] .zu-active-item {
+  background: #0d2040 !important;
+}
+html[data-theme=dark] .zu-active-item,
+html[data-theme=dark] .zu-active-item * {
   color: #79b4ff !important;
   stroke: #79b4ff !important;
 }
 
 /* Section labels */
-[data-theme="dark"] .zu-section-label {
-  color: #a7b8cf !important;
+html[data-theme=dark] .zu-section-label {
+  color: #939fb1 !important;
 }
 
-/* ─── Rail (dock) active icon ────────────────────────────────────────────── */
-[data-theme="dark"] .zu-rail-active {
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   13. RAIL (DOCK) ACTIVE ICON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .zu-rail-active {
   background: #0d2040 !important;
-  border-color: #344963 !important;
+  border-color: #1c293f !important;
 }
 
-[data-theme="dark"] .zu-rail-active svg,
-[data-theme="dark"] .zu-rail-active img {
+html[data-theme=dark] .zu-rail-active svg,
+html[data-theme=dark] .zu-rail-active img {
   filter: invert(72%) sepia(50%) saturate(600%) hue-rotate(195deg) brightness(105%) contrast(100%);
 }
 
-/* ─── Cards / widgets / number-cards ────────────────────────────────────── */
-[data-theme="dark"] .widget,
-[data-theme="dark"] .number-card,
-[data-theme="dark"] .onboarding-widget-box,
-[data-theme="dark"] .frappe-card,
-[data-theme="dark"] .number-widget-box {
-  background: #111d2e !important;
-  border-color: #253954 !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   14. INJECTED TOOLS (#zu-tools, search, new-menu)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] #zu-tools .zu-search {
+  background: #0a1326;
+  border-color: #1c293f;
+  color: #939fb1;
 }
 
-[data-theme="dark"] .widget .widget-title,
-[data-theme="dark"] .number-card .widget-title {
-  color: #a7b8cf !important;
+html[data-theme=dark] #zu-tools .zu-search kbd {
+  background: #121d30;
+  color: #939fb1;
 }
 
-[data-theme="dark"] .number-card .number,
-[data-theme="dark"] .number-widget-box .number {
-  color: #f0f5ff !important;
+html[data-theme=dark] #zu-tools .zu-bell {
+  color: #939fb1;
 }
 
-/* ─── Workspace / links-widget-box ──────────────────────────────────────── */
-[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box {
-  background: #111d2e !important;
-  border-color: #253954 !important;
-  box-shadow: none !important;
-}
-
-[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .widget-head .widget-title {
-  color: #a7b8cf !important;
-}
-
-[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item {
-  color: #d2deee !important;
-}
-
-[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item:hover,
-[data-theme="dark"] [data-page-route="Workspaces"] .links-widget-box .link-item:focus-visible {
-  background: #1a2d45 !important;
-  color: #79b4ff !important;
-}
-
-/* ─── Primary buttons ────────────────────────────────────────────────────── */
-[data-theme="dark"] .btn-primary {
-  background: #0d2040 !important;
-  color: #79b4ff !important;
-  border-color: #344963 !important;
-}
-
-/* ─── Injected tools (#zu-tools, search, new-menu) ──────────────────────── */
-[data-theme="dark"] #zu-tools .zu-search {
-  background: #111d2e;
-  border-color: #253954;
-  color: #a7b8cf;
-}
-
-[data-theme="dark"] #zu-tools .zu-search kbd {
-  background: #162234;
-  color: #a7b8cf;
-}
-
-[data-theme="dark"] #zu-tools .zu-bell {
-  color: #a7b8cf;
-}
-
-[data-theme="dark"] #zu-tools .zu-new {
+html[data-theme=dark] #zu-tools .zu-new {
   background: #0d2040;
-  border-color: #344963;
+  border-color: #1c293f;
   color: #79b4ff;
 }
 
-[data-theme="dark"] #zu-new-menu {
-  background: #111d2e;
-  border-color: #253954;
+html[data-theme=dark] #zu-new-menu {
+  background: #0a1326;
+  border-color: #1c293f;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] #zu-new-menu div {
-  color: #d2deee;
+html[data-theme=dark] #zu-new-menu div {
+  color: #d0d9e6;
 }
 
-[data-theme="dark"] #zu-new-menu div:hover {
-  background: #1a2d45;
+html[data-theme=dark] #zu-new-menu div:hover {
+  background: #131f35;
   color: #79b4ff;
 }
 
-/* ─── User menu ──────────────────────────────────────────────────────────── */
-[data-theme="dark"] #zu-user-menu {
-  background: #111d2e;
-  border-color: #253954;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   15. USER MENU
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] #zu-user-menu {
+  background: #0a1326;
+  border-color: #1c293f;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] #zu-user-menu div {
-  color: #d2deee;
+html[data-theme=dark] #zu-user-menu div {
+  color: #d0d9e6;
 }
 
-[data-theme="dark"] #zu-user-menu div:hover {
-  background: #1a2d45;
+html[data-theme=dark] #zu-user-menu div:hover {
+  background: #131f35;
   color: #79b4ff;
 }
 
-/* ─── Settings gear (#zu-settings) ──────────────────────────────────────── */
-[data-theme="dark"] #zu-settings {
-  color: #a7b8cf;
-  background: #111d2e;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   16. SETTINGS GEAR (#zu-settings)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] #zu-settings {
+  color: #939fb1;
+  background: #040915;
 }
 
-[data-theme="dark"] #zu-settings:hover {
-  background: #1a2d45;
+html[data-theme=dark] #zu-settings:hover {
+  background: #121d30;
   color: #79b4ff;
 }
 
-/* ─── Page-head breadcrumb / big title block (#zu-pagehead) ──────────────── */
-[data-theme="dark"] #zu-pagehead .zu-crumb {
-  color: #a7b8cf;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   17. PAGE-HEAD BREADCRUMB / BIG TITLE (#zu-pagehead)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] #zu-pagehead .zu-crumb {
+  color: #939fb1;
 }
 
-[data-theme="dark"] #zu-pagehead .zu-big {
-  color: #f0f5ff;
+html[data-theme=dark] #zu-pagehead .zu-big {
+  color: #edf2f9;
 }
 
-/* ─── Ask Zupra button ───────────────────────────────────────────────────── */
-[data-theme="dark"] #ask-zupra-btn {
-  background: #1c4ed8 !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   18. ASK ZUPRA BUTTON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] #ask-zupra-btn {
+  background: #10306f !important;
   color: #ffffff !important;
-  border: 1px solid #3b82f6 !important;
+  border: 1px solid #1c69e3 !important;
   box-shadow: 0 2px 8px rgba(28, 78, 216, 0.5) !important;
 }
 
-[data-theme="dark"] #ask-zupra-btn:hover {
-  background: #1d40af !important;
+html[data-theme=dark] #ask-zupra-btn:hover {
+  background: #1558c0 !important;
   box-shadow: 0 2px 12px rgba(28, 78, 216, 0.7) !important;
 }
 
-/* ─── The main layout-main / page content area ───────────────────────────── */
-[data-theme="dark"] .layout-main-section,
-[data-theme="dark"] .frappe-list,
-[data-theme="dark"] .page-body {
-  background: #0b1422 !important;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   19. DROPDOWN MENUS, MODALS, AUTOCOMPLETE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] .dropdown-menu,
+html[data-theme=dark] .awesomplete .aw-dropdown,
+html[data-theme=dark] .popover,
+html[data-theme=dark] .modal-content {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
 }
 
-/* ─── Espresso body-sidebar background ───────────────────────────────────── */
-/* This rule overrides the hard-coded dark-navy that zupra_prod_v16.css puts
-   on .body-sidebar in both themes; in dark mode we keep a slightly lighter navy. */
-[data-theme="dark"] .body-sidebar {
-  background: #111d2e !important;
-  --ink-gray-4: #d2deee;
-  --ink-gray-5: #d2deee;
-  --ink-gray-6: #d2deee;
-  --ink-gray-7: #d2deee;
-  --ink-gray-8: #f0f5ff;
-  --ink-gray-9: #f0f5ff;
+html[data-theme=dark] .dropdown-item:hover,
+html[data-theme=dark] .dropdown-item:focus {
+  background: #131f35 !important;
 }
 
-/* ─── Standard sidebar items band (search + notifications row) ──────────── */
-[data-theme="dark"] .body-sidebar .body-sidebar-top,
-[data-theme="dark"] .body-sidebar .standard-items-band {
-  background: #111d2e !important;
+html[data-theme=dark] .modal-header,
+html[data-theme=dark] .modal-footer {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
 }
 
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar > .standard-sidebar-item { box-shadow: none !important; }
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .active-sidebar { box-shadow: none !important; }
-/* Only the active row owns the sidebar accent; nested links never draw one. */
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { box-shadow: inset 3px 0 0 #2879dc !important; }
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .active-sidebar { box-shadow: none !important; }
-/* Match the active row wrapper to its highlighted link surface. */
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { background: #214a7b !important; }
-/* Dark-mode selected sidebar item: one unified, light-mode-inspired pill. */
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar { background: #245286 !important; border-radius: 20px !important; overflow: hidden; }
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item { background: transparent !important; border-radius: inherit !important; }
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar::before { width: 5px; background: #72b7ff; border-radius: 5px 0 0 5px; }
-html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .sidebar-item-label, html[data-theme=dark] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor { color: #eaf3ff !important; }
+html[data-theme=dark] .modal-body {
+  background: #050d1c !important;
+}
 
-/* Dark Desk palette tuned to the supplied quotation reference. */
-html[data-theme=dark] .dock, html[data-theme=dark] .desk-sidebar { background: #02060f !important; border-color: #1c293f !important; }
-html[data-theme=dark] .body-sidebar, html[data-theme=dark] .body-sidebar-container, html[data-theme=dark] .sidebar-header, html[data-theme=dark] .sidebar-items, html[data-theme=dark] .body-sidebar-bottom { background: #040915 !important; border-color: #1c293f !important; }
-html[data-theme=dark] .layout-main, html[data-theme=dark] .layout-main-section, html[data-theme=dark] .page-body, html[data-theme=dark] .page-container { background: #050d1c !important; }
-html[data-theme=dark] .page-head, html[data-theme=dark] header.navbar, html[data-theme=dark] .navbar { background: #050d1c !important; border-color: #1c293f !important; }
-html[data-theme=dark] [data-page-route*=quotation] .form-page, html[data-theme=dark] [data-page-route*=quotation] .form-layout, html[data-theme=dark] [data-page-route*=quotation] .form-section, html[data-theme=dark] [data-page-route*=quotation] .section-body { background: #0a1326 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .form-section, html[data-theme=dark] [data-page-route*=quotation] .section-head, html[data-theme=dark] [data-page-route*=quotation] .grid-footer, html[data-theme=dark] [data-page-route*=quotation] .grid-row, html[data-theme=dark] [data-page-route*=quotation] .grid-body { border-color: #1c293f !important; }
-html[data-theme=dark] [data-page-route*=quotation] .frappe-control .control-input, html[data-theme=dark] [data-page-route*=quotation] .frappe-control .like-disabled-input, html[data-theme=dark] [data-page-route*=quotation] .frappe-control input, html[data-theme=dark] [data-page-route*=quotation] .frappe-control select, html[data-theme=dark] [data-page-route*=quotation] .frappe-control textarea { background: #121d30 !important; border-color: #1c293f !important; color: #edf2f9 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .grid-heading-row, html[data-theme=dark] [data-page-route*=quotation] .btn:not(.btn-primary), html[data-theme=dark] [data-page-route*=quotation] .btn-default, html[data-theme=dark] [data-page-route*=quotation] .grid-row .data-row { background: #131f35 !important; border-color: #1c293f !important; color: #edf2f9 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .btn:not(.btn-primary):hover, html[data-theme=dark] [data-page-route*=quotation] .btn:not(.btn-primary):active, html[data-theme=dark] [data-page-route*=quotation] .form-control:focus, html[data-theme=dark] [data-page-route*=quotation] .input-with-feedback:focus { background: #142c55 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .btn-primary { background: #1c69e3 !important; border-color: #1c69e3 !important; color: #ffffff !important; }
-html[data-theme=dark] [data-page-route*=quotation] .control-label, html[data-theme=dark] [data-page-route*=quotation] .section-head, html[data-theme=dark] [data-page-route*=quotation] .grid-heading-row, html[data-theme=dark] [data-page-route*=quotation] .text-muted, html[data-theme=dark] [data-page-route*=quotation] svg { color: #939fb1 !important; stroke: #939fb1; }
-html[data-theme=dark] [data-page-route*=quotation] .form-tabs .nav-link.active { color: #edf2f9 !important; border-color: #1c69e3 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .reqd .control-label:after { color: #ef4444 !important; }
-html[data-theme=dark] [data-page-route*=quotation] .indicator-pill, html[data-theme=dark] [data-page-route*=quotation] .indicator-pill.orange { background: rgba(244, 164, 55, .15) !important; color: #f4a437 !important; }
-html[data-theme=dark] [data-page-route*=quotation] { --surface-base: #050d1c; --surface-elevation-1: #0a1326; --surface-elevation-2: #0a1326; --surface-elevation-3: #121d30; --surface-gray-1: #0a1326; --surface-gray-2: #121d30; --surface-gray-3: #131f35; --ink-base: #edf2f9; --ink-gray-4: #939fb1; --ink-gray-5: #939fb1; --ink-gray-6: #939fb1; --outline-gray-2: #1c293f; --outline-gray-3: #1c293f; }
+html[data-theme=dark] .awesomplete li,
+html[data-theme=dark] .awesomplete li[aria-selected=true] {
+  background: #0a1326 !important;
+  color: #edf2f9 !important;
+}
+html[data-theme=dark] .awesomplete li:hover {
+  background: #131f35 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   20. TOP-NAV DOCK (zu-topnav layout)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] body.zu-topnav #desk-dock {
+  background: #050d1c !important;
+  border-bottom-color: #1c293f !important;
+}
+html[data-theme=dark] body.zu-topnav .dock-item {
+  color: #939fb1 !important;
+}
+html[data-theme=dark] body.zu-topnav .dock-item:hover {
+  background: #121d30 !important;
+  color: #edf2f9 !important;
+}
+html[data-theme=dark] body.zu-topnav .dock-item.active {
+  color: #1c69e3 !important;
+}
+html[data-theme=dark] body.zu-topnav #zu-grid:hover,
+html[data-theme=dark] body.zu-topnav #zu-grid.on {
+  background: #121d30 !important;
+  color: #1c69e3 !important;
+}
+html[data-theme=dark] #zu-grid-menu {
+  background: #0a1326 !important;
+  border-color: #1c293f !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+html[data-theme=dark] #zu-grid-menu div {
+  color: #d0d9e6 !important;
+}
+html[data-theme=dark] #zu-grid-menu div:hover {
+  background: #131f35 !important;
+  color: #edf2f9 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   21. SCROLLBAR (webkit)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme=dark] ::-webkit-scrollbar-track {
+  background: #050d1c;
+}
+html[data-theme=dark] ::-webkit-scrollbar-thumb {
+  background: #1c293f;
+  border-radius: 4px;
+}
