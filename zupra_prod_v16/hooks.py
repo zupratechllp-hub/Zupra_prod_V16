@@ -343,4 +343,4 @@ app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui9.js
 
 
 # Zupra Dark Theme overrides (must come last so it wins specificity battles)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=16"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=17"]
