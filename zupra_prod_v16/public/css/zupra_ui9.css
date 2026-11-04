@@ -55,3 +55,8 @@ body .body-sidebar .sidebar-item-container .sidebar-item-label { color: var(--te
 html body:not(.zu-topnav) .navbar,
 html body:not(.zu-topnav) .body-sidebar-container,
 html body:not(.zu-topnav) .main-section { opacity: 0; animation: zuReveal .15s ease 1.5s forwards; }
+html:has(body.zu-topnav), body.zu-topnav { scrollbar-width: none !important; -ms-overflow-style: none; }
+html:has(body.zu-topnav)::-webkit-scrollbar, body.zu-topnav::-webkit-scrollbar { display: none !important; width: 0 !important; }
+body.zu-topnav #zu-user { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]) body:not([data-theme="dark"]):not(.zu-dark):not(.dark) .zu-gear-bg {
+  background: #e2e8f2 !important; border: 1px solid #d3dcea !important; border-radius: 10px !important; }

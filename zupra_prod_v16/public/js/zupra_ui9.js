@@ -108,3 +108,48 @@
   window.addEventListener("load", function () { setTimeout(bell, 200); setTimeout(bell, 3000); });
   new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
 })();
+(function () {
+  function alignBell() {
+    var u = document.getElementById("zu-user");
+    if (!u) return;
+    var ur = u.getBoundingClientRect();
+    if (!ur.height) return;
+    var cy = ur.top + ur.height / 2;
+    document.querySelectorAll("svg[data-zu-bell]").forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      if (!r.height) return;
+      var d = cy - (r.top + r.height / 2);
+      if (Math.abs(d) > 1) {
+        var dy = parseFloat(s.dataset.zuDy || "0") + d;
+        s.dataset.zuDy = dy;
+        s.style.translate = "-26px " + dy + "px";
+      }
+    });
+  }
+  function tagGear() {
+    if (document.querySelector(".zu-gear-bg")) return;
+    var found = null;
+    document.querySelectorAll("svg").forEach(function (s) {
+      if (found || s.closest(".sidebar-item-container, .zu-side-icon, #ask-zupra-btn")) return;
+      var r = s.getBoundingClientRect();
+      if (r.width > 8 && r.left < 80 && r.top > innerHeight - 100 && r.bottom <= innerHeight + 2) found = s;
+    });
+    if (!found) return;
+    var el = found.parentElement, pick = null, hops = 0;
+    while (el && hops < 4) {
+      var b = el.getBoundingClientRect();
+      if (b.width > 120 || b.height > 80) break;
+      var bg = getComputedStyle(el).backgroundColor;
+      if (bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") { pick = el; break; }
+      el = el.parentElement; hops++;
+    }
+    (pick || found.parentElement).classList.add("zu-gear-bg");
+  }
+  function all() { alignBell(); tagGear(); }
+  var t;
+  function later() { clearTimeout(t); t = setTimeout(all, 150); }
+  window.addEventListener("load", function () { setTimeout(all, 600); setTimeout(all, 1500); setTimeout(all, 3500); });
+  window.addEventListener("resize", later);
+  window.addEventListener("scroll", later, true);
+  new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+})();
