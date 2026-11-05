@@ -1,0 +1,746 @@
+/**
+ * ============================================================================
+ * Zupra Typography System — Modern Web-App Hierarchy (Linear / Stripe density)
+ * Scoped to Zupra Theme & ERPNext / Frappe v16 Desk
+ * ============================================================================
+ */
+
+/* ----------------------------------------------------------------------------
+ * 1. DESIGN TOKENS (:root)
+ * ---------------------------------------------------------------------------- */
+:root {
+  /* Font Families */
+  --font-sans: 'Manrope', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Font Sizes (rem-based on 16px root) */
+  --text-xs:   0.75rem;   /* 12px: help text, badges/pills, axis labels, breadcrumbs */
+  --text-sm:   0.8125rem; /* 13px: form labels, table headers, secondary text */
+  --text-base: 0.875rem;  /* 14px: body, inputs, table cells, sidebar & menu items, buttons */
+  --text-md:   1rem;      /* 16px: card/section titles, sidebar workspace title */
+  --text-lg:   1.125rem;  /* 18px: form/doc titles, modal titles */
+  --text-xl:   1.5rem;    /* 24px: page titles, KPI values */
+  --text-2xl:  1.75rem;   /* 28px: max, big dashboard numbers only */
+
+  /* Line Heights */
+  --lh-none:   1;         /* 1.0: badges, pills, icons */
+  --lh-tight:  1.25;      /* 1.25: page titles, headings */
+  --lh-snug:   1.4;       /* 1.4: inputs, buttons, dense card links */
+  --lh-normal: 1.5;       /* 1.5: body prose, table cells, sidebar items, chat */
+
+  /* Font Weights */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.02em;
+  --tracking-tight:   -0.01em; /* titles >= 24px */
+  --tracking-normal:  0em;     /* body & inputs */
+  --tracking-wide:    0.03em;  /* table headers uppercase */
+  --tracking-wider:   0.05em;  /* section sub-labels (OVERVIEW, etc.) */
+
+  /* Standard Typography Overrides for Frappe v16 Core Tokens */
+  --font-weight-regular:  var(--fw-regular);
+  --font-weight-medium:   var(--fw-medium);
+  --font-weight-semibold: var(--fw-semibold);
+  --font-weight-bold:     var(--fw-bold);
+
+  --text-tiny: var(--text-xs);
+  --text-2xs:  var(--text-xs);
+  --text-p-xs: var(--text-xs);
+  --text-p-sm: var(--text-sm);
+  --text-p-base: var(--text-base);
+  --text-p-lg: var(--text-md);
+  --text-p-xl: var(--text-lg);
+}
+
+/* ----------------------------------------------------------------------------
+ * 2. WCAG AA CONTRAST TOKENS (LIGHT & DARK THEMES)
+ * ---------------------------------------------------------------------------- */
+:root {
+  --zu-text-primary:   #0f172a; /* Slate 900: High contrast body/titles */
+  --zu-text-secondary: #475569; /* Slate 600: Form labels, headers (WCAG AA > 5:1 on light) */
+  --zu-text-tertiary:  #64748b; /* Slate 500: Hints, breadcrumbs, icons (WCAG AA > 4.5:1) */
+  --zu-text-danger:    #dc2626; /* Asterisk & validation errors */
+}
+
+/* Dark Theme Contrast Mapping (Deep Navy Palette) */
+html[data-theme="dark"],
+[data-theme="dark"],
+body.dark,
+body.zu-dark {
+  --zu-text-primary:   #edf2f9; /* Contrast 12.8:1 on #050d1c, 11.2:1 on #0a1326 */
+  --zu-text-secondary: #b0bccf; /* Contrast 7.5:1 on #0a1326 (Labels & Headers) */
+  --zu-text-tertiary:  #939fb1; /* Contrast 5.2:1 on #0a1326 (Help text & hints) */
+  --zu-text-danger:    #f87171; /* High contrast red */
+
+  --text-color:    var(--zu-text-primary);
+  --heading-color: var(--zu-text-primary);
+  --text-muted:    var(--zu-text-secondary);
+  --text-light:    var(--zu-text-tertiary);
+}
+
+/* ----------------------------------------------------------------------------
+ * 3. GLOBAL BASE TYPOGRAPHY
+ * ---------------------------------------------------------------------------- */
+html {
+  font-size: 16px; /* Base rem anchor */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+.desk-container,
+.main-section,
+.layout-main,
+.page-container {
+  font-family: var(--font-sans) !important; /* Preserves brand font Manrope globally */
+  font-size: var(--text-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--zu-text-primary);
+}
+
+/* ----------------------------------------------------------------------------
+ * 4. TOP NAVBAR & GLOBAL DOCK (HORIZONTAL & VERTICAL)
+ * ---------------------------------------------------------------------------- */
+.navbar,
+header.navbar,
+body.zu-topnav #desk-dock {
+  font-family: var(--font-sans);
+}
+
+.navbar .navbar-nav > li > a,
+.navbar .nav-link,
+body.zu-topnav .dock-item,
+body.zu-topnav .dock-item .dock-item-label {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-medium) !important;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-normal);
+}
+
+body.zu-topnav .dock-item.active .dock-item-label {
+  font-weight: var(--fw-semibold) !important;
+}
+
+/* Dropdown menus attached to navbar / user */
+.dropdown-menu,
+#zu-user-menu,
+#zu-grid-menu,
+#zu-new-menu,
+.awesomplete .aw-dropdown {
+  font-size: var(--text-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+}
+
+.dropdown-item,
+#zu-user-menu div,
+#zu-grid-menu div,
+#zu-new-menu div {
+  font-size: var(--text-base) !important; /* Overrides legacy 16px/15px */
+  font-weight: var(--fw-regular) !important;
+}
+
+/* Top bar middle search input */
+#zu-tools .zu-search {
+  font-size: var(--text-base) !important;
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+}
+
+#zu-tools .zu-search kbd {
+  font-size: var(--text-xs) !important;
+  font-family: var(--font-mono);
+}
+
+/* ----------------------------------------------------------------------------
+ * 5. SIDEBAR (COMPACT LINEAR/STRIPE DENSITY, UNIFIED ICONS & LABELS)
+ * ---------------------------------------------------------------------------- */
+/* Workspace Title ("Setup", "Selling", "System") */
+body .body-sidebar .sidebar-header,
+body .body-sidebar .sidebar-header *,
+body .body-sidebar .sidebar-header .header-title,
+body .body-sidebar .sidebar-header h2,
+body .body-sidebar .sidebar-header h3 {
+  font-size: var(--text-md) !important; /* 16px */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--tracking-normal);
+  color: var(--zu-text-primary) !important;
+  min-height: auto !important;
+  height: 38px !important;
+}
+
+body .body-sidebar .sidebar-header.shell-header {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body .body-sidebar .sidebar-header .drop-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Group Sub-Labels ("OVERVIEW", "TRANSACTIONS", "REPORTS", "ACCESS") */
+body .body-sidebar .zu-section-label,
+body .body-sidebar .standard-sidebar-section .section-title,
+body .body-sidebar .section-break,
+body .body-sidebar .section-item .section-break .sidebar-item-label {
+  font-size: 11px !important; /* 11-12px micro-label */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  text-transform: uppercase !important;
+  letter-spacing: var(--tracking-wider) !important; /* +0.05em */
+  color: var(--zu-text-tertiary) !important;
+  line-height: var(--lh-tight) !important;
+  padding: 12px 10px 4px 10px !important; /* Compact vertical breathing room */
+  margin: 0 !important;
+}
+
+/* Sidebar Item Rows & Container */
+body .body-sidebar {
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+body .body-sidebar .sidebar-items {
+  gap: 2px !important;
+}
+
+body .body-sidebar .sidebar-item-container {
+  margin-bottom: 2px !important;
+}
+
+/* Standard Item Anchor & Sizing */
+body .body-sidebar .sidebar-item-container .item-anchor,
+body .body-sidebar .sidebar-item-container .standard-sidebar-item {
+  height: 32px !important; /* Compact Notion/Linear 32px row height (was 40px+) */
+  min-height: 32px !important;
+  padding: 0 6px !important; /* Compact horizontal padding */
+  border-radius: 6px !important; /* Modern subtle 6px corner radius (was bulky 20px) */
+  gap: 8px !important; /* Cohesive icon-to-label gap (was 12-14px) */
+  display: flex !important;
+  align-items: center !important;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Sidebar Item Labels */
+body .body-sidebar .sidebar-item-container .sidebar-item-label,
+body .body-sidebar .standard-sidebar-item .sidebar-item-label,
+body .body-sidebar .sidebar-item-label {
+  font-size: var(--text-base) !important; /* 14px standard body size */
+  font-weight: var(--fw-regular) !important; /* 400 */
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--tracking-normal) !important;
+  color: var(--zu-text-primary) !important;
+  margin-left: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Active Sidebar Item Styling (Linear/Stripe unified pill style) */
+html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar,
+body .body-sidebar .sidebar-item-container.active-sidebar {
+  border-radius: 6px !important; /* Standardized 6px radius */
+  background: rgba(28, 105, 227, 0.18) !important; /* Crisp semi-transparent accent background */
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor,
+body .body-sidebar .sidebar-item-container.active-sidebar .item-anchor {
+  background: transparent !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+body .body-sidebar .sidebar-item-container.active-sidebar .sidebar-item-label,
+body .body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-label,
+body .body-sidebar .zu-active-item .sidebar-item-label {
+  font-weight: var(--fw-medium) !important; /* 500 when active */
+  color: #79b4ff !important;
+}
+
+/* Clean left indicator bar for active item */
+body .body-sidebar .sidebar-item-container.active-sidebar::before {
+  content: "" !important;
+  width: 3px !important;
+  background: #1c69e3 !important;
+  border-radius: 3px 0 0 3px !important;
+}
+
+/* Standardized Icon Sizing (16px x 16px modern standard) */
+body .body-sidebar .sidebar-item-icon,
+body .body-sidebar .zu-side-icon,
+body .body-sidebar .item-anchor .sidebar-item-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: none !important;
+}
+
+body .body-sidebar .sidebar-item-icon svg,
+body .body-sidebar .zu-side-icon svg,
+body .body-sidebar svg.zu-no-icon {
+  width: 16px !important;
+  height: 16px !important;
+  stroke-width: 1.75 !important;
+}
+
+body .body-sidebar .sidebar-item-container.active-sidebar svg,
+body .body-sidebar .zu-active-item svg {
+  stroke: #79b4ff !important;
+}
+
+/* Nested Items & Chevrons */
+body .body-sidebar .sidebar-item-control,
+body .body-sidebar .sidebar-item-control .drop-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+body .body-sidebar .sidebar-item-control .drop-icon svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Nested Container Indentation Hierarchy */
+body .body-sidebar .nested-container {
+  padding-left: 12px !important;
+  margin-left: 8px !important;
+  border-left: 1px solid var(--border-color, #1c293f) !important;
+}
+
+body .body-sidebar .nested-container .item-anchor {
+  height: 30px !important;
+  min-height: 30px !important;
+  padding: 0 6px !important;
+}
+
+body .body-sidebar .nested-container .sidebar-item-label {
+  font-size: var(--text-sm) !important; /* 13px for nested child items */
+}
+
+/* ----------------------------------------------------------------------------
+ * 6. PAGE HEADERS, TITLES & BREADCRUMBS
+ * ---------------------------------------------------------------------------- */
+/* Page Title (Home, Selling, list views) */
+.page-head .page-title,
+.page-head .title-text,
+.page-head h1,
+.page-head h2,
+.page-head h3,
+#zu-pagehead .zu-big {
+  font-size: var(--text-xl) !important; /* Fixed: reset from 36px/44px to 24px */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-tight) !important; /* 1.25 */
+  letter-spacing: var(--tracking-tight) !important; /* -0.01em */
+  color: var(--zu-text-primary) !important;
+}
+
+/* Form-View Doc Title (e.g., Quotation ID / Name) */
+.page-head[data-page-type="form"] .page-title,
+.page-head[data-page-type="form"] .title-text,
+.form-header .title-text {
+  font-size: var(--text-lg) !important; /* 18px */
+  font-weight: var(--fw-semibold) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Breadcrumbs */
+.breadcrumb,
+.navbar-breadcrumbs,
+.page-head .es-breadcrumbs,
+.page-head .es-breadcrumbs .es-breadcrumbs__item,
+#zu-pagehead .zu-crumb {
+  font-size: var(--text-xs) !important; /* Fixed: reset from 15px to 12px */
+  font-weight: var(--fw-regular) !important;
+  line-height: var(--lh-snug);
+  color: var(--zu-text-tertiary) !important;
+}
+
+/* Hide duplicate crumbs like "Home / Home" */
+.breadcrumb li:first-child:has(+ li.active:contains("Home")),
+.es-breadcrumbs li:first-child:has(+ li .es-breadcrumbs__item[title="Home"]) {
+  display: none !important;
+}
+
+/* ----------------------------------------------------------------------------
+ * 7. CARDS, SHORTCUTS, WIDGETS & KPIS
+ * ---------------------------------------------------------------------------- */
+/* Card / Widget Titles (Profit and Loss, Sales Reports, Pricing, etc.) */
+.widget .widget-title,
+.number-card .widget-title,
+.links-widget-box .widget-head .widget-title,
+.links-widget-box .widget-title,
+[data-page-route="Workspaces"] .links-widget-box .widget-head .widget-title {
+  font-size: var(--text-md) !important; /* Fixed: reset from 24px/18px to 16px */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-normal);
+  color: var(--zu-text-primary) !important; /* HIGH-contrast text color */
+}
+
+/* Links & Shortcuts inside Cards */
+.links-widget-box .link-item,
+.links-widget-box .link-item.zu-row,
+.links-widget-box .link-item.zu-row span,
+[data-page-route="Workspaces"] .links-widget-box .link-item {
+  font-size: var(--text-base) !important; /* Fixed: reset from 20px to 14px */
+  font-weight: var(--fw-regular) !important; /* 400 */
+  line-height: var(--lh-snug) !important; /* 1.4 */
+  white-space: normal !important; /* allow 2-line wrap without clipping */
+  word-break: break-word;
+}
+
+.links-widget-box .link-item:hover,
+.links-widget-box .link-item.zu-row:hover {
+  font-weight: var(--fw-medium) !important; /* 500 on hover */
+}
+
+/* KPI / Number Cards */
+.number-card,
+.number-widget-box {
+  font-family: var(--font-sans);
+}
+
+/* KPI Label */
+.number-card .widget-title,
+.number-widget-box .widget-title,
+.number-card .card-subtitle {
+  font-size: var(--text-sm) !important; /* 13px */
+  font-weight: var(--fw-medium) !important; /* 500 */
+  color: var(--zu-text-secondary) !important;
+  line-height: var(--lh-snug);
+}
+
+/* KPI Value */
+.number-card .number,
+.number-widget-box .number,
+.number-card .stat-value {
+  font-size: var(--text-xl) !important; /* Fixed: standard 24px */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-tight);
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: var(--tracking-tight);
+  color: var(--zu-text-primary) !important;
+}
+
+/* Big Dashboard Number (Only when explicitly elevated) */
+.number-card.hero-kpi .number {
+  font-size: var(--text-2xl) !important; /* 28px max */
+}
+
+/* Sub-text / Trend ("0 % since yesterday") */
+.number-card .card-stat,
+.number-card .stat-description,
+.number-widget-box .stat-description,
+.number-card .card-stat-trend {
+  font-size: var(--text-xs) !important; /* 12px */
+  font-weight: var(--fw-regular) !important;
+  color: var(--zu-text-tertiary) !important;
+  line-height: var(--lh-normal);
+}
+
+/* ----------------------------------------------------------------------------
+ * 8. FORM CONTROLS, LABELS, INPUTS & SECTIONS
+ * ---------------------------------------------------------------------------- */
+/* Form Field Labels */
+.frappe-control .control-label,
+.form-group label,
+.grid-heading-row .col,
+.modal label {
+  font-size: var(--text-sm) !important; /* Fixed: 13px */
+  font-weight: var(--fw-medium) !important; /* 500 */
+  color: var(--zu-text-secondary) !important;
+  line-height: var(--lh-snug);
+  margin-bottom: 4px !important;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Required Asterisk */
+.reqd .control-label::after,
+.frappe-control.reqd .control-label::after {
+  font-size: var(--text-sm) !important; /* Same size as label */
+  color: var(--zu-text-danger) !important;
+  margin-left: 2px;
+}
+
+/* Form Input Values & Placeholders */
+.frappe-control .form-control,
+.frappe-control input[type="text"],
+.frappe-control input[type="password"],
+.frappe-control input[type="number"],
+.frappe-control select,
+.frappe-control textarea,
+.input-with-feedback,
+.like-disabled-input {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-regular) !important; /* 400 */
+  line-height: var(--lh-snug) !important; /* 1.4 */
+  color: var(--zu-text-primary) !important;
+}
+
+.frappe-control .form-control::placeholder,
+.frappe-control input::placeholder,
+.frappe-control textarea::placeholder {
+  color: var(--zu-text-tertiary) !important;
+  font-weight: var(--fw-regular) !important;
+}
+
+/* Checkbox & Toggle Labels */
+.frappe-control[data-fieldtype="Check"] .control-label,
+.checkbox label,
+.frappe-control.boolean-type label {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-regular) !important;
+  line-height: var(--lh-normal);
+  color: var(--zu-text-primary) !important;
+}
+
+/* Help text / Descriptions ("Default display currency") */
+.frappe-control .help-box,
+.frappe-control .form-text,
+.frappe-control .text-muted.small,
+.frappe-control .form-message {
+  font-size: var(--text-xs) !important; /* 12px */
+  font-weight: var(--fw-regular) !important; /* 400 */
+  line-height: var(--lh-normal);
+  color: var(--zu-text-tertiary) !important;
+  margin-top: 4px;
+}
+
+/* Form Section Headings ("Date and Number Format", "Currency and Price List") */
+.form-section .section-head,
+.form-section .section-title,
+.form-section-head {
+  font-size: var(--text-md) !important; /* 16px (14-16px range) */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-tight);
+  color: var(--zu-text-primary) !important;
+  padding-top: 1.25rem !important; /* Visible spacing above */
+  margin-bottom: 0.75rem !important;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Form Tabs */
+.form-tabs .nav-link {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-medium) !important;
+  line-height: var(--lh-snug);
+}
+
+/* ----------------------------------------------------------------------------
+ * 9. DATA TABLES (GRIDS) & LIST VIEWS
+ * ---------------------------------------------------------------------------- */
+/* Table (Grid) Headers */
+.grid-heading-row,
+.grid-heading-row .col,
+.grid-heading-row .grid-row-check,
+.list-headers,
+.list-header-subject {
+  font-size: var(--text-sm) !important; /* 13px */
+  font-weight: var(--fw-semibold) !important; /* 600 */
+  line-height: var(--lh-snug);
+  color: var(--zu-text-secondary) !important;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Table Cells */
+.grid-body .grid-row .data-row,
+.grid-body .grid-row .col,
+.grid-body .grid-static-col,
+.frappe-list .list-row,
+.frappe-list .list-row-col {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-regular) !important; /* 400 */
+  line-height: var(--lh-normal);
+  color: var(--zu-text-primary) !important;
+}
+
+/* Numeric Columns Right-Aligned with Tabular Nums */
+.grid-body .col[data-fieldtype="Currency"],
+.grid-body .col[data-fieldtype="Float"],
+.grid-body .col[data-fieldtype="Int"],
+.grid-body .col[data-fieldtype="Percent"],
+.grid-static-col[data-fieldtype="Currency"],
+.grid-static-col[data-fieldtype="Float"],
+.grid-static-col[data-fieldtype="Int"] {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* ----------------------------------------------------------------------------
+ * 10. BADGES, INDICATOR PILLS & BUTTONS
+ * ---------------------------------------------------------------------------- */
+/* Indicator Pills ("Not Saved", "Draft", "Submitted") */
+.indicator-pill,
+.indicator,
+.badge,
+.status-pill {
+  font-size: var(--text-xs) !important; /* 12px */
+  font-weight: var(--fw-medium) !important; /* 500 */
+  line-height: var(--lh-none) !important;   /* 1.0 */
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Buttons */
+.btn,
+.btn-default,
+.btn-primary,
+.btn-secondary {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-medium) !important; /* 500 */
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Small Buttons */
+.btn-xs,
+.btn-sm,
+.btn-action-group .btn {
+  font-size: var(--text-sm) !important; /* 13px */
+  font-weight: var(--fw-medium) !important;
+}
+
+/* ----------------------------------------------------------------------------
+ * 11. MODALS & "ASK ZUPRA" CHAT
+ * ---------------------------------------------------------------------------- */
+/* Standard Frappe Modals */
+.modal-header .modal-title {
+  font-size: var(--text-lg) !important; /* 18px */
+  font-weight: var(--fw-semibold) !important;
+  line-height: var(--lh-tight);
+}
+
+.modal-body {
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+}
+
+/* Ask Zupra Modal Panel */
+#ask-zupra-panel {
+  font-family: var(--font-sans) !important;
+}
+
+#ask-zupra-panel .az-head {
+  font-size: var(--text-md) !important; /* 16px */
+  font-weight: var(--fw-semibold) !important;
+  line-height: var(--lh-tight);
+}
+
+/* Recent Searches Label */
+#ask-zupra-panel .az-side-head {
+  font-size: var(--text-sm) !important; /* 13px */
+  font-weight: var(--fw-semibold) !important;
+  color: var(--zu-text-secondary) !important;
+}
+
+/* Clear Links */
+#ask-zupra-panel .az-clear {
+  font-size: var(--text-sm) !important; /* 13px */
+  font-weight: var(--fw-medium) !important;
+}
+
+/* History Items */
+#ask-zupra-panel .az-hitem {
+  font-size: var(--text-xs) !important; /* 12px */
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+}
+
+/* Chat Message Text */
+#ask-zupra-panel .az-msg {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-regular) !important;
+  line-height: var(--lh-normal) !important; /* 1.5 */
+}
+
+/* Chat Input with 2px Accent Focus Ring (Replaces White Outline) */
+#ask-zupra-panel input#az-input {
+  font-size: var(--text-base) !important; /* 14px */
+  font-weight: var(--fw-regular) !important;
+  line-height: var(--lh-snug) !important;
+  outline: none !important;
+  border: 1px solid var(--border-color, #1c293f) !important;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+#ask-zupra-panel input#az-input:focus {
+  border-color: #1c69e3 !important;
+  box-shadow: 0 0 0 2px rgba(28, 105, 227, 0.45) !important; /* 2px accent focus ring */
+}
+
+/* ----------------------------------------------------------------------------
+ * 12. CHART TEXT (AXIS LABELS, LEGENDS, TOOLTIPS)
+ * ---------------------------------------------------------------------------- */
+.frappe-chart text,
+.frappe-chart .axis-title,
+.frappe-chart .x-axis text,
+.frappe-chart .y-axis text,
+.frappe-chart .legend-dataset-text,
+.frappe-chart .graph-svg-tip {
+  font-size: var(--text-xs) !important; /* 12px */
+  font-weight: var(--fw-regular) !important;
+  fill: var(--zu-text-tertiary) !important;
+  color: var(--zu-text-tertiary) !important;
+}
+
+
+/* Move the settings shortcut beside the top navigation's right-side controls. */
+body.zu-topnav #zu-settings {
+  position: fixed !important;
+  top: 22px !important;
+  right: 164px !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #94a3b8 !important;
+  z-index: 3500 !important;
+}
+body.zu-topnav #zu-settings:hover {
+  background: rgba(148, 163, 184, .12) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Remove the unused standard-items strip above the sidebar navigation. */
+body .body-sidebar .standard-items-band {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body .body-sidebar .body-sidebar-top {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Overview only: raise its label from 11px to 13px. */
+body .body-sidebar .zu-overview-label {
+  font-size: 13px !important;
+}

@@ -19,7 +19,16 @@
     document.body.appendChild(b);
     const m = document.createElement("div");
     m.id = "zu-user-menu";
-    [["My Settings", () => frappe.set_route("Form", "User", frappe.session.user)],
+    [["Edit Sidebar", () => {
+       const sidebar = frappe.app && frappe.app.sidebar;
+       if (!sidebar || !sidebar.current_module) return;
+       frappe.require("arrangement_editor.bundle.js").then(() => new frappe.ui.SidebarManager())
+         .catch((error) => {
+           console.error("Sidebar editor failed to load", error);
+           frappe.ui.toast({ message: __("Could not open the sidebar editor. Please refresh the page."), type: "error" });
+         });
+     }],
+     ["My Settings", () => frappe.set_route("Form", "User", frappe.session.user)],
      ["Toggle Theme", () => { try { new frappe.ui.ThemeSwitcher().show(); } catch (e) {} }],
      ["Logout", () => frappe.app.logout()]].forEach((x) => {
       const i = document.createElement("div");

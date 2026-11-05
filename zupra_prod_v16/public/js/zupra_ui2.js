@@ -30,7 +30,7 @@ if (!box || !box.parentElement) return;
 const prev = box.previousElementSibling;
 if (prev && prev.classList.contains("zu-section-label")) return;
 const l = document.createElement("div");
-l.className = "zu-section-label";
+l.className = "zu-section-label" + (LABELS[name] === "OVERVIEW" ? " zu-overview-label" : "");
 l.textContent = LABELS[name];
 box.parentElement.insertBefore(l, box);
 });
