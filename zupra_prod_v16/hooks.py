@@ -346,5 +346,5 @@ app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui9.js
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=17"]
 
 # Zupra Typography Refactoring (Modern Web-App Standards: Linear/Stripe/Vercel density)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=8"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=13"]
 

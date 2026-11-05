@@ -744,3 +744,36 @@ body .body-sidebar .body-sidebar-top {
 body .body-sidebar .zu-overview-label {
   font-size: 13px !important;
 }
+
+/* Primary action buttons use dark text in dark mode, including disabled actions. */
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+:is(.btn-primary, .primary-action),
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+:is(.btn-primary, .primary-action) * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* Match primary-action icons to their dark-mode text. */
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+:is(.btn-primary, .primary-action) svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+:is(.btn-primary, .primary-action) svg * {
+  color: #111827 !important;
+  stroke: #111827 !important;
+}
+
+/* Frappe Espresso solid buttons (for example, onboarding action buttons). */
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+.es-button[data-variant="solid"],
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+.es-button[data-variant="solid"] * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+.es-button[data-variant="solid"] svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark)
+.es-button[data-variant="solid"] svg * {
+  stroke: #111827 !important;
+}
