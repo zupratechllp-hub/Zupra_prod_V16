@@ -304,7 +304,7 @@ app_include_css = list(_zc2) + ["/assets/zupra_prod_v16/css/zupra_ui2.css?v=2"]
 _zj2 = globals().get("app_include_js", [])
 if isinstance(_zj2, str):
     _zj2 = [_zj2]
-app_include_js = list(_zj2) + ["/assets/zupra_prod_v16/js/zupra_ui2.js"]
+app_include_js = list(_zj2) + ["/assets/zupra_prod_v16/js/zupra_ui2.js?v=2"]
 
 # Zupra UI restyle - Round 3
 _zc3 = globals().get("app_include_css", [])
@@ -319,7 +319,7 @@ app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=4"]
 
 # Zupra UI restyle - Round 4
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=34"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=3"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui4.js?v=4"]
 
 # Zupra UI restyle - Round 7
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui5.css?v=1"]
@@ -338,9 +338,13 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=1"]
 
 # Zupra UI restyle - Round 11 (sidebar icons, top bar polish)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=7"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui9.js?v=5"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=8"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui9.js?v=8"]
 
 
 # Zupra Dark Theme overrides (must come last so it wins specificity battles)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=17"]
+
+# Zupra Typography Refactoring (Modern Web-App Standards: Linear/Stripe/Vercel density)
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=8"]
+

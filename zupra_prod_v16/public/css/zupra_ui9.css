@@ -24,7 +24,7 @@ body.zu-topnav #zu-user-menu { right: 16px !important; }
 body .body-sidebar { padding-left: 8px !important; padding-right: 8px !important; }
 body .body-sidebar .sidebar-item-container .item-anchor,
 body .body-sidebar .sidebar-item-container .standard-sidebar-item { gap: 10px !important; padding: 10px 10px !important; }
-body .body-sidebar .sidebar-item-container .sidebar-item-label { font-size: 16px !important; font-weight: 600 !important;
+body .body-sidebar .sidebar-item-container .sidebar-item-label { font-size: 14px !important; font-weight: 500 !important;
   color: #0f172a !important; flex: 1 1 auto !important; min-width: 0 !important; max-width: none !important; }
 body.zu-topnav #ask-zupra-btn { position: fixed !important; top: auto !important; left: auto !important;
   right: 28px !important; bottom: 28px !important; width: 56px !important; height: 56px !important;
