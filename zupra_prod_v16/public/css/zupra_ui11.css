@@ -173,6 +173,11 @@ html body.zu-topnav #zu-user#zu-user {
 }
 html body.zu-topnav #zu-user#zu-user::after {
   content: "AD";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-left: .3px;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: .3px;
@@ -220,4 +225,13 @@ html body.zu-topnav #zu-settings svg * {
 :is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings:focus,
 :is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings:active {
   color: #e2e8f0 !important;
+}
+/* zu-sticky-fix: .main-section is the scroller and already starts below the 64px top nav,
+   so sticky offsets are relative to it, not the viewport. */
+html body.zu-topnav .page-head,
+html body.zu-topnav .page-container.editable-form .page-head:not(#zu-x) {
+  top: 0 !important;
+}
+html body.zu-topnav .form-tabs-list {
+  top: 48.8px !important;
 }
