@@ -63,8 +63,8 @@
   }
   let t;
   $(document).ready(function () {
-    setTimeout(run, 200);
-    new MutationObserver(function () { clearTimeout(t); t = setTimeout(run, 300); })
+    run(); setTimeout(run, 0);
+    new MutationObserver(function () { cancelAnimationFrame(t); t = requestAnimationFrame(run); })
       .observe(document.body, { childList: true, subtree: true });
   });
 })();
@@ -87,7 +87,7 @@
     });
   }
   var t;
-  function later() { clearTimeout(t); t = setTimeout(fixBell, 300); }
+  function later() { clearTimeout(t); t = setTimeout(fixBell, 0); }
   window.addEventListener("load", function () { setTimeout(fixBell, 200); setTimeout(fixBell, 3000); });
   window.addEventListener("resize", later);
   new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
@@ -104,7 +104,7 @@
     });
   }
   var t;
-  function later() { clearTimeout(t); t = setTimeout(bell, 300); }
+  function later() { clearTimeout(t); t = setTimeout(bell, 0); }
   window.addEventListener("load", function () { setTimeout(bell, 200); setTimeout(bell, 3000); });
   new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
 })();
@@ -147,7 +147,7 @@
   }
   function all() { alignBell(); tagGear(); }
   var t;
-  function later() { clearTimeout(t); t = setTimeout(all, 150); }
+  function later() { clearTimeout(t); t = setTimeout(all, 0); }
   window.addEventListener("load", function () { setTimeout(all, 600); setTimeout(all, 1500); setTimeout(all, 3500); });
   window.addEventListener("resize", later);
   window.addEventListener("scroll", later, true);

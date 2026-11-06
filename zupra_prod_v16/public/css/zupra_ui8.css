@@ -17,17 +17,17 @@ body.zu-topnav .dock-item { display: inline-flex !important; align-items: center
 body.zu-topnav .dock-item .dock-item-icon { display: none !important; }
 body.zu-topnav .dock-item .dock-item-label { display: inline !important; position: static !important; opacity: 1 !important;
   width: auto !important; transform: none !important; font-size: 15px; font-weight: 600; white-space: nowrap; color: inherit; }
-body.zu-topnav .dock-item:hover { background: #f1f6fe !important; }
+body.zu-topnav .dock-item:hover { background: rgba(255,255,255,.08) !important; }
 body.zu-topnav .dock-item.active { background: transparent !important; color: #1a6fd4; }
 body.zu-topnav .dock-item.zu-more { display: none !important; }
 #zu-grid { display: none; }
 body.zu-topnav #zu-grid { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
   margin-left: 6px; border: none; border-radius: 10px; background: transparent; color: var(--text-color, #0f172a); cursor: pointer; }
-body.zu-topnav #zu-grid:hover, body.zu-topnav #zu-grid.on { background: #f1f6fe; color: #1a6fd4; }
-#zu-grid-menu { position: fixed; display: none; min-width: 220px; padding: 6px; z-index: 3100; background: #fff;
-  border: 1px solid #e3e9f2; border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }
-#zu-grid-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: #0f172a; }
-#zu-grid-menu div:hover { background: #dbeafe; color: #0b3d7a; }
+body.zu-topnav #zu-grid:hover, body.zu-topnav #zu-grid.on { background: rgba(255,255,255,.08); color: #1a6fd4; }
+#zu-grid-menu { position: fixed; display: none; min-width: 220px; padding: 6px; z-index: 3100; background: var(--fg-color, #11182b);
+  border: 1px solid var(--border-color, #26304a); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }
+#zu-grid-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--text-color, #e6ebf5); }
+#zu-grid-menu div:hover { background: rgba(255,255,255,.12); color: var(--text-color, #fff); }
 body.zu-topnav #zu-user { top: 14px !important; right: 20px !important; }
 body.zu-topnav #zu-user-menu { top: 56px !important; right: 20px !important; }
 body.zu-topnav #ask-zupra-btn { top: 12px !important; right: 66px !important; }
@@ -46,3 +46,7 @@ body.zu-topnav .body-sidebar-container { top: 0 !important; margin-top: 0 !impor
 body.zu-topnav.zu-on-ws .page-head { display: none !important; }
 body.zu-topnav:not(.zu-on-ws) .page-head { top: 0 !important; }
 body.zu-topnav .dock-divider, body.zu-topnav .dock-separator, body.zu-topnav #desk-dock hr { display: none !important; }
+body.zu-topnav .dock-item[aria-label="Organisation structure"],
+body.zu-topnav .dock-item[aria-label="Setup"],
+body.zu-topnav .dock-item[aria-label="Assets"],
+body.zu-topnav .dock-item[aria-label="Quality"] { display: none !important; }

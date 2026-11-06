@@ -126,23 +126,11 @@ html body.zu-topnav #zu-bell {
   right: 36.4px !important;
 }
 
-/* Settings gear icon: force it to the center of its box (beats older #zu-settings svg offsets) */
+/* Settings gear icon: stay inside its box, no offsets */
 html body.zu-topnav a#zu-settings svg:not(#zu-x) {
-  position: relative !important;
-  left: 0 !important;
-  right: auto !important;
-  top: -10px !important;
-  margin: 0 !important;
-  translate: none !important;
-  transform: none !important;
-}
-
-/* Settings gear icon: same row as bell and avatar, bell centered between gear and avatar */
-html body.zu-topnav a#zu-settings svg:not(#zu-x) {
-  position: relative !important;
-  top: 10px !important;
-  left: 14.2px !important;
-  right: auto !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
   margin: 0 !important;
   translate: none !important;
   transform: none !important;

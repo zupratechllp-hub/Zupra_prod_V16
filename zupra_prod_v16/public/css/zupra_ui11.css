@@ -17,10 +17,6 @@ html body #ask-zupra-btn:focus-within {
   translate: none !important;
 }
 
-/* Settings gear: cancel the bell nudge */
-html body #zu-settings svg {
-  translate: 0 10px !important;
-}
 
 /* old rule below is overridden by the one above */
 html body #zu-settings svg.old {
@@ -44,11 +40,6 @@ html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus-visible
   translate: none !important;
 }
 
-/* Settings gear: no horizontal shift, keep 10px down so it lines up with the bell */
-html body #zu-settings svg,
-html body #zu-settings svg[data-zu-bell] {
-  translate: 0 10px !important;
-}
 
 /* Bell stays at its original position (cancels the earlier shift) */
 html body svg[data-zu-bell]:not(#zu-settings svg) {
@@ -56,8 +47,177 @@ html body svg[data-zu-bell]:not(#zu-settings svg) {
   left: auto !important;
 }
 
-/* Gear sits in the gap just before the bell */
-html body #zu-settings svg {
+
+/* Tooltips readable in both themes */
+html body .tooltip .tooltip-inner {
+  background: #1f2937 !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.15);
+  font-size: 12px;
+}
+html body .tooltip .tooltip-arrow::before,
+html body .tooltip .arrow::before { border-top-color: #1f2937 !important; border-bottom-color: #1f2937 !important; }
+
+/* Settings gear: visible hover in light and dark, box stays with the icon */
+html body #zu-settings {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: transparent !important;
+  color: var(--text-color) !important;
+}
+html body #zu-settings:hover,
+html body #zu-settings:focus,
+html body #zu-settings:active {
+  background: rgba(127,127,127,.18) !important;
+  color: var(--text-color) !important;
+  outline: none;
+  box-shadow: none;
+}
+html body #zu-settings svg { translate: none !important; left: auto !important; position: static !important; }
+
+
+/* Top-right icons: invisible until positioned, then fade in */
+html body.zu-topnav #zu-settings,
+html body.zu-topnav #zu-bell,
+html body.zu-topnav #zu-user,
+html body.zu-topnav svg[data-zu-bell] { transition: opacity .2s ease; }
+html body.zu-topnav:not(.zu-ready) #zu-settings,
+html body.zu-topnav:not(.zu-ready) #zu-bell,
+html body.zu-topnav:not(.zu-ready) #zu-user { opacity: 0 !important; pointer-events: none; }
+
+/* Gear level with bell and avatar */
+html body.zu-topnav #zu-settings { top: 16px !important; }
+
+/* Tooltips: dark box, white text, in both themes */
+html body .tooltip .tooltip-inner,
+html body [role="tooltip"],
+html body [role="tooltip"] *,
+html body .tippy-box,
+html body .tippy-content {
+  background: #1f2937 !important;
+  color: #fff !important;
+  border: 0;
+}
+html body .tooltip,
+html body .tooltip .tooltip-inner { opacity: 1 !important; }
+
+
+/* zu-veil: page cover while loading */
+html body::before {
+  content: ""; position: fixed; inset: 0; z-index: 99999;
+  background: var(--bg-color, #0b1220);
+  opacity: 1; pointer-events: none; transition: opacity .25s ease;
+}
+html body.zu-ready::before { opacity: 0; }
+html body.zu-ready.zu-switching::before { inset: 64px 0 0 0; opacity: 1; transition: none; }
+
+
+/* zu-sidebar-fixed: sidebar pinned to the window, full height under the top bar */
+html body.zu-topnav .body-sidebar-container {
   position: relative !important;
-  left: 15px !important;
+  top: auto !important;
+  margin-top: 0 !important;
+  width: 251px !important;
+  min-width: 251px !important;
+  flex: 0 0 251px !important;
+  height: auto !important;
+  align-self: stretch !important;
+}
+html body.zu-topnav .body-sidebar-container .body-sidebar {
+  position: fixed !important;
+  top: 64px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 251px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding-top: 8px !important;
+  overflow-y: auto !important;
+  z-index: 10;
+}
+html:has(body.zu-topnav) {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(127,127,127,.55) transparent !important;
+  -ms-overflow-style: auto !important;
+  scroll-padding-top: 72px;
+}
+html:has(body.zu-topnav)::-webkit-scrollbar { display: block !important; width: 8px !important; }
+html:has(body.zu-topnav)::-webkit-scrollbar-thumb { background: rgba(127,127,127,.55); border-radius: 8px; }
+html body.zu-topnav .page-head,
+html body.zu-topnav .page-container.editable-form .page-head:not(#zu-x) {
+  top: 64px !important;
+}
+html body.zu-topnav .form-tabs-list { top: 112.8px !important; }
+/* zu-avatar: two-letter initials, blue, light and dark */
+html body.zu-topnav #zu-user#zu-user {
+  top: 16px !important;
+  right: 18px !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important;
+  background: #1a6fd4 !important;
+  border: 1.5px solid #bfdbfe !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  cursor: pointer;
+}
+html body.zu-topnav #zu-user#zu-user::after {
+  content: "AD";
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  line-height: 1;
+  color: #ffffff;
+}
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-user#zu-user,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) #zu-user#zu-user {
+  background: #1e3a8a !important;
+  border: 1.5px solid #3b82f6 !important;
+  color: #bfdbfe !important;
+}
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) #zu-user#zu-user::after {
+  color: #bfdbfe;
+}
+html body.zu-topnav #zu-user#zu-user:hover {
+  border-color: #60a5fa !important;
+}
+
+/* zu-gear-visible: settings gear stays visible on hover, click and focus */
+html body.zu-topnav #zu-settings,
+html body.zu-topnav #zu-settings:hover,
+html body.zu-topnav #zu-settings:focus,
+html body.zu-topnav #zu-settings:focus-visible,
+html body.zu-topnav #zu-settings:active {
+  color: #334155 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+html body.zu-topnav #zu-settings:hover,
+html body.zu-topnav #zu-settings:focus,
+html body.zu-topnav #zu-settings:active {
+  background: rgba(26, 111, 212, .14) !important;
+}
+html body.zu-topnav #zu-settings svg,
+html body.zu-topnav #zu-settings:hover svg,
+html body.zu-topnav #zu-settings:focus svg,
+html body.zu-topnav #zu-settings:active svg,
+html body.zu-topnav #zu-settings svg * {
+  stroke: currentColor !important;
+  color: inherit !important;
+}
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings:hover,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings:focus,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) body.zu-topnav #zu-settings:active {
+  color: #e2e8f0 !important;
 }
