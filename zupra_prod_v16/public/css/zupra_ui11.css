@@ -1,0 +1,63 @@
+/* Chat button: keep fixed in the bottom-right corner */
+html body #ask-zupra-btn,
+html body #ask-zupra-btn.floating,
+html body.desk-page #ask-zupra-btn,
+html body #ask-zupra-btn:hover,
+html body #ask-zupra-btn:active,
+html body #ask-zupra-btn:focus,
+html body #ask-zupra-btn:focus-visible,
+html body #ask-zupra-btn:focus-within {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  top: auto !important;
+  left: auto !important;
+  margin: 0 !important;
+  transform: none !important;
+  translate: none !important;
+}
+
+/* Settings gear: cancel the bell nudge */
+html body #zu-settings svg {
+  translate: 0 10px !important;
+}
+
+/* old rule below is overridden by the one above */
+html body #zu-settings svg.old {
+  translate: none !important;
+}
+
+/* Chat button: very high specificity so no state class can move it */
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn,
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:hover,
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:active,
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus,
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus-visible {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  top: auto !important;
+  left: auto !important;
+  margin: 0 !important;
+  inset-inline: auto 28px !important;
+  transform: none !important;
+  translate: none !important;
+}
+
+/* Settings gear: no horizontal shift, keep 10px down so it lines up with the bell */
+html body #zu-settings svg,
+html body #zu-settings svg[data-zu-bell] {
+  translate: 0 10px !important;
+}
+
+/* Bell stays at its original position (cancels the earlier shift) */
+html body svg[data-zu-bell]:not(#zu-settings svg) {
+  position: static !important;
+  left: auto !important;
+}
+
+/* Gear sits in the gap just before the bell */
+html body #zu-settings svg {
+  position: relative !important;
+  left: 15px !important;
+}

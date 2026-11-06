@@ -127,3 +127,11 @@
 .body-sidebar .sidebar-item-container.active-sidebar { position: relative; box-shadow: none !important; border-left: 0 !important; }
 .body-sidebar .sidebar-item-container.active-sidebar *, .body-sidebar .sidebar-item-container.active-sidebar .item-anchor, .body-sidebar .sidebar-item-container.active-sidebar .standard-sidebar-item { box-shadow: none !important; border-left: 0 !important; }
 .body-sidebar .sidebar-item-container.active-sidebar::before { content: attr(data-active); position: absolute; z-index: 1; inset-block: 0; inset-inline-start: 0; width: 3px; border-radius: 3px; background: #2879dc; pointer-events: none; }
+
+
+body.zu-topnav .page-container .page-head {
+  position: relative !important;
+  top: 0 !important;
+  inset-block-start: 0 !important;
+  margin-top: 0 !important;
+}
