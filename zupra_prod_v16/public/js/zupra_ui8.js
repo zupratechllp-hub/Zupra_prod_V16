@@ -1,5 +1,6 @@
 (function () {
   try { if (localStorage.zu_topnav === "off") return; } catch (e) {}
+  if (document.body) document.body.classList.add("zu-topnav"); else document.addEventListener("DOMContentLoaded", function () { document.body.classList.add("zu-topnav"); });
   const MORE = ["Organisation structure", "Setup", "Assets", "Quality"];
   function gridIcon() {
     let s = "";
@@ -44,8 +45,26 @@
   }
   let t;
   $(document).ready(function () {
-    setTimeout(run, 800);
-    new MutationObserver(function () { clearTimeout(t); t = setTimeout(run, 250); })
+    setTimeout(run, 0);
+    new MutationObserver(function () { clearTimeout(t); t = setTimeout(run, 50); })
       .observe(document.body, { childList: true, subtree: true });
   });
+})();
+
+(function () {
+  function done() { if (document.body) document.body.classList.add("zu-ready"); }
+  window.addEventListener("load", function () { setTimeout(done, 900); });
+  setTimeout(done, 2500);
+})();
+
+/* zu-veil: cover the page until icons and top-right controls are in place */
+(function () {
+  function ready() { if (document.body) document.body.classList.add("zu-ready"); }
+  function switching() {
+    document.body.classList.add("zu-switching");
+    setTimeout(function () { document.body.classList.remove("zu-switching"); }, 700);
+  }
+  window.addEventListener("load", function () { setTimeout(ready, 1300); });
+  setTimeout(ready, 3500);
+  if (window.$) $(document).on("page-change", switching);
 })();

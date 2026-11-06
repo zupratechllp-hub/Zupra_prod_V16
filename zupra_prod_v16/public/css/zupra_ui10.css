@@ -1,9 +1,5 @@
-cat >> public/css/zupra_ui10.css <<'EOF'
-
 /* remove gray divider lines under logo and utilities box */
 .dock-logo,
 [class*="dock-utilit"] {
   border-bottom: 0 !important;
 }
-EOF
-head -4 public/css/zupra_ui10.css; grep -c "ask-zupra-btn" public/css/zupra_ui10.css; grep -n "cat >>" public/css/zupra_ui10.css
