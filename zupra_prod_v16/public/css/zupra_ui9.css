@@ -60,3 +60,101 @@ html:has(body.zu-topnav)::-webkit-scrollbar, body.zu-topnav::-webkit-scrollbar {
 body.zu-topnav #zu-user { background: transparent !important; border: 0 !important; box-shadow: none !important; }
 html:not([data-theme="dark"]):not([data-theme-mode="dark"]) body:not([data-theme="dark"]):not(.zu-dark):not(.dark) .zu-gear-bg {
   background: #e2e8f2 !important; border: 1px solid #d3dcea !important; border-radius: 10px !important; }
+
+/* Fix: keep the utilities block from stretching full width and pushing the top tabs off-screen */
+body.zu-topnav .dock .dock-utilities {
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+/* Move settings gear out of the search bar edge, into the gap before the bell */
+body.zu-topnav #zu-settings {
+  right: 127px !important;
+}
+
+/* Search popup: open directly under the top search bar, right-aligned to it */
+body.zu-topnav .modal:has(#navbar-search) .modal-dialog {
+  position: fixed !important;
+  top: 60px !important;
+  right: 184px !important;
+  left: auto !important;
+  margin: 0 !important;
+  width: 560px !important;
+  max-width: calc(100vw - 24px) !important;
+}
+
+/* Top search bar: same width as the search popup, growing leftwards (right edge stays put) */
+body.zu-topnav #zu-search {
+  width: 560px !important;
+  max-width: none !important;
+}
+
+/* Top search bar width: stronger selector so it beats the earlier #zu-tools .zu-search rules */
+html body.zu-topnav #zu-tools .zu-search#zu-search {
+  width: 560px !important;
+  max-width: none !important;
+}
+
+/* Settings gear: same row as the bell, in the gap between search bar and bell */
+html body.zu-topnav #zu-settings {
+  right: 127px !important;
+  top: 4px !important;
+  left: auto !important;
+}
+
+/* User avatar: show on every page in top-nav mode (zupra_ui4.css hides it when body lacks .zu-on-ws) */
+html body.zu-topnav #zu-user {
+  display: flex !important;
+}
+html body.zu-topnav #zu-user-menu[style*="block"] {
+  display: block !important;
+}
+
+/* Page header: sticky offset is measured from .main-section (already below the top bar), so use 0 */
+html body.zu-topnav .page-head {
+  top: 0 !important;
+}
+
+/* hide stray gray line from dock utilities */
+body.zu-topnav .dock-utilities { visibility: hidden !important; }
+
+/* remove stray gray line under the logo */
+body.zu-topnav .dock-logo { border-bottom: 0 !important; }
+
+/* Notification bell: icon centered between the settings gear and the user avatar */
+html body.zu-topnav #zu-bell {
+  right: 36.4px !important;
+}
+
+/* Settings gear icon: force it to the center of its box (beats older #zu-settings svg offsets) */
+html body.zu-topnav a#zu-settings svg:not(#zu-x) {
+  position: relative !important;
+  left: 0 !important;
+  right: auto !important;
+  top: -10px !important;
+  margin: 0 !important;
+  translate: none !important;
+  transform: none !important;
+}
+
+/* Settings gear icon: same row as bell and avatar, bell centered between gear and avatar */
+html body.zu-topnav a#zu-settings svg:not(#zu-x) {
+  position: relative !important;
+  top: 10px !important;
+  left: 14.2px !important;
+  right: auto !important;
+  margin: 0 !important;
+  translate: none !important;
+  transform: none !important;
+}
+
+/* Form: page header and tab bar both sticky under the top bar while the form scrolls */
+html body.zu-topnav .page-head { position: sticky !important; top: 0 !important; z-index: 6 !important; }
+html body.zu-topnav .form-tabs-list { top: 48.8px !important; z-index: 5 !important; }
+
+/* Form pages: page header sticky (beats body.zu-topnav .page-container .page-head { position: relative } in zupra_prod_v16.css) */
+html body.zu-topnav .page-container.editable-form .page-head:not(#zu-x) {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 6 !important;
+}
