@@ -235,3 +235,7 @@ html body.zu-topnav .page-container.editable-form .page-head:not(#zu-x) {
 html body.zu-topnav .form-tabs-list {
   top: 48.8px !important;
 }
+/* zu-even-spacing: gear to bell and bell to avatar gaps equal */
+html body.zu-topnav #zu-settings {
+  right: 112px !important;
+}

@@ -349,4 +349,4 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dar
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=13"]
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui10.css?v=2"]
 
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=11"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=12"]
