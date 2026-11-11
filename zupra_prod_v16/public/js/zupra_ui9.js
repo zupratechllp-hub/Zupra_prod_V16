@@ -75,7 +75,7 @@
     var ur = u.getBoundingClientRect();
     if (!ur.width) return;
     document.querySelectorAll("svg").forEach(function (s) {
-      if (u.contains(s) || s.closest("#zu-tools, #ask-zupra-btn, .body-sidebar, .zu-side-icon, #zu-user-menu")) return;
+      if (u.contains(s) || s.closest("#zu-tools, #zu-bell, #zu-settings, #ask-zupra-btn, .body-sidebar, .zu-side-icon, #zu-user-menu")) return;
       var r = s.getBoundingClientRect();
       if (!r.width || r.top > 70 || r.left < ur.left - 100) return;
       if (r.right > ur.left - 14) {
@@ -96,7 +96,7 @@
   function bell() {
     document.querySelectorAll("svg").forEach(function (s) {
       if (s.dataset.zuBell) return;
-      if (s.closest("#ask-zupra-btn, .body-sidebar, .zu-search, #zu-user-menu, .zu-side-icon")) return;
+      if (s.closest("#zu-bell, #zu-settings, #ask-zupra-btn, .body-sidebar, .zu-search, #zu-user-menu, .zu-side-icon")) return;
       var r = s.getBoundingClientRect();
       if (!r.width || r.top > 70 || r.left < innerWidth - 170) return;
       s.dataset.zuBell = "1";

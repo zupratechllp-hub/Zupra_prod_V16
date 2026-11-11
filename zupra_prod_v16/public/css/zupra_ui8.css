@@ -13,17 +13,20 @@ body.zu-topnav .dock-items { display: flex !important; flex-direction: row !impo
   overflow: visible !important; }
 body.zu-topnav .dock-item { display: inline-flex !important; align-items: center; width: auto !important;
   height: 40px !important; padding: 0 14px !important; border: none !important; border-radius: 10px;
-  background: transparent !important; box-shadow: none !important; color: var(--text-color, #0f172a); }
+  background: transparent !important; box-shadow: none !important; color: var(--text-color, #0f172a);
+  transition: background-color 0.15s ease, color 0.15s ease !important; cursor: pointer !important; }
 body.zu-topnav .dock-item .dock-item-icon { display: none !important; }
 body.zu-topnav .dock-item .dock-item-label { display: inline !important; position: static !important; opacity: 1 !important;
   width: auto !important; transform: none !important; font-size: 15px; font-weight: 600; white-space: nowrap; color: inherit; }
-body.zu-topnav .dock-item:hover { background: rgba(255,255,255,.08) !important; }
+body.zu-topnav .dock-item:hover { background: #f1f5f9 !important; color: #0f172a !important; }
 body.zu-topnav .dock-item.active { background: transparent !important; color: #1a6fd4; }
+body.zu-topnav .dock-item.active:hover { background: rgba(26, 111, 212, 0.08) !important; color: #1a6fd4 !important; }
 body.zu-topnav .dock-item.zu-more { display: none !important; }
 #zu-grid { display: none; }
 body.zu-topnav #zu-grid { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-  margin-left: 6px; border: none; border-radius: 10px; background: transparent; color: var(--text-color, #0f172a); cursor: pointer; }
-body.zu-topnav #zu-grid:hover, body.zu-topnav #zu-grid.on { background: rgba(255,255,255,.08); color: #1a6fd4; }
+  margin-left: 6px; border: none; border-radius: 10px; background: transparent; color: var(--text-color, #0f172a); cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease !important; }
+body.zu-topnav #zu-grid:hover, body.zu-topnav #zu-grid.on { background: #f1f5f9; color: #1a6fd4; }
 #zu-grid-menu { position: fixed; display: none; min-width: 220px; padding: 6px; z-index: 3100; background: var(--fg-color, #11182b);
   border: 1px solid var(--border-color, #26304a); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }
 #zu-grid-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--text-color, #e6ebf5); }
@@ -45,7 +48,21 @@ body.zu-topnav #zu-tools .zu-search { right: 170px !important; }
 body.zu-topnav .body-sidebar-container { top: 0 !important; margin-top: 0 !important; }
 body.zu-topnav.zu-on-ws .page-head { display: none !important; }
 body.zu-topnav:not(.zu-on-ws) .page-head { top: 0 !important; }
-body.zu-topnav .dock-divider, body.zu-topnav .dock-separator, body.zu-topnav #desk-dock hr { display: none !important; }
+body.zu-topnav .dock-divider,
+body.zu-topnav .dock-separator,
+body.zu-topnav #desk-dock hr,
+body.zu-topnav .dock-items::before,
+body.zu-topnav .dock-logo + .dock-items::before,
+body.zu-topnav #desk-dock .dock-items::before,
+body.zu-topnav .dock-items::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
 body.zu-topnav .dock-item[aria-label="Organisation structure"],
 body.zu-topnav .dock-item[aria-label="Setup"],
 body.zu-topnav .dock-item[aria-label="Assets"],

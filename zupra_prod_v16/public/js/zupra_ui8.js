@@ -2,6 +2,34 @@
   try { if (localStorage.zu_topnav === "off") return; } catch (e) {}
   if (document.body) document.body.classList.add("zu-topnav"); else document.addEventListener("DOMContentLoaded", function () { document.body.classList.add("zu-topnav"); });
   const MORE = ["Organisation structure", "Setup", "Assets", "Quality"];
+
+  if (window.frappe && frappe.ui && frappe.ui.sidebar && frappe.ui.sidebar.Dock) {
+    frappe.ui.sidebar.Dock.prototype.name_tile = function () {};
+  }
+
+  function killDockTooltips() {
+    try {
+      if (window.frappe && frappe.app && frappe.app.sidebar && frappe.app.sidebar.dock) {
+        var d = frappe.app.sidebar.dock;
+        d.name_tile = function () {};
+        if (d.tooltips && d.tooltips.length) {
+          d.tooltips.forEach(function (t) { try { t.destroy(); } catch (err) {} });
+          d.tooltips = [];
+        }
+      }
+    } catch (err) {}
+    document.querySelectorAll("#desk-dock .dock-item, .dock-items .dock-item").forEach(function (b) {
+      b.removeAttribute("title");
+      if (window.$) {
+        var tip = $(b).data("es-tooltip");
+        if (tip) {
+          try { tip.destroy(); } catch (err) {}
+          $(b).removeData("es-tooltip");
+        }
+      }
+    });
+  }
+
   function gridIcon() {
     let s = "";
     [5, 12, 19].forEach(function (y) {
@@ -11,6 +39,7 @@
   }
   function items() { return [...document.querySelectorAll("#desk-dock .dock-items .dock-item")]; }
   function run() {
+    killDockTooltips();
     const its = items();
     if (!its.length) return;
     its.forEach(function (b) { b.classList.toggle("zu-more", MORE.indexOf(b.getAttribute("aria-label")) > -1); });
