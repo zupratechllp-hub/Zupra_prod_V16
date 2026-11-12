@@ -45,6 +45,8 @@ html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus-visible
 html body svg[data-zu-bell]:not(#zu-settings svg) {
   position: static !important;
   left: auto !important;
+  translate: none !important;
+  transform: none !important;
 }
 
 
@@ -97,13 +99,16 @@ html body .tooltip .tooltip-inner,
 html body [role="tooltip"],
 html body [role="tooltip"] *,
 html body .tippy-box,
-html body .tippy-content {
+html body .tippy-content,
+html body .es-tooltip {
   background: #1f2937 !important;
   color: #fff !important;
   border: 0;
+  z-index: 99999 !important;
 }
 html body .tooltip,
-html body .tooltip .tooltip-inner { opacity: 1 !important; }
+html body .tooltip .tooltip-inner,
+html body .es-tooltip { opacity: 1 !important; }
 
 
 /* zu-veil: page cover while loading */
