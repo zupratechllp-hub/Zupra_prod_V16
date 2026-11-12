@@ -126,9 +126,9 @@ html body.zu-topnav .body-sidebar-container {
   position: relative !important;
   top: auto !important;
   margin-top: 0 !important;
-  width: 251px !important;
-  min-width: 251px !important;
-  flex: 0 0 251px !important;
+  width: var(--zu-sb-w, 251px) !important;
+  min-width: var(--zu-sb-w, 251px) !important;
+  flex: 0 0 var(--zu-sb-w, 251px) !important;
   height: auto !important;
   align-self: stretch !important;
 }
@@ -137,7 +137,7 @@ html body.zu-topnav .body-sidebar-container .body-sidebar {
   top: 64px !important;
   bottom: 0 !important;
   left: 0 !important;
-  width: 251px !important;
+  width: var(--zu-sb-w, 251px) !important;
   height: auto !important;
   margin: 0 !important;
   padding-top: 8px !important;
@@ -177,7 +177,7 @@ html body.zu-topnav #zu-user#zu-user {
   cursor: pointer;
 }
 html body.zu-topnav #zu-user#zu-user::after {
-  content: "AD";
+  content: var(--zu-initials, "AD");
   position: absolute;
   inset: 0;
   display: grid;
@@ -475,3 +475,88 @@ body.zu-topnav .dock-separator {
   padding: 0 !important;
   border: none !important;
 }
+
+/* zu-no-sidebar-line: remove the line that shows when you hover the sidebar edge */
+html body.zu-topnav .body-sidebar-container [class*="resiz"],
+html body.zu-topnav .body-sidebar-container [class*="handle"],
+html body.zu-topnav .body-sidebar-container::after,
+html body.zu-topnav .body-sidebar::after {
+  display: none !important;
+}
+html body.zu-topnav .body-sidebar {
+  border-right: 0 !important;
+}
+
+/* zu-no-guide: hide the "Keep track of your stock / steps done" guide section */
+html body .onboarding-widget-box,
+html body .widget.onboarding-widget-box,
+html body .layout-main-section [class*="onboarding"] {
+  display: none !important;
+}
+
+/* zu-sidebar-edge: one clean line at the real end of the sidebar */
+html body.zu-topnav .body-sidebar-container,
+html body.zu-topnav .body-sidebar-container::before,
+html body.zu-topnav .body-sidebar-container::after {
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+html body.zu-topnav .body-sidebar {
+  width: var(--zu-sb-w, 251px) !important;
+  border-right: 0 !important;
+}
+
+/* zu-sidebar-edge-2: same selector as zu-sidebar-fixed so this width and line win */
+html body.zu-topnav .body-sidebar-container .body-sidebar {
+  width: var(--zu-sb-w, 251px) !important;
+  border-right: 0 !important;
+}
+
+/* zu-sb-resizer: invisible drag handle on the sidebar edge */
+#zu-sb-resizer {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: calc(var(--zu-sb-w, 251px) - 3px);
+  width: 6px;
+  cursor: col-resize;
+  z-index: 20;
+  background: transparent;
+  display: none;
+}
+html body.zu-topnav #zu-sb-resizer.zu-show { display: block; }
+#zu-sb-resizer.zu-dragging { background: rgba(26, 111, 212, .35); }
+
+/* zu-sb-collapsed: click the sidebar edge to hide it; the small tab brings it back */
+html.zu-sb-collapsed body.zu-topnav .body-sidebar-container {
+  width: 0 !important;
+  min-width: 0 !important;
+  flex: 0 0 0 !important;
+}
+html.zu-sb-collapsed body.zu-topnav .body-sidebar-container .body-sidebar {
+  display: none !important;
+}
+html.zu-sb-collapsed body.zu-topnav #zu-sb-resizer {
+  display: none !important;
+}
+#zu-sb-open {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 96px;
+  width: 18px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 30;
+  color: var(--text-color, #e2e8f0);
+  background: var(--fg-color, #11182b);
+  border: 1px solid var(--border-color, rgba(127,127,127,.35));
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+}
+html.zu-sb-collapsed body.zu-topnav #zu-sb-open { display: flex; }
