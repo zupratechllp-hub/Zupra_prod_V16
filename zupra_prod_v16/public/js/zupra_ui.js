@@ -31,7 +31,7 @@ d.innerHTML =
 '<div class="zu-search" id="zu-search">' +
 '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>' +
 "<span>Search or jump to...</span><kbd>Ctrl K</kbd></div>" +
-'<button class="zu-bell" id="zu-bell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 003.4 0"/></svg></button>' +
+'<button class="zu-bell" id="zu-bell" title="Notification" aria-label="Notification"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 003.4 0"/></svg></button>' +
 '<button class="zu-new" id="zu-new">+ New</button>';
 document.body.appendChild(d);
 
@@ -47,6 +47,7 @@ document.body.appendChild(menu);
 
 document.getElementById("zu-search").onclick = () => proxyClick("Search");
 document.getElementById("zu-bell").onclick = () => proxyClick("Notification");
+setupTooltip();
 document.getElementById("zu-new").onclick = (e) => {
 e.stopPropagation();
 menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -54,9 +55,28 @@ menu.style.display = menu.style.display === "block" ? "none" : "block";
 document.addEventListener("click", () => (menu.style.display = "none"));
 }
 
+function setupTooltip() {
+  const bell = document.getElementById("zu-bell");
+  if (!bell) return;
+  if (!bell.getAttribute("title")) bell.setAttribute("title", "Notification");
+  if (!bell.getAttribute("aria-label")) bell.setAttribute("aria-label", "Notification");
+  if (!bell.dataset.zuTooltip && window.frappe && frappe.ui && frappe.ui.tooltip) {
+    try {
+      frappe.ui.tooltip(bell, { text: "Notification", side: "bottom" });
+      bell.dataset.zuTooltip = "1";
+    } catch (e) {}
+  } else if (!bell.dataset.zuTooltip && window.$ && $.fn && $.fn.tooltip) {
+    try {
+      $(bell).tooltip({ title: "Notification", placement: "bottom", trigger: "hover" });
+      bell.dataset.zuTooltip = "1";
+    } catch (e) {}
+  }
+}
+
 let t;
 function refresh() {
 build();
+setupTooltip();
 markItem(findByText("Search"));
 markItem(findByText("Notification"));
 document.body.classList.toggle("zu-on-ws", onWorkspace());

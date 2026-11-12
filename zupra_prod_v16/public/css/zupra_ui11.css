@@ -45,6 +45,8 @@ html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus-visible
 html body svg[data-zu-bell]:not(#zu-settings svg) {
   position: static !important;
   left: auto !important;
+  translate: none !important;
+  transform: none !important;
 }
 
 
@@ -97,13 +99,16 @@ html body .tooltip .tooltip-inner,
 html body [role="tooltip"],
 html body [role="tooltip"] *,
 html body .tippy-box,
-html body .tippy-content {
+html body .tippy-content,
+html body .es-tooltip {
   background: #1f2937 !important;
   color: #fff !important;
   border: 0;
+  z-index: 99999 !important;
 }
 html body .tooltip,
-html body .tooltip .tooltip-inner { opacity: 1 !important; }
+html body .tooltip .tooltip-inner,
+html body .es-tooltip { opacity: 1 !important; }
 
 
 /* zu-veil: page cover while loading */
@@ -238,4 +243,235 @@ html body.zu-topnav .form-tabs-list {
 /* zu-even-spacing: gear to bell and bell to avatar gaps equal */
 html body.zu-topnav #zu-settings {
   right: 112px !important;
+}
+
+/* Match the notification control to the settings control's footprint, interaction, and styling. */
+html body.zu-topnav #zu-bell,
+html body.zu-topnav button#zu-bell,
+html body #zu-tools #zu-bell,
+html body #zu-bell,
+html body button#zu-bell {
+  box-sizing: border-box !important;
+  position: fixed !important;
+  top: 16px !important;
+  right: 64px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 3500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transform: none !important;
+  translate: none !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+html body.zu-topnav #zu-bell:hover,
+html body.zu-topnav #zu-bell:focus,
+html body.zu-topnav #zu-bell:focus-visible,
+html body.zu-topnav #zu-bell:active,
+html body #zu-tools #zu-bell:hover,
+html body #zu-tools #zu-bell:focus,
+html body #zu-tools #zu-bell:active,
+html body #zu-bell:hover,
+html body #zu-bell:focus,
+html body #zu-bell:active {
+  background: rgba(26, 111, 212, .14) !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+html body.zu-topnav #zu-bell svg,
+html body #zu-tools #zu-bell svg,
+html body #zu-bell svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  translate: none !important;
+  transform: none !important;
+  stroke: currentColor !important;
+  color: inherit !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+html body.zu-topnav #zu-bell svg *,
+html body #zu-tools #zu-bell svg *,
+html body #zu-bell svg * {
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+}
+
+html body.zu-topnav #zu-bell .notification-count,
+html body #zu-tools #zu-bell .notification-count {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-tools #zu-bell,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-bell {
+  color: #e2e8f0 !important;
+  background: transparent !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:focus,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:active,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-tools #zu-bell:hover {
+  color: #e2e8f0 !important;
+  background: rgba(148, 163, 184, .12) !important;
+}
+
+/* Native Frappe notification control fallback */
+html body.zu-topnav .desktop-notifications .desktop-notification-icon {
+  box-sizing: border-box !important;
+  position: fixed !important;
+  top: 16px !important;
+  right: 64px !important;
+  left: auto !important;
+  z-index: 3500 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  translate: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:hover,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:focus,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:focus-visible,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:active {
+  background: rgba(26, 111, 212, .14) !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon > svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  position: static !important;
+  translate: none !important;
+  transform: none !important;
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon > svg * {
+  stroke: currentColor !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon .notification-count {
+  top: 4px !important;
+  right: 4px !important;
+}
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:focus,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:active {
+  color: #e2e8f0 !important;
+  background: rgba(148, 163, 184, .12) !important;
+}
+
+/* Top navigation items: hover background effect & smooth transition */
+body.zu-topnav #desk-dock .dock-item,
+body.zu-topnav .dock-items .dock-item {
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+  cursor: pointer !important;
+}
+
+body.zu-topnav #desk-dock .dock-item:hover,
+body.zu-topnav .dock-items .dock-item:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+body.zu-topnav #desk-dock .dock-item.active,
+body.zu-topnav .dock-items .dock-item.active {
+  color: #1a6fd4 !important;
+}
+
+body.zu-topnav #desk-dock .dock-item.active:hover,
+body.zu-topnav .dock-items .dock-item.active:hover {
+  background: rgba(26, 111, 212, 0.08) !important;
+  color: #1a6fd4 !important;
+}
+
+body.zu-topnav #zu-grid:hover,
+body.zu-topnav #zu-grid.on {
+  background: #f1f5f9 !important;
+  color: #1a6fd4 !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+/* Dark theme top navigation item hover */
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #desk-dock .dock-item:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .dock-items .dock-item:hover {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #desk-dock .dock-item.active:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .dock-items .dock-item.active:hover {
+  background: rgba(26, 111, 212, 0.18) !important;
+  color: #60a5fa !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-grid:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-grid.on {
+  background: #1e293b !important;
+  color: #60a5fa !important;
+}
+
+/* Remove stray divider dash on the left of Accounts / dock items */
+body.zu-topnav .dock-items::before,
+body.zu-topnav .dock-logo + .dock-items::before,
+body.zu-topnav #desk-dock .dock-items::before,
+body.zu-topnav .dock-items::after,
+body.zu-topnav #desk-dock hr,
+body.zu-topnav .dock-divider,
+body.zu-topnav .dock-separator {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
