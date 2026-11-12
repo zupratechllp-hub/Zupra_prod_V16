@@ -334,8 +334,8 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=1"]
 
 # Zupra UI restyle - Round 10 (top navigation)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=4"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=4"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=6"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=1794483663"]
 
 # Zupra UI restyle - Round 11 (sidebar icons, top bar polish)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=1793948586"]
@@ -349,4 +349,4 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dar
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=13"]
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui10.css?v=2"]
 
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=12"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=1794483663"]

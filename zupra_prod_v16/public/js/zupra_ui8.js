@@ -68,3 +68,112 @@
   setTimeout(ready, 3500);
   if (window.$) $(document).on("page-change", switching);
 })();
+
+/* zu-initials: avatar shows the first two initials of the logged-in user */
+(function () {
+  function initials() {
+    var s = (window.frappe && frappe.session) || {};
+    var name = String(s.user_fullname || "").trim();
+    if (!name || name.toLowerCase() === "guest") {
+      name = String(s.user || "").split("@")[0].replace(/[0-9]+/g, " ");
+    }
+    var parts = name.split(/[\s._-]+/).filter(Boolean);
+    var out = parts.length > 1 ? parts[0].charAt(0) + parts[parts.length - 1].charAt(0) : (parts[0] || "U").slice(0, 2);
+    return out.toUpperCase().replace(/["\\]/g, "");
+  }
+  function apply() {
+    document.documentElement.style.setProperty("--zu-initials", '"' + initials() + '"');
+  }
+  apply();
+  if (window.$) $(document).ready(apply);
+  setTimeout(apply, 1500);
+})();
+
+/* zu-sb-drag: drag the sidebar edge to resize; width is saved in this browser */
+(function () {
+  var MIN = 200, MAX = 420, DEF = 251, KEY = "zu_sb_w";
+  var root = document.documentElement;
+  function setW(w) { root.style.setProperty("--zu-sb-w", Math.round(w) + "px"); }
+  var saved = 0;
+  try { saved = parseInt(localStorage.getItem(KEY), 10) || 0; } catch (e) {}
+  if (saved >= MIN && saved <= MAX) setW(saved);
+
+  function build() {
+    if (document.getElementById("zu-sb-resizer") || !document.body) return;
+    var h = document.createElement("div");
+    h.id = "zu-sb-resizer";
+    h.title = "Drag to resize, double-click to reset";
+    document.body.appendChild(h);
+    var dragging = false;
+    h.addEventListener("mousedown", function (e) {
+      dragging = true;
+      h.classList.add("zu-dragging");
+      document.body.style.userSelect = "none";
+      document.body.style.cursor = "col-resize";
+      e.preventDefault();
+    });
+    document.addEventListener("mousemove", function (e) {
+      if (!dragging) return;
+      setW(Math.max(MIN, Math.min(MAX, e.clientX)));
+    });
+    document.addEventListener("mouseup", function () {
+      if (!dragging) return;
+      dragging = false;
+      h.classList.remove("zu-dragging");
+      document.body.style.userSelect = "";
+      document.body.style.cursor = "";
+      try { localStorage.setItem(KEY, parseInt(getComputedStyle(root).getPropertyValue("--zu-sb-w"), 10)); } catch (e) {}
+    });
+    h.addEventListener("dblclick", function () {
+      setW(DEF);
+      try { localStorage.removeItem(KEY); } catch (e) {}
+    });
+  }
+  function sync() {
+    build();
+    var h = document.getElementById("zu-sb-resizer");
+    var sb = document.querySelector(".body-sidebar");
+    if (h) h.classList.toggle("zu-show", !!(sb && sb.offsetWidth > 0));
+  }
+  if (window.$) $(document).ready(sync); else document.addEventListener("DOMContentLoaded", sync);
+  setInterval(sync, 1000);
+})();
+
+
+/* zu-sb-toggle: click the sidebar edge to hide it; the small tab brings it back */
+(function () {
+  var KEY = "zu_sb_hidden", root = document.documentElement, tm;
+  function setHidden(v) {
+    root.classList.toggle("zu-sb-collapsed", v);
+    try { if (v) localStorage.setItem(KEY, "1"); else localStorage.removeItem(KEY); } catch (e) {}
+  }
+  try { if (localStorage.getItem(KEY) === "1") root.classList.add("zu-sb-collapsed"); } catch (e) {}
+  function build() {
+    if (!document.body) return;
+    var h = document.getElementById("zu-sb-resizer");
+    if (h && !h.dataset.zuClick) {
+      h.dataset.zuClick = "1";
+      var x0 = null;
+      h.addEventListener("mousedown", function (e) { x0 = e.clientX; });
+      document.addEventListener("mouseup", function (e) {
+        if (x0 !== null && Math.abs(e.clientX - x0) < 4) {
+          clearTimeout(tm);
+          tm = setTimeout(function () { setHidden(true); }, 250);
+        }
+        x0 = null;
+      });
+      h.addEventListener("dblclick", function () { clearTimeout(tm); });
+    }
+    if (!document.getElementById("zu-sb-open")) {
+      var b = document.createElement("button");
+      b.id = "zu-sb-open";
+      b.type = "button";
+      b.title = "Show sidebar";
+      b.textContent = "\u203A";
+      b.addEventListener("click", function () { setHidden(false); });
+      document.body.appendChild(b);
+    }
+  }
+  if (window.$) $(document).ready(build); else document.addEventListener("DOMContentLoaded", build);
+  setInterval(build, 1000);
+})();

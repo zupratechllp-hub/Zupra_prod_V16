@@ -121,9 +121,9 @@ html body.zu-topnav .body-sidebar-container {
   position: relative !important;
   top: auto !important;
   margin-top: 0 !important;
-  width: 251px !important;
-  min-width: 251px !important;
-  flex: 0 0 251px !important;
+  width: var(--zu-sb-w, 251px) !important;
+  min-width: var(--zu-sb-w, 251px) !important;
+  flex: 0 0 var(--zu-sb-w, 251px) !important;
   height: auto !important;
   align-self: stretch !important;
 }
@@ -132,7 +132,7 @@ html body.zu-topnav .body-sidebar-container .body-sidebar {
   top: 64px !important;
   bottom: 0 !important;
   left: 0 !important;
-  width: 251px !important;
+  width: var(--zu-sb-w, 251px) !important;
   height: auto !important;
   margin: 0 !important;
   padding-top: 8px !important;
@@ -172,7 +172,7 @@ html body.zu-topnav #zu-user#zu-user {
   cursor: pointer;
 }
 html body.zu-topnav #zu-user#zu-user::after {
-  content: "AD";
+  content: var(--zu-initials, "AD");
   position: absolute;
   inset: 0;
   display: grid;
@@ -239,3 +239,319 @@ html body.zu-topnav .form-tabs-list {
 html body.zu-topnav #zu-settings {
   right: 112px !important;
 }
+
+/* Match the notification control to the settings control's footprint, interaction, and styling. */
+html body.zu-topnav #zu-bell,
+html body.zu-topnav button#zu-bell,
+html body #zu-tools #zu-bell,
+html body #zu-bell,
+html body button#zu-bell {
+  box-sizing: border-box !important;
+  position: fixed !important;
+  top: 16px !important;
+  right: 64px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 3500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transform: none !important;
+  translate: none !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+html body.zu-topnav #zu-bell:hover,
+html body.zu-topnav #zu-bell:focus,
+html body.zu-topnav #zu-bell:focus-visible,
+html body.zu-topnav #zu-bell:active,
+html body #zu-tools #zu-bell:hover,
+html body #zu-tools #zu-bell:focus,
+html body #zu-tools #zu-bell:active,
+html body #zu-bell:hover,
+html body #zu-bell:focus,
+html body #zu-bell:active {
+  background: rgba(26, 111, 212, .14) !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+html body.zu-topnav #zu-bell svg,
+html body #zu-tools #zu-bell svg,
+html body #zu-bell svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  translate: none !important;
+  transform: none !important;
+  stroke: currentColor !important;
+  color: inherit !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+html body.zu-topnav #zu-bell svg *,
+html body #zu-tools #zu-bell svg *,
+html body #zu-bell svg * {
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+}
+
+html body.zu-topnav #zu-bell .notification-count,
+html body #zu-tools #zu-bell .notification-count {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-tools #zu-bell,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-bell {
+  color: #e2e8f0 !important;
+  background: transparent !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:focus,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-bell:active,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) #zu-tools #zu-bell:hover {
+  color: #e2e8f0 !important;
+  background: rgba(148, 163, 184, .12) !important;
+}
+
+/* Native Frappe notification control fallback */
+html body.zu-topnav .desktop-notifications .desktop-notification-icon {
+  box-sizing: border-box !important;
+  position: fixed !important;
+  top: 16px !important;
+  right: 64px !important;
+  left: auto !important;
+  z-index: 3500 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  translate: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:hover,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:focus,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:focus-visible,
+html body.zu-topnav .desktop-notifications .desktop-notification-icon:active {
+  background: rgba(26, 111, 212, .14) !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon > svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  position: static !important;
+  translate: none !important;
+  transform: none !important;
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon > svg * {
+  stroke: currentColor !important;
+}
+html body.zu-topnav .desktop-notifications .desktop-notification-icon .notification-count {
+  top: 4px !important;
+  right: 4px !important;
+}
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:focus,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .desktop-notifications .desktop-notification-icon:active {
+  color: #e2e8f0 !important;
+  background: rgba(148, 163, 184, .12) !important;
+}
+
+/* Top navigation items: hover background effect & smooth transition */
+body.zu-topnav #desk-dock .dock-item,
+body.zu-topnav .dock-items .dock-item {
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+  cursor: pointer !important;
+}
+
+body.zu-topnav #desk-dock .dock-item:hover,
+body.zu-topnav .dock-items .dock-item:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+body.zu-topnav #desk-dock .dock-item.active,
+body.zu-topnav .dock-items .dock-item.active {
+  color: #1a6fd4 !important;
+}
+
+body.zu-topnav #desk-dock .dock-item.active:hover,
+body.zu-topnav .dock-items .dock-item.active:hover {
+  background: rgba(26, 111, 212, 0.08) !important;
+  color: #1a6fd4 !important;
+}
+
+body.zu-topnav #zu-grid:hover,
+body.zu-topnav #zu-grid.on {
+  background: #f1f5f9 !important;
+  color: #1a6fd4 !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+/* Dark theme top navigation item hover */
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #desk-dock .dock-item:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .dock-items .dock-item:hover {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #desk-dock .dock-item.active:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav .dock-items .dock-item.active:hover {
+  background: rgba(26, 111, 212, 0.18) !important;
+  color: #60a5fa !important;
+}
+
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-grid:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) body.zu-topnav #zu-grid.on {
+  background: #1e293b !important;
+  color: #60a5fa !important;
+}
+
+/* Remove stray divider dash on the left of Accounts / dock items */
+body.zu-topnav .dock-items::before,
+body.zu-topnav .dock-logo + .dock-items::before,
+body.zu-topnav #desk-dock .dock-items::before,
+body.zu-topnav .dock-items::after,
+body.zu-topnav #desk-dock hr,
+body.zu-topnav .dock-divider,
+body.zu-topnav .dock-separator {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* zu-no-sidebar-line: remove the line that shows when you hover the sidebar edge */
+html body.zu-topnav .body-sidebar-container [class*="resiz"],
+html body.zu-topnav .body-sidebar-container [class*="handle"],
+html body.zu-topnav .body-sidebar-container::after,
+html body.zu-topnav .body-sidebar::after {
+  display: none !important;
+}
+html body.zu-topnav .body-sidebar {
+  border-right: 0 !important;
+}
+
+/* zu-no-guide: hide the "Keep track of your stock / steps done" guide section */
+html body .onboarding-widget-box,
+html body .widget.onboarding-widget-box,
+html body .layout-main-section [class*="onboarding"] {
+  display: none !important;
+}
+
+/* zu-sidebar-edge: one clean line at the real end of the sidebar */
+html body.zu-topnav .body-sidebar-container,
+html body.zu-topnav .body-sidebar-container::before,
+html body.zu-topnav .body-sidebar-container::after {
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+html body.zu-topnav .body-sidebar {
+  width: var(--zu-sb-w, 251px) !important;
+  border-right: 0 !important;
+}
+
+/* zu-sidebar-edge-2: same selector as zu-sidebar-fixed so this width and line win */
+html body.zu-topnav .body-sidebar-container .body-sidebar {
+  width: var(--zu-sb-w, 251px) !important;
+  border-right: 0 !important;
+}
+
+/* zu-sb-resizer: invisible drag handle on the sidebar edge */
+#zu-sb-resizer {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: calc(var(--zu-sb-w, 251px) - 3px);
+  width: 6px;
+  cursor: col-resize;
+  z-index: 20;
+  background: transparent;
+  display: none;
+}
+html body.zu-topnav #zu-sb-resizer.zu-show { display: block; }
+#zu-sb-resizer.zu-dragging { background: rgba(26, 111, 212, .35); }
+
+/* zu-sb-collapsed: click the sidebar edge to hide it; the small tab brings it back */
+html.zu-sb-collapsed body.zu-topnav .body-sidebar-container {
+  width: 0 !important;
+  min-width: 0 !important;
+  flex: 0 0 0 !important;
+}
+html.zu-sb-collapsed body.zu-topnav .body-sidebar-container .body-sidebar {
+  display: none !important;
+}
+html.zu-sb-collapsed body.zu-topnav #zu-sb-resizer {
+  display: none !important;
+}
+#zu-sb-open {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 96px;
+  width: 18px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 30;
+  color: var(--text-color, #e2e8f0);
+  background: var(--fg-color, #11182b);
+  border: 1px solid var(--border-color, rgba(127,127,127,.35));
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+}
+html.zu-sb-collapsed body.zu-topnav #zu-sb-open { display: flex; }
