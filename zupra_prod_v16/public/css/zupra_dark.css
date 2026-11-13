@@ -667,6 +667,10 @@ html[data-theme=dark] #zu-grid-menu div:hover {
   background: #131f35 !important;
   color: #edf2f9 !important;
 }
+html[data-theme=dark] #zu-grid-menu div.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
 
 
 /* ═══════════════════════════════════════════════════════════════════════════

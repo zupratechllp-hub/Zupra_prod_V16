@@ -27,10 +27,12 @@ body.zu-topnav #zu-grid { display: inline-flex; align-items: center; justify-con
   margin-left: 6px; border: none; border-radius: 10px; background: transparent; color: var(--text-color, #0f172a); cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease !important; }
 body.zu-topnav #zu-grid:hover, body.zu-topnav #zu-grid.on { background: #f1f5f9; color: #1a6fd4; }
-#zu-grid-menu { position: fixed; display: none; min-width: 220px; padding: 6px; z-index: 3100; background: var(--fg-color, #11182b);
-  border: 1px solid var(--border-color, #26304a); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }
-#zu-grid-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--text-color, #e6ebf5); }
-#zu-grid-menu div:hover { background: rgba(255,255,255,.12); color: var(--text-color, #fff); }
+#zu-grid-menu { position: fixed; display: none; min-width: 220px; padding: 6px; z-index: 3100; background: var(--fg-color, #fff);
+  border: 1px solid var(--border-color, #e2e8f0); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }
+#zu-grid-menu div { padding: 9px 12px; border-radius: 8px; font-size: 14px; cursor: pointer; color: var(--text-color, #0f172a);
+  transition: background-color 0.15s ease, color 0.15s ease !important; }
+#zu-grid-menu div:hover { background: #f1f5f9; color: var(--text-color, #0f172a); }
+#zu-grid-menu div.active { color: #1a6fd4 !important; font-weight: 600; }
 body.zu-topnav #zu-user { top: 14px !important; right: 20px !important; }
 body.zu-topnav #zu-user-menu { top: 56px !important; right: 20px !important; }
 body.zu-topnav #ask-zupra-btn { top: 12px !important; right: 66px !important; }
