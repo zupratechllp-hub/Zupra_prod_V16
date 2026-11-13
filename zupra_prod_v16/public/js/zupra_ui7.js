@@ -98,8 +98,11 @@
   let t;
   function run() { rows(); heads(); }
   $(document).ready(function () {
-    setTimeout(run, 1600);
-    new MutationObserver(() => { clearTimeout(t); t = setTimeout(run, 400); })
-      .observe(document.body, { childList: true, subtree: true });
+    run();
+    let raf = 0;
+    new MutationObserver(() => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; run(); });
+    }).observe(document.body, { childList: true, subtree: true });
   });
 })();
