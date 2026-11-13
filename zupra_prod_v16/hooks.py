@@ -334,8 +334,8 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=1"]
 
 # Zupra UI restyle - Round 10 (top navigation)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=6"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=1794483663"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=8"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=1794572800"]
 
 # Zupra UI restyle - Round 11 (sidebar icons, top bar polish)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=1793948586"]
@@ -343,7 +343,7 @@ app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui9.js
 
 
 # Zupra Dark Theme overrides (must come last so it wins specificity battles)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=17"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dark.css?v=19"]
 
 # Zupra Typography Refactoring (Modern Web-App Standards: Linear/Stripe/Vercel density)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=13"]
