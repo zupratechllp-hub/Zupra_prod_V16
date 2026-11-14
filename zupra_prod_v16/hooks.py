@@ -34,7 +34,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261031.1"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261114.1"
 app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261027.7"
 
 # include js, css files in header of web template
@@ -44,6 +44,7 @@ web_include_css = [
 ]
 web_include_js = "/assets/zupra_prod_v16/js/zupra_login.js?v=20261022.2"
 update_website_context = ["zupra_prod_v16.branding.update_website_context"]
+boot_session = "zupra_prod_v16.branding.boot_session"
 # web_include_js = "/assets/zupra_prod_v16/js/zupra_prod_v16.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -335,7 +336,7 @@ app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js
 
 # Zupra UI restyle - Round 10 (top navigation)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=8"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=1794572800"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=20261114.1"]
 
 # Zupra UI restyle - Round 11 (sidebar icons, top bar polish)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=1793948586"]
