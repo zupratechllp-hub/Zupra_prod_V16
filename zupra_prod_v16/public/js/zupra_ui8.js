@@ -9,8 +9,200 @@
 		});
 	const MORE = ["Organisation structure", "Setup", "Assets", "Quality"];
 
+	const HR_MODULES = [
+		{ title: "HR Setup", route: "desk/hr-setup", icon: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>', frappe_icon: "briefcase-soft" },
+		{ title: "Shift & Attendance", route: "desk/shift-&-attendance", icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', frappe_icon: "time-clock-soft" },
+		{ title: "Leaves", route: "desk/leaves", icon: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>', frappe_icon: "tree-palm-soft" },
+		{ title: "Expenses", route: "desk/expenses", icon: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><line x1="16" y1="8" x2="8" y2="8"/><line x1="16" y1="12" x2="8" y2="12"/><line x1="16" y1="16" x2="8" y2="16"/>', frappe_icon: "receipt-card-soft" },
+		{ title: "Payroll", route: "desk/payroll", icon: '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>', frappe_icon: "wallet-soft" },
+		{ title: "Performance", route: "desk/performance", icon: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', frappe_icon: "podium-soft" },
+		{ title: "Tenure", route: "desk/tenure", icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', frappe_icon: "user-clock-soft" },
+		{ title: "Recruitment", route: "desk/recruitment", icon: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>', frappe_icon: "user-search-soft" },
+		{ title: "Tax & Benefits", route: "desk/tax-&-benefits", icon: '<line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>', frappe_icon: "coins-percent-soft" }
+	];
+	const HR_DOCK_LABELS = HR_MODULES.map(function (m) { return m.title; }).concat(["Human Resources"]);
+
+	function ensureErpnextRail() {
+		try {
+			if (window.frappe) {
+				if (frappe.boot) {
+					frappe.boot.app_rail_host = frappe.boot.app_rail_host || {};
+					frappe.boot.app_rail_host["hrms"] = "erpnext";
+				}
+				if (frappe.ui && frappe.ui.sidebar && frappe.ui.sidebar.Sidebar) {
+					var proto = frappe.ui.sidebar.Sidebar.prototype;
+					if (!proto._zu_rail_fixed) {
+						proto._zu_rail_fixed = true;
+						var origRailHost = proto.rail_host_for;
+						proto.rail_host_for = function (app_name) {
+							if (app_name === "hrms") return "erpnext";
+							return origRailHost ? origRailHost.call(this, app_name) : app_name;
+						};
+						var origGetSidebarApp = proto.get_sidebar_app;
+						proto.get_sidebar_app = function () {
+							var app = origGetSidebarApp ? origGetSidebarApp.call(this) : null;
+							if (!app || app.app_name === "hrms") {
+								var erp = (frappe.boot?.app_data || []).find(function (a) {
+									return a.app_name === "erpnext";
+								});
+								if (erp) return erp;
+							}
+							return app;
+						};
+					}
+				}
+				if (frappe.app && frappe.app.sidebar) {
+					var sb = frappe.app.sidebar;
+					if (frappe.ui && frappe.ui.sidebar && frappe.ui.sidebar.Sidebar) {
+						sb.rail_host_for = frappe.ui.sidebar.Sidebar.prototype.rail_host_for;
+						sb.get_sidebar_app = frappe.ui.sidebar.Sidebar.prototype.get_sidebar_app;
+					}
+				}
+			}
+		} catch (e) {}
+	}
+	ensureErpnextRail();
+
 	if (window.frappe && frappe.ui && frappe.ui.sidebar && frappe.ui.sidebar.Dock) {
 		frappe.ui.sidebar.Dock.prototype.name_tile = function () {};
+	}
+
+	function isHrContext() {
+		var p = (window.location.pathname || "").toLowerCase();
+		if (
+			p.indexOf("/desk/hr") > -1 ||
+			p.indexOf("/desk/shift") > -1 ||
+			p.indexOf("/desk/leaves") > -1 ||
+			p.indexOf("/desk/payroll") > -1 ||
+			p.indexOf("/desk/recruitment") > -1 ||
+			p.indexOf("/desk/expense") > -1 ||
+			p.indexOf("/desk/performance") > -1 ||
+			p.indexOf("/desk/tenure") > -1 ||
+			p.indexOf("/desk/tax-&-benefits") > -1
+		) {
+			return true;
+		}
+		if (window.frappe) {
+			var curMod = frappe.app?.sidebar?.current_module;
+			if (curMod) {
+				if (HR_DOCK_LABELS.indexOf(curMod) > -1) return true;
+				var sb = frappe.boot?.module_sidebars?.[curMod];
+				if (sb && (sb.app === "hrms" || /hr/i.test(sb.app))) return true;
+			}
+			if (typeof frappe.get_route === "function") {
+				var r = frappe.get_route();
+				if (r && r.length) {
+					var r0 = String(r[0] || "").toLowerCase();
+					if (
+						r0.indexOf("hr-") > -1 ||
+						r0.indexOf("shift") > -1 ||
+						r0 === "leaves" ||
+						r0 === "payroll" ||
+						r0.indexOf("expense") > -1 ||
+						r0 === "performance" ||
+						r0 === "tenure" ||
+						r0 === "recruitment" ||
+						r0.indexOf("tax") > -1
+					) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	function renderHrSidebar() {
+		var itemsContainer = document.querySelector(".body-sidebar .sidebar-items");
+		if (!itemsContainer) return;
+
+		var onHr = isHrContext();
+		var section = document.getElementById("zu-hr-sidebar-section");
+
+		if (!onHr) {
+			if (section) section.remove();
+			return;
+		}
+
+		var curPath = (window.location.pathname || "").toLowerCase();
+		var curMod = (window.frappe?.app?.sidebar?.current_module || "").toLowerCase();
+
+		if (!section) {
+			section = document.createElement("div");
+			section.id = "zu-hr-sidebar-section";
+			section.className = "zu-hr-modules-wrapper";
+
+			var header = document.createElement("div");
+			header.className = "zu-hr-section-header";
+			header.title = "Click to toggle HR modules";
+			header.innerHTML = '<span class="zu-hr-header-title">HR Modules</span><span class="zu-hr-caret">&#9662;</span>';
+			header.onclick = function (e) {
+				e.stopPropagation();
+				section.classList.toggle("collapsed");
+				try {
+					localStorage.setItem("zu_hr_collapsed", section.classList.contains("collapsed") ? "1" : "0");
+				} catch (err) {}
+			};
+			section.appendChild(header);
+
+			if (localStorage.getItem("zu_hr_collapsed") === "1") {
+				section.classList.add("collapsed");
+			}
+
+			var list = document.createElement("div");
+			list.className = "zu-hr-modules-list";
+
+			HR_MODULES.forEach(function (m) {
+				var row = document.createElement("div");
+				row.className = "zu-hr-nav-item";
+				row.setAttribute("data-route", m.route);
+				row.setAttribute("data-title", m.title);
+
+				var a = document.createElement("a");
+				a.className = "item-anchor";
+				a.href = "/" + m.route;
+
+				var iconHtml = "";
+				if (window.frappe && frappe.utils && typeof frappe.utils.icon === "function" && m.frappe_icon) {
+					try {
+						iconHtml = frappe.utils.icon(m.frappe_icon, "sm");
+					} catch (err) {}
+				}
+				if (!iconHtml) {
+					iconHtml = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + m.icon + '</svg>';
+				}
+
+				a.innerHTML = '<span class="zu-side-icon">' + iconHtml + '</span><span class="sidebar-item-label">' + m.title + '</span>';
+
+				a.onclick = function (ev) {
+					ev.preventDefault();
+					ev.stopPropagation();
+					if (window.frappe) {
+						if (frappe.app && frappe.app.sidebar && typeof frappe.app.sidebar.select_shell === "function") {
+							try { frappe.app.sidebar.select_shell(m.title); } catch (err) {}
+						}
+						if (typeof frappe.set_route === "function") {
+							frappe.set_route(m.route);
+							return;
+						}
+					}
+					window.location.href = "/" + m.route;
+				};
+
+				row.appendChild(a);
+				list.appendChild(row);
+			});
+
+			section.appendChild(list);
+			itemsContainer.insertBefore(section, itemsContainer.firstChild);
+		}
+
+		section.querySelectorAll(".zu-hr-nav-item").forEach(function (row) {
+			var r = (row.getAttribute("data-route") || "").toLowerCase().replace("desk/", "");
+			var t = (row.getAttribute("data-title") || "").toLowerCase();
+			var isActive = (curPath.indexOf(r) > -1) || (curMod && curMod === t);
+			row.classList.toggle("active", isActive);
+		});
 	}
 
 	function killDockTooltips() {
@@ -113,8 +305,36 @@
 		return [...document.querySelectorAll("#desk-dock .dock-items .dock-item")];
 	}
 	function run() {
+		ensureErpnextRail();
 		killDockTooltips();
-		const its = items();
+
+		// Keep navbar clean: Hide any HR dock items from the top navbar
+		let nonHrCount = 0;
+		document.querySelectorAll("#desk-dock .dock-items .dock-item").forEach(function (b) {
+			const label = (b.getAttribute("aria-label") || b.textContent || "").trim();
+			if (HR_DOCK_LABELS.indexOf(label) > -1) {
+				b.style.display = "none";
+			} else {
+				nonHrCount++;
+			}
+		});
+
+		// If dock only had HR items rendered, trigger re-render of ERPNext dock
+		if (nonHrCount === 0 && window.frappe && frappe.app && frappe.app.sidebar && frappe.app.sidebar.dock) {
+			try {
+				const erpApp = (frappe.boot?.app_data || []).find(function (a) { return a.app_name === "erpnext"; });
+				if (erpApp && frappe.app.sidebar.dock.app !== erpApp) {
+					frappe.app.sidebar.dock.app = erpApp;
+					const entries = frappe.app.sidebar.collect_dock_entries(erpApp);
+					frappe.app.sidebar.dock.rendered = null;
+					frappe.app.sidebar.dock.render_entries(entries);
+				}
+			} catch (e) {}
+		}
+
+		renderHrSidebar();
+
+		const its = items().filter(function (b) { return b.style.display !== "none"; });
 		if (!its.length) return;
 		its.forEach(function (b) {
 			b.classList.toggle("zu-more", MORE.indexOf(b.getAttribute("aria-label")) > -1);
@@ -128,7 +348,9 @@
 			g.title = "All modules";
 			g.innerHTML = gridIcon();
 			const holder = document.querySelector("#desk-dock .dock-items");
-			holder.parentNode.insertBefore(g, holder.nextSibling);
+			if (holder) {
+				holder.parentNode.insertBefore(g, holder.nextSibling);
+			}
 			const m = document.createElement("div");
 			m.id = "zu-grid-menu";
 			document.body.appendChild(m);
@@ -158,15 +380,7 @@
 				hrRow.className = "zu-grid-item zu-grid-hr";
 				hrRow.setAttribute("aria-label", "Human Resources");
 				hrRow.textContent = window.__ ? __("Human Resources") : "Human Resources";
-				const onHrPage =
-					window.location.pathname &&
-					(window.location.pathname.indexOf("/desk/hr") > -1 ||
-						window.location.pathname.indexOf("/desk/shift") > -1 ||
-						window.location.pathname.indexOf("/desk/leaves") > -1 ||
-						window.location.pathname.indexOf("/desk/payroll") > -1 ||
-						window.location.pathname.indexOf("/desk/recruitment") > -1 ||
-						window.location.pathname.indexOf("/desk/expense") > -1);
-				if (onHrPage) hrRow.classList.add("active");
+				if (isHrContext()) hrRow.classList.add("active");
 				hrRow.onclick = function (ev) {
 					ev.stopPropagation();
 					m.style.display = "none";
@@ -183,12 +397,15 @@
 				m.style.display = "none";
 			});
 		}
-		g.classList.toggle(
-			"on",
-			its.some(function (b) {
-				return b.classList.contains("zu-more") && b.classList.contains("active");
-			}),
-		);
+		if (g) {
+			g.classList.toggle(
+				"on",
+				isHrContext() ||
+				its.some(function (b) {
+					return b.classList.contains("zu-more") && b.classList.contains("active");
+				})
+			);
+		}
 	}
 	let t;
 	$(document).ready(function () {

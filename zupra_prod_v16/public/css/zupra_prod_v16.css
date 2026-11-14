@@ -135,3 +135,124 @@ body.zu-topnav .page-container .page-head {
   inset-block-start: 0 !important;
   margin-top: 0 !important;
 }
+
+/* HR Modules in Sidebar */
+.zu-hr-modules-wrapper {
+  margin: 4px 6px 10px 6px;
+  padding: 4px;
+  border-radius: var(--border-radius-md, 8px);
+  background: var(--fg-color, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+}
+
+:root[data-theme="dark"] .zu-hr-modules-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.zu-hr-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.zu-hr-section-header:hover {
+  background: var(--bg-light-gray, rgba(0, 0, 0, 0.03));
+}
+
+.zu-hr-header-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted, #64748b);
+}
+
+.zu-hr-caret {
+  font-size: 10px;
+  color: var(--text-muted, #64748b);
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.zu-hr-modules-wrapper.collapsed .zu-hr-caret {
+  transform: rotate(-90deg);
+}
+
+.zu-hr-modules-wrapper.collapsed .zu-hr-modules-list {
+  display: none !important;
+}
+
+.zu-hr-modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.zu-hr-nav-item .item-anchor {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  padding: 6px 8px !important;
+  border-radius: 6px !important;
+  color: var(--text-color, #1e293b) !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.zu-hr-nav-item .item-anchor:hover {
+  background: var(--bg-light-gray, rgba(0, 0, 0, 0.04)) !important;
+}
+
+.zu-hr-nav-item.active .item-anchor {
+  background: #e8f0fe !important;
+  color: #1b64da !important;
+  font-weight: 600 !important;
+}
+
+:root[data-theme="dark"] .zu-hr-nav-item.active .item-anchor {
+  background: rgba(59, 130, 246, 0.18) !important;
+  color: #60a5fa !important;
+}
+
+.zu-hr-nav-item .item-anchor .zu-side-icon {
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  opacity: 0.75;
+}
+
+.zu-hr-nav-item.active .item-anchor .zu-side-icon {
+  opacity: 1;
+}
+
+.zu-hr-nav-item .item-anchor .zu-side-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* Ensure HR dock items NEVER show on top navbar */
+#desk-dock .dock-item[aria-label="HR Setup"],
+#desk-dock .dock-item[aria-label="Shift & Attendance"],
+#desk-dock .dock-item[aria-label="Leaves"],
+#desk-dock .dock-item[aria-label="Expenses"],
+#desk-dock .dock-item[aria-label="Payroll"],
+#desk-dock .dock-item[aria-label="Performance"],
+#desk-dock .dock-item[aria-label="Tenure"],
+#desk-dock .dock-item[aria-label="Recruitment"],
+#desk-dock .dock-item[aria-label="Tax & Benefits"],
+#desk-dock .dock-item[aria-label="Human Resources"] {
+  display: none !important;
+}

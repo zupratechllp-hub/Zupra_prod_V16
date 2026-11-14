@@ -5,6 +5,13 @@ def update_website_context(context):
     return {"favicon": "/assets/zupra_prod_v16/images/logo.png"}
 
 
+def boot_session(bootinfo):
+    """Ensure HRMS uses ERPNext's dock rail so the top navbar remains default."""
+    if not hasattr(bootinfo, "app_rail_host") or bootinfo.app_rail_host is None:
+        bootinfo.app_rail_host = {}
+    bootinfo.app_rail_host["hrms"] = "erpnext"
+
+
 def redirect_desk_root():
     """Send browser visits to the bare site URL to the appropriate Frappe page.
 
