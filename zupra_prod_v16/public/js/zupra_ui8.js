@@ -63,9 +63,61 @@
 	}
 	ensureErpnextRail();
 
-	if (window.frappe && frappe.ui && frappe.ui.sidebar && frappe.ui.sidebar.Dock) {
-		frappe.ui.sidebar.Dock.prototype.name_tile = function () {};
+	if (window.frappe && frappe.ui) {
+		if (frappe.ui.sidebar && frappe.ui.sidebar.Dock) {
+			frappe.ui.sidebar.Dock.prototype.name_tile = function () {};
+			var origRenderLogo = frappe.ui.sidebar.Dock.prototype.render_logo;
+			frappe.ui.sidebar.Dock.prototype.render_logo = function () {
+				if (origRenderLogo) origRenderLogo.call(this);
+				if (this.header_tooltip) {
+					try {
+						this.header_tooltip.destroy();
+					} catch (err) {}
+					this.header_tooltip = null;
+				}
+				if (this.$header) {
+					this.$header.removeAttr("title");
+				}
+			};
+		}
+		if (frappe.ui.Tooltip && !frappe.ui.Tooltip.prototype._zu_show_patched) {
+			frappe.ui.Tooltip.prototype._zu_show_patched = true;
+			var origShow = frappe.ui.Tooltip.prototype.show;
+			frappe.ui.Tooltip.prototype.show = function () {
+				if (
+					this.text === "All apps" ||
+					(this.trigger_el && (
+						(this.trigger_el.closest && this.trigger_el.closest(".dock-logo, .shell-header, .header-logo")) ||
+						this.trigger_el.getAttribute("aria-label") === "All apps"
+					))
+				) {
+					return;
+				}
+				if (this.trigger_el && this.trigger_el.hasAttribute("title")) {
+					this.trigger_el.removeAttribute("title");
+				}
+				return origShow.apply(this, arguments);
+			};
+		}
 	}
+
+	document.addEventListener(
+		"pointerenter",
+		function (e) {
+			var el = e.target;
+			if (!el || el.nodeType !== 1) return;
+			var title = el.getAttribute("title");
+			if (
+				title &&
+				(el.matches("#zu-grid, #zu-settings, #zu-bell, #zu-search, #zu-new, #desk-dock, #desk-dock *") ||
+					el.hasAttribute("data-zu-tooltip") ||
+					el.hasAttribute("aria-label"))
+			) {
+				el.removeAttribute("title");
+			}
+		},
+		true,
+	);
 
 	function isHrContext() {
 		var p = (window.location.pathname || "").toLowerCase();
@@ -210,6 +262,12 @@
 			if (window.frappe && frappe.app && frappe.app.sidebar && frappe.app.sidebar.dock) {
 				var d = frappe.app.sidebar.dock;
 				d.name_tile = function () {};
+				if (d.header_tooltip) {
+					try {
+						d.header_tooltip.destroy();
+					} catch (err) {}
+					d.header_tooltip = null;
+				}
 				if (d.tooltips && d.tooltips.length) {
 					d.tooltips.forEach(function (t) {
 						try {
@@ -221,12 +279,14 @@
 			}
 		} catch (err) {}
 		document
-			.querySelectorAll("#desk-dock .dock-item, .dock-items .dock-item")
+			.querySelectorAll(
+				"#desk-dock .dock-item, .dock-items .dock-item, #desk-dock .dock-logo, #desk-dock .dock-logo a, #desk-dock .shell-header, #desk-dock .header-logo, #zu-settings, #zu-bell, #zu-grid"
+			)
 			.forEach(function (b) {
 				b.removeAttribute("title");
-				if (window.$) {
+				if (window.$ && (b.closest(".dock-logo, .shell-header") || b.id === "zu-grid")) {
 					var tip = $(b).data("es-tooltip");
-					if (tip) {
+					if (tip && b.closest(".dock-logo, .shell-header")) {
 						try {
 							tip.destroy();
 						} catch (err) {}
@@ -301,12 +361,76 @@
 		window.location.href = "/desk/hr-setup";
 	}
 
+	function cleanFormattedDecimals(str) {
+		if (typeof str !== "string") str = String(str || "");
+		return str.replace(
+			/(^|[^\d.])(-?[\d,]+)\.(\d{3,})(\s*[A-Za-z%₹$€£\s]*)$/,
+			function (match, prefix, intPart, decPart, suffix) {
+				var cleanInt = intPart.replace(/,/g, "");
+				var num = parseFloat(cleanInt + "." + decPart);
+				if (isNaN(num)) return match;
+				var rounded = (Math.round(num * 100) / 100).toFixed(2);
+				if (rounded.indexOf(".") > -1) {
+					rounded = rounded.replace(/0+$/, "").replace(/\.$/, "");
+				}
+				if (intPart.indexOf(",") > -1) {
+					var parts = rounded.split(".");
+					parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					rounded = parts.join(".");
+				}
+				return prefix + rounded + suffix;
+			},
+		);
+	}
+
+	function cleanNodeDecimals(node) {
+		if (!node) return;
+		if (node.nodeType === 3) {
+			var val = node.nodeValue || "";
+			if (/(-?[\d,]+)\.\d{3,}/.test(val)) {
+				node.nodeValue = cleanFormattedDecimals(val);
+			}
+		} else if (node.nodeType === 1 && !node.isContentEditable) {
+			for (var i = 0; i < node.childNodes.length; i++) {
+				cleanNodeDecimals(node.childNodes[i]);
+			}
+		}
+	}
+
+	function cleanCardNumbers() {
+		document
+			.querySelectorAll(
+				".number-widget-box .number, .widget .number, [data-widget-name] .number, .widget-content .number, .summary-value, .chart-value, .indicator-pill, .stat-value"
+			)
+			.forEach(function (el) {
+				cleanNodeDecimals(el);
+			});
+	}
+
+	function patchShortenNumber() {
+		if (
+			window.frappe &&
+			frappe.utils &&
+			frappe.utils.shorten_number &&
+			!frappe.utils._zu_shorten_patched
+		) {
+			frappe.utils._zu_shorten_patched = true;
+			var origShorten = frappe.utils.shorten_number;
+			frappe.utils.shorten_number = function () {
+				var res = origShorten.apply(this, arguments);
+				return cleanFormattedDecimals(res);
+			};
+		}
+	}
+
 	function items() {
 		return [...document.querySelectorAll("#desk-dock .dock-items .dock-item")];
 	}
 	function run() {
 		ensureErpnextRail();
 		killDockTooltips();
+		cleanCardNumbers();
+		patchShortenNumber();
 
 		// Keep navbar clean: Hide any HR dock items from the top navbar
 		let nonHrCount = 0;
@@ -345,7 +469,7 @@
 			g = document.createElement("button");
 			g.id = "zu-grid";
 			g.type = "button";
-			g.title = "All modules";
+			g.setAttribute("aria-label", "All modules");
 			g.innerHTML = gridIcon();
 			const holder = document.querySelector("#desk-dock .dock-items");
 			if (holder) {
@@ -398,6 +522,13 @@
 			});
 		}
 		if (g) {
+			g.removeAttribute("title");
+			if (window.frappe && frappe.ui && frappe.ui.tooltip && !g.dataset.zuTip) {
+				try {
+					frappe.ui.tooltip(g, { text: "All modules", side: "bottom" });
+					g.dataset.zuTip = "1";
+				} catch (err) {}
+			}
 			g.classList.toggle(
 				"on",
 				isHrContext() ||
@@ -406,10 +537,20 @@
 				})
 			);
 		}
+		if (window.frappe && frappe.router && !frappe.router._zu_cleaner_hook) {
+			frappe.router._zu_cleaner_hook = true;
+			frappe.router.on("change", function () {
+				setTimeout(cleanCardNumbers, 100);
+				setTimeout(cleanCardNumbers, 500);
+				setTimeout(cleanCardNumbers, 1500);
+			});
+		}
 	}
 	let t;
 	$(document).ready(function () {
 		setTimeout(run, 0);
+		setTimeout(run, 500);
+		setTimeout(run, 1500);
 		new MutationObserver(function () {
 			clearTimeout(t);
 			t = setTimeout(run, 50);
@@ -587,4 +728,71 @@
 	if (window.$) $(document).ready(build);
 	else document.addEventListener("DOMContentLoaded", build);
 	setInterval(build, 1000);
+})();
+
+(function () {
+	function raiseSearch() {
+		var tools = document.getElementById("zu-tools");
+		if (tools) tools.classList.add("zu-search-raised");
+		if (document.body) document.body.classList.add("zu-search-open");
+	}
+
+	function lowerSearch() {
+		var tools = document.getElementById("zu-tools");
+		if (tools) tools.classList.remove("zu-search-raised");
+		if (document.body) document.body.classList.remove("zu-search-open");
+	}
+
+	function isSearchModal(el) {
+		return !!(el && el.querySelector && el.querySelector("#navbar-search"));
+	}
+
+	function isInsideSearch(el) {
+		if (!el || !el.closest) return false;
+		if (el.closest("#zu-search")) return true;
+		var modal = el.closest(".modal");
+		if (modal && modal.querySelector("#navbar-search")) return true;
+		return false;
+	}
+
+	function isInsideContentModal(el) {
+		if (!el || !el.closest) return false;
+		var modal = el.closest(".modal");
+		if (modal && !modal.querySelector("#navbar-search")) return true;
+		return false;
+	}
+
+	document.addEventListener("click", function (e) {
+		var target = e.target;
+		if (isInsideSearch(target)) {
+			raiseSearch();
+			return;
+		}
+		if (isInsideContentModal(target) || (target.closest && !target.closest("#zu-tools"))) {
+			lowerSearch();
+		}
+	}, true);
+
+	document.addEventListener("keydown", function (e) {
+		if (e.key === "Escape") {
+			lowerSearch();
+		} else if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) {
+			raiseSearch();
+		}
+	}, true);
+
+	if (window.$) {
+		$(document).on("shown.bs.modal show.bs.modal", function (e) {
+			if (isSearchModal(e.target)) {
+				raiseSearch();
+			} else {
+				lowerSearch();
+			}
+		});
+		$(document).on("hidden.bs.modal hide.bs.modal", function (e) {
+			if (isSearchModal(e.target)) {
+				lowerSearch();
+			}
+		});
+	}
 })();

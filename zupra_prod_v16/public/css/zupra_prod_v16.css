@@ -256,3 +256,39 @@ body.zu-topnav .page-container .page-head {
 #desk-dock .dock-item[aria-label="Human Resources"] {
   display: none !important;
 }
+
+/* Tooltips: Modern rounded pill styling everywhere */
+html body .es-tooltip,
+html body .tooltip .tooltip-inner,
+html body .tooltip-inner,
+html body [role="tooltip"],
+html body .tippy-box,
+html body .tippy-content {
+  background: #1f2937 !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.4 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  z-index: 99999 !important;
+  opacity: 1 !important;
+  text-align: center !important;
+}
+
+html body .es-tooltip__arrow,
+html body .tooltip .tooltip-arrow,
+html body .tooltip .arrow,
+html body .tooltip-arrow::before,
+html body .arrow::before {
+  display: none !important;
+}
+
+/* Suppress any logo tooltip */
+#desk-dock .dock-logo .es-tooltip,
+.dock-logo .es-tooltip {
+  display: none !important;
+}

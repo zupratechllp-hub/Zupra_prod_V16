@@ -56,7 +56,7 @@
     [/purchase|buying/, "cart"], [/subcontract|manufactur/, "wrench"], [/pricing/, "tag"],
     [/point of sale|\bpos\b/, "card"], [/setup|setting/, "sliders"], [/stock|item/, "box"], [/sales/, "chart"]
   ];
-  function svgOf(k) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + (I[k] || I.file) + "</svg>"; }
+  function svgOf(k) { return '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="display:block;margin:auto;">' + (I[k] || I.file) + "</svg>"; }
   function pick(rules, label, def) {
     const t = label.toLowerCase();
     for (const [re, k] of rules) if (re.test(t)) return k;
@@ -91,6 +91,7 @@
       h.dataset.zu7 = "1";
       const s = document.createElement("span");
       s.className = "zu-head-icon";
+      s.style.cssText = "display:inline-flex !important;align-items:center !important;justify-content:center !important;text-align:center !important;width:38px !important;height:38px !important;min-width:38px !important;padding:0 !important;margin:0 !important;";
       s.innerHTML = svgOf(pick(HEAD, label, "layers"));
       h.insertBefore(s, h.firstChild);
     });
