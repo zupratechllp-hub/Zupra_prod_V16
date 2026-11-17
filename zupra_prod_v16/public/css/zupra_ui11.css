@@ -50,15 +50,35 @@ html body svg[data-zu-bell]:not(#zu-settings svg) {
 }
 
 
-/* Tooltips readable in both themes */
-html body .tooltip .tooltip-inner {
+/* Tooltips readable in both themes: modern rounded pill label */
+html body .tooltip .tooltip-inner,
+html body .tooltip-inner,
+html body [role="tooltip"],
+html body .tippy-box,
+html body .tippy-content,
+html body .es-tooltip {
   background: #1f2937 !important;
-  color: #fff !important;
-  border: 1px solid rgba(255,255,255,.15);
-  font-size: 12px;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.4 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  z-index: 99999 !important;
+  opacity: 1 !important;
+  text-align: center !important;
 }
-html body .tooltip .tooltip-arrow::before,
-html body .tooltip .arrow::before { border-top-color: #1f2937 !important; border-bottom-color: #1f2937 !important; }
+
+html body .es-tooltip__arrow,
+html body .tooltip .tooltip-arrow,
+html body .tooltip .arrow,
+html body .tooltip-arrow::before,
+html body .arrow::before {
+  display: none !important;
+}
 
 /* Settings gear: visible hover in light and dark, box stays with the icon */
 html body #zu-settings {
@@ -94,21 +114,27 @@ html body.zu-topnav:not(.zu-ready) #zu-user { opacity: 0 !important; pointer-eve
 /* Gear level with bell and avatar */
 html body.zu-topnav #zu-settings { top: 16px !important; }
 
-/* Tooltips: dark box, white text, in both themes */
+/* Tooltips: dark box, white text, modern rounded pill label in both themes */
 html body .tooltip .tooltip-inner,
+html body .tooltip-inner,
 html body [role="tooltip"],
-html body [role="tooltip"] *,
 html body .tippy-box,
 html body .tippy-content,
 html body .es-tooltip {
   background: #1f2937 !important;
   color: #fff !important;
-  border: 0;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.4 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
   z-index: 99999 !important;
+  opacity: 1 !important;
+  text-align: center !important;
 }
-html body .tooltip,
-html body .tooltip .tooltip-inner,
-html body .es-tooltip { opacity: 1 !important; }
 
 
 /* zu-veil: page cover while loading */
@@ -560,3 +586,42 @@ html.zu-sb-collapsed body.zu-topnav #zu-sb-resizer {
   border-radius: 0 8px 8px 0;
 }
 html.zu-sb-collapsed body.zu-topnav #zu-sb-open { display: flex; }
+
+/* Center icons in workspace section card headers */
+.links-widget-box .widget-title .zu-head-icon,
+.links-widget-box .zu-head-icon,
+.zu-head-icon {
+  display: inline-flex !important;
+  flex: 0 0 38px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 11px !important;
+  box-sizing: border-box !important;
+  line-height: 0 !important;
+  vertical-align: middle !important;
+}
+
+.links-widget-box .widget-title .zu-head-icon svg,
+.links-widget-box .zu-head-icon svg,
+.zu-head-icon svg {
+  display: block !important;
+  margin: auto !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  flex: 0 0 20px !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}

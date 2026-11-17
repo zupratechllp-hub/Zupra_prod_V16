@@ -34,7 +34,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261114.1"
+app_include_css = "/assets/zupra_prod_v16/css/zupra_prod_v16.css?v=20261117.1"
 app_include_js = "/assets/zupra_prod_v16/js/zupra_branding.js?v=20261027.7"
 
 # include js, css files in header of web template
@@ -294,7 +294,7 @@ app_include_css = list(_zc) + ["/assets/zupra_prod_v16/css/zupra_ui.css?v=2"]
 _zj = globals().get("app_include_js", [])
 if isinstance(_zj, str):
     _zj = [_zj]
-app_include_js = list(_zj) + ["/assets/zupra_prod_v16/js/zupra_ui.js?v=2"]
+app_include_js = list(_zj) + ["/assets/zupra_prod_v16/js/zupra_ui.js?v=20261117.1"]
 
 # Zupra UI restyle - Round 2
 _zc2 = globals().get("app_include_css", [])
@@ -316,7 +316,7 @@ app_include_css = list(_zc3) + ["/assets/zupra_prod_v16/css/zupra_ui3.css?v=6"]
 _zj3 = globals().get("app_include_js", [])
 if isinstance(_zj3, str):
     _zj3 = [_zj3]
-app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=4"]
+app_include_js = list(_zj3) + ["/assets/zupra_prod_v16/js/zupra_ui3.js?v=20261117.1"]
 
 # Zupra UI restyle - Round 4
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui4.css?v=34"]
@@ -331,12 +331,12 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui6
 app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui6.js?v=1"]
 
 # Zupra UI restyle - Round 9
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7.css?v=1"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=1"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui7.css?v=20261117.1"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui7.js?v=20261117.1"]
 
 # Zupra UI restyle - Round 10 (top navigation)
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=8"]
-app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=20261114.1"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui8.css?v=9"]
+app_include_js = list(app_include_js) + ["/assets/zupra_prod_v16/js/zupra_ui8.js?v=20261117.3"]
 
 # Zupra UI restyle - Round 11 (sidebar icons, top bar polish)
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui9.css?v=1793948586"]
@@ -350,4 +350,4 @@ app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_dar
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_typography.css?v=13"]
 app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui10.css?v=2"]
 
-app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=1794483663"]
+app_include_css = list(app_include_css) + ["/assets/zupra_prod_v16/css/zupra_ui11.css?v=20261117.2"]

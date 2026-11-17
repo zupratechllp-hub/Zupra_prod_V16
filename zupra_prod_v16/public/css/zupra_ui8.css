@@ -3,7 +3,7 @@ body.zu-topnav #desk-dock { position: fixed !important; top: 0 !important; left:
   bottom: auto !important; width: 100% !important; height: 64px !important; flex-direction: row !important;
   align-items: center; justify-content: flex-start; gap: 6px; padding: 0 20px !important; overflow: visible !important;
   background: var(--fg-color, #fff) !important; border-right: none !important;
-  border-bottom: 1px solid var(--border-color, #e3e9f2) !important; z-index: 1040; }
+  border-bottom: 1px solid var(--border-color, #e3e9f2) !important; z-index: 100 !important; }
 body.zu-topnav .dock-logo { flex: none; width: auto !important; margin: 0 14px 0 0 !important; padding: 0 !important; }
 body.zu-topnav .dock-logo .title-container { display: none !important; }
 body.zu-topnav .dock-logo img { width: 38px !important; height: 38px !important; }
@@ -69,3 +69,25 @@ body.zu-topnav .dock-item[aria-label="Organisation structure"],
 body.zu-topnav .dock-item[aria-label="Setup"],
 body.zu-topnav .dock-item[aria-label="Assets"],
 body.zu-topnav .dock-item[aria-label="Quality"] { display: none !important; }
+
+/* Content modals (dialogs, quick entries, confirmations, etc.) have higher priority than the top navbar tools */
+body.zu-topnav .modal:not(:has(#navbar-search)),
+body.zu-topnav .modal:not(:has(#navbar-search)) .modal-dialog,
+html body.zu-topnav .modal:not(:has(#navbar-search)) {
+  z-index: 3600 !important;
+}
+
+/* When the search bar is clicked or search dialog is active, raise the search bar above the content */
+html body.zu-topnav #zu-tools.zu-search-raised,
+html body.zu-topnav.zu-search-open #zu-tools,
+html body.zu-topnav:has(.modal:has(#navbar-search).show) #zu-tools,
+html body.zu-topnav:has(.modal:has(#navbar-search).in) #zu-tools {
+  z-index: 3700 !important;
+}
+
+/* Ensure the search popup modal is always on the very top when active */
+body.zu-topnav .modal:has(#navbar-search),
+body.zu-topnav .modal:has(#navbar-search) .modal-dialog,
+html body.zu-topnav .modal:has(#navbar-search) {
+  z-index: 3800 !important;
+}
