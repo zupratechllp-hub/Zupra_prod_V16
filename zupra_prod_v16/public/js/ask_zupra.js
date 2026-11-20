@@ -3,14 +3,6 @@ const chat = [];
 const HKEY = () => "ask_zupra_history:" + (frappe.session.user || "guest");
 
 const css = `
-#ask-zupra-btn { background:#1c4ed8; color:#fff; border:1px solid #3b82f6; border-radius:8px;
-height:42px; padding:0 24px; font-weight:600; font-size:14px; margin-left:20px; vertical-align:middle; cursor:pointer;
-box-shadow:0 2px 8px rgba(28,78,216,.4); transition:background .15s ease; }
-#ask-zupra-btn:hover { background:#1d40af; }
-#ask-zupra-btn.floating { position:fixed; top:2px; left:380px; margin-left:0; z-index:1030; }
-[data-theme="dark"] #ask-zupra-btn { background:#1c4ed8 !important; color:#fff !important;
-border-color:#3b82f6 !important; box-shadow:0 2px 8px rgba(28,78,216,.55) !important; }
-[data-theme="dark"] #ask-zupra-btn:hover { background:#1d40af !important; }
 #ask-zupra-panel { position:fixed; top:70px; left:380px; right:200px; height:560px; z-index:1050;
 background:#fff; border:1px solid #d1d5db; border-radius:12px; display:none;
 flex-direction:column; box-shadow:0 10px 30px rgba(0,0,0,.25); color:#111; }
@@ -178,6 +170,8 @@ let btn = document.getElementById("ask-zupra-btn");
 if (!btn) {
 btn = document.createElement("button");
 btn.id = "ask-zupra-btn";
+btn.title = "Ask Zupra";
+btn.setAttribute("aria-label", "Ask Zupra");
 btn.textContent = "Ask Zupra";
 btn.onclick = () => {
 const p = document.getElementById("ask-zupra-panel");

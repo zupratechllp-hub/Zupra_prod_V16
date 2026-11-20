@@ -106,16 +106,9 @@ body.zu-on-ws .container.page-body > div:has(.zu-big) {
 }
 [data-theme="dark"] #ask-zupra-btn:hover {
   background-color: #1a2d45 !important;
-  border-radius: 8px !important;
 }
 #ask-zupra-btn * { display: none !important; }
-#ask-zupra-btn:hover { background-color: #eef2f7 !important; border-radius: 8px !important; }
-#ask-zupra-btn:hover::after {
-  content: "Ask Zupra";
-  position: absolute; top: 46px; right: 0;
-  background: #0f172a; color: #fff; font-size: 12px;
-  padding: 4px 8px; border-radius: 6px; white-space: nowrap; z-index: 4000;
-}
+#ask-zupra-btn:hover { background-color: #eef2f7 !important; }
 body.zu-on-ws .zu-dots { right: 114px !important; }
 #zu-bell { transform: translateX(95px) !important; }
 
@@ -200,12 +193,6 @@ body:not(.zu-on-ws) #ask-zupra-btn { display: flex !important; }
 #ask-zupra-btn i,
 #ask-zupra-btn span { display: none !important; }
 #ask-zupra-btn::before { content: none !important; display: none !important; }
-#ask-zupra-btn:hover::after {
-  content: "Ask Zupra";
-  position: absolute; top: 50%; right: 66px; transform: translateY(-50%);
-  background: #0f172a; color: #fff; font-size: 12px;
-  padding: 4px 8px; border-radius: 6px; white-space: nowrap; z-index: 4000;
-}
 
 /* Round 26: remove the three-dots menu from module home pages */
 #page-Workspaces .page-head .page-icon-group { display: none !important; }

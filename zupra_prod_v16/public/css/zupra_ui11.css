@@ -1,43 +1,117 @@
-/* Chat button: keep fixed in the bottom-right corner */
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLOATING CHAT BUTTON (#ask-zupra-btn)
+   Permanent fixed circle in bottom-right corner.
+   Stays firmly in place; never shifts, changes shape, or moves its icon.
+   ═══════════════════════════════════════════════════════════════════════════ */
 html body #ask-zupra-btn,
 html body #ask-zupra-btn.floating,
 html body.desk-page #ask-zupra-btn,
+html body.zu-topnav #ask-zupra-btn,
 html body #ask-zupra-btn:hover,
 html body #ask-zupra-btn:active,
 html body #ask-zupra-btn:focus,
 html body #ask-zupra-btn:focus-visible,
-html body #ask-zupra-btn:focus-within {
+html body.zu-topnav #ask-zupra-btn:hover,
+html body.zu-topnav #ask-zupra-btn:active,
+html body button#ask-zupra-btn,
+html body button#ask-zupra-btn:hover,
+html body button#ask-zupra-btn:active,
+html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn,
+html body #ask-zupra-btn#ask-zupra-btn:hover,
+html body #ask-zupra-btn#ask-zupra-btn:active {
   position: fixed !important;
   right: 28px !important;
   bottom: 28px !important;
   top: auto !important;
   left: auto !important;
-  margin: 0 !important;
-  transform: none !important;
-  translate: none !important;
-}
-
-
-/* old rule below is overridden by the one above */
-html body #zu-settings svg.old {
-  translate: none !important;
-}
-
-/* Chat button: very high specificity so no state class can move it */
-html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn,
-html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:hover,
-html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:active,
-html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus,
-html body #ask-zupra-btn#ask-zupra-btn#ask-zupra-btn#ask-zupra-btn:focus-visible {
-  position: fixed !important;
-  right: 28px !important;
-  bottom: 28px !important;
-  top: auto !important;
-  left: auto !important;
-  margin: 0 !important;
   inset-inline: auto 28px !important;
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  border-radius: 50% !important;
+  background-color: #10306f !important;
+  background-image: none !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 14px rgba(16, 48, 111, 0.3) !important;
   transform: none !important;
   translate: none !important;
+  transition: none !important;
+  cursor: pointer !important;
+  z-index: 3500 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Dark mode: identical in all states, no hover shift or background change */
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) html body #ask-zupra-btn,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) html body #ask-zupra-btn:hover,
+:is(html[data-theme=dark], html[data-theme-mode=dark], body[data-theme=dark], body.zu-dark, body.dark) html body #ask-zupra-btn:active,
+html[data-theme=dark] body #ask-zupra-btn,
+html[data-theme=dark] body #ask-zupra-btn:hover,
+html[data-theme=dark] body #ask-zupra-btn:active {
+  background-color: #10306f !important;
+  background-image: none !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 14px rgba(28, 78, 216, 0.4) !important;
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+}
+
+/* Suppress all internal tags and legacy ::before */
+html body #ask-zupra-btn *,
+html body #ask-zupra-btn svg,
+html body #ask-zupra-btn img,
+html body #ask-zupra-btn::before,
+html body #ask-zupra-btn:hover::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Chat bubble icon is always centered inside the button and never displaced */
+html body #ask-zupra-btn::after,
+html body #ask-zupra-btn:hover::after,
+html body #ask-zupra-btn:focus::after,
+html body #ask-zupra-btn:active::after,
+html body.zu-topnav #ask-zupra-btn::after,
+html body.zu-topnav #ask-zupra-btn:hover::after {
+  content: "" !important;
+  display: block !important;
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  translate: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  max-width: 26px !important;
+  max-height: 26px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/></svg>") !important;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
 }
 
 
@@ -624,4 +698,97 @@ html.zu-sb-collapsed body.zu-topnav #zu-sb-open { display: flex; }
   flex: 0 0 20px !important;
   box-sizing: border-box !important;
   padding: 0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE HEADER 3-DOTS MENU BUTTON - ADAPTABLE TO LIGHT & DARK MODES
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* General: ensure SVG follows button color via currentColor */
+.page-head .menu-more-button svg,
+.page-head .menu-btn-group button svg,
+.page-head .more-button svg,
+.page-actions .menu-btn-group button svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+  --icon-stroke: currentColor !important;
+}
+
+.page-head .menu-more-button svg *,
+.page-head .menu-btn-group button svg *,
+.page-head .more-button svg *,
+.page-actions .menu-btn-group button svg * {
+  stroke: currentColor !important;
+  fill: currentColor !important;
+}
+
+/* 1. LIGHT MODE */
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-more-button,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-btn-group button,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .more-button,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-actions .menu-btn-group button {
+  color: #1e293b !important;
+  --icon-stroke: #1e293b !important;
+  stroke: #1e293b !important;
+}
+
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-more-button svg,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-btn-group button svg,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .more-button svg,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-actions .menu-btn-group button svg {
+  color: #1e293b !important;
+  --icon-stroke: #1e293b !important;
+  stroke: #1e293b !important;
+}
+
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-more-button svg *,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-btn-group button svg *,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .more-button svg *,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-actions .menu-btn-group button svg * {
+  stroke: #1e293b !important;
+  fill: #1e293b !important;
+}
+
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-more-button:hover,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-btn-group button:hover,
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-actions .menu-btn-group button:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  --icon-stroke: #0f172a !important;
+  stroke: #0f172a !important;
+}
+
+/* 2. DARK MODE */
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-more-button,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-btn-group button,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .more-button,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-actions .menu-btn-group button {
+  color: #d0d9e6 !important;
+  --icon-stroke: #d0d9e6 !important;
+  stroke: #d0d9e6 !important;
+}
+
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-more-button svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-btn-group button svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .more-button svg,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-actions .menu-btn-group button svg {
+  color: #d0d9e6 !important;
+  --icon-stroke: #d0d9e6 !important;
+  stroke: #d0d9e6 !important;
+}
+
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-more-button svg *,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-btn-group button svg *,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .more-button svg *,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-actions .menu-btn-group button svg * {
+  stroke: #d0d9e6 !important;
+  fill: #d0d9e6 !important;
+}
+
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-more-button:hover,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-head .menu-btn-group button:hover,
+:is(html[data-theme="dark"], html[data-theme-mode="dark"], body[data-theme="dark"], body.zu-dark, body.dark) .page-actions .menu-btn-group button:hover {
+  background-color: var(--btn-default-hover-bg, #142c55) !important;
+  color: #f1f5f9 !important;
+  --icon-stroke: #f1f5f9 !important;
+  stroke: #f1f5f9 !important;
 }

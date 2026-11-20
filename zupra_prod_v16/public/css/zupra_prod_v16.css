@@ -117,11 +117,10 @@
 	border-bottom-color: #0b1f3a;
 }
 
-/* Keep the current page title and overflow-menu icon readable on navy (light mode). */
-:root:not([data-theme="dark"]) .page-head .es-breadcrumbs li:last-child .es-breadcrumbs__item,
-:root:not([data-theme="dark"]) .page-head .menu-more-button {
-	color: #fff;
-	--icon-stroke: #fff;
+/* In light mode, the page header menu button uses standard dark text and icon stroke */
+html:not([data-theme="dark"]):not([data-theme-mode="dark"]):not(.dark) .page-head .menu-more-button {
+	color: #1e293b;
+	--icon-stroke: #1e293b;
 }
 /* Single active-sidebar indicator: Frappe may mark both the row and child link active. */
 .body-sidebar .sidebar-item-container.active-sidebar { position: relative; box-shadow: none !important; border-left: 0 !important; }
